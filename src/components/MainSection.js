@@ -1,39 +1,27 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import '../styles/MainSection.css';
 
 const MainSection = () => {
-//   useEffect(() => {
-//     const slickOptions = {
-//       slidesToShow: 1,
-//       slidesToScroll: 1,
-//       autoplay: true,
-//       autoplaySpeed: 2500,
-//       arrows: false,
-//       mobileFirst: true,
-//       responsive: [
-//         {
-//           breakpoint: 700,
-//           settings: {
-//             slidesToShow: 2,
-//             slidesToScroll: 1,
-//           },
-//         },
-//       ],
-//     };
-
-//     const sliderContainer = document.querySelector('.professionals-container');
-
-//     if(sliderContainer) {
-//         const sliderInstance = new Slider(sliderContainer, slickOptions);
-
-//         return () => {
-//             sliderInstance.destroy();
-//         }
-//     }
-//   }, []);
+  const settings = {
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2500,
+    arrows: false,
+    mobileFirst: true,
+    responsive: [
+      {
+        breakpoint: 700,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
 
   return (
     <>
@@ -101,10 +89,10 @@ const MainSection = () => {
       <section className='professionals'>
         <div className='wrapper'>
           <h1>Wsparcie profesjonalistów</h1>
-          <div className='professionals-container'>
+          <Slider {...settings} className='professionals-container'>
             <div className='professional-box'>
               <div className='professional-img'>
-                <img src='img/dietetyk.jpg' alt=''></img>
+                <img src='' alt=''></img>
               </div>
               <div className='professional-info'>
                 <div className='professional-text'>
@@ -162,7 +150,7 @@ const MainSection = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </Slider>
         </div>
       </section>
     </>

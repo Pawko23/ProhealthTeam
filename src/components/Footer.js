@@ -4,9 +4,9 @@ import '../styles/Footer.css'
 const Footer = () => {
   return (
     <footer>
-      <p class='footer-text'>
+      <p className='footer-text'>
         {' '}
-        &copy; <span class='footer-year'>2023</span> ProhealthTeam, Aleksander
+        &copy; <span className='footer-year'>2023</span> ProhealthTeam, Aleksander
         Pawlak{' '}
       </p>
     </footer>
