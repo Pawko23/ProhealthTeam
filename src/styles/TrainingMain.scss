@@ -1,0 +1,63 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.6rem;
+}
+
+.header {
+    display: none;
+}
+
+footer {
+    display: none;
+}
+
+.training-container {
+    background: rgb(0,0,0);
+    background: rgb(0,0,0); 
+    background: linear-gradient(90deg, rgba(0,0,0,0.5) 0%, rgba(86,76,76,1) 100%), url('../img/training-hero.jpg');
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    .athletes-box {
+        width: 150px;
+        height: 400px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .athlete-btn {
+            height: 30px;
+            width: 80px;
+            background-color: orange;
+        }
+    }
+}
+
+@media (min-width: 992px) {
+    .training-container {
+        flex-direction: row;
+        background: transparent;
+    }
+
+    .header {
+        display: flex;
+    }
+    
+    footer {
+        display: flex;
+    }
+}
+
