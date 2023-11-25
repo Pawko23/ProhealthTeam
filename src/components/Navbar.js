@@ -1,11 +1,11 @@
 import React from 'react';
-import '../styles/Navbar.css'
+import NavbarStyles from '../styles/Navbar.module.css'
 
 const Navbar = () => {
     return (
         <section>
-            <div className="burger-menu">
-                <div className="menu-container">
+            <div className={NavbarStyles.burgerMenu}>
+                <div className={NavbarStyles.menuContainer}>
                     <ul>
                         <li><a href="/diet">Dieta</a></li>
                         <li><a href="/training">Trening</a></li>
@@ -17,17 +17,17 @@ const Navbar = () => {
             </div>
             <nav>
                 <ul>
-                    <li><a className="logo" href="/">ProhealthTeam</a></li>
+                    <li><a className={NavbarStyles.logo} href="/">ProhealthTeam</a></li>
                     <li><a href="/diet">Dieta</a></li>
                     <li><a href="/training">Trening</a></li>
                     <li><a href="/rehabilitation">Rehabilitacja</a></li>
                 </ul>
-                <ul className="account">
+                <ul className={NavbarStyles.account}>
                     <li><a href="/login">Konto</a></li>
                     <li><a href="/register">Zarejestruj się</a></li>
                 </ul>
             </nav>
-            <button className="burger-btn" id="burger-btn"><i className="fa-solid fa-bars" id="burger-icon"></i></button>
+            <button className={NavbarStyles.burgerBtn} id="burger-btn"><i className="fa-solid fa-bars" id="burger-icon"></i></button>
         </section>
     )
 }

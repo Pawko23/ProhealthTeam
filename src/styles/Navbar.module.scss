@@ -22,7 +22,7 @@ body {
   max-width: 1200px;
 }
 
-.burger-btn {
+.burgerBtn {
   position: fixed;
   top: 10px;
   right: 10px;
@@ -42,7 +42,7 @@ body {
   color: #000;
 }
 
-.burger-menu {
+.burgerMenu {
   display: none;
   .menu-container {
     position: fixed;
@@ -72,7 +72,7 @@ body {
   }
 }
 
-.burger-menu.active {
+.burgerMenu.active {
   display: flex;
 }
 
@@ -123,11 +123,11 @@ nav {
 }
 
 @media (min-width: 576px) {
-  .burger-btn {
+  .burgerBtn {
     font-size: 3.5rem;
   }
 
-  .burger-menu {
+  .burgerMenu {
     .menu-container {
       ul {
         li {
@@ -147,17 +147,17 @@ nav {
 }
 
 @media (min-width: 768px) {
-  .burger-btn {
+  .burgerBtn {
     font-size: 4rem;
   }
 }
 
 @media (min-width: 992px) {
-  .burger-btn {
+  .burgerBtn {
     visibility: hidden;
   }
 
-  .burger-menu {
+  .burgerMenu {
     .menu-container {
       ul {
         li {
@@ -178,7 +178,7 @@ nav {
 }
 
 @media (min-width: 1100px) {
-  .burger-menu {
+  .burgerMenu {
     .menu-container {
       ul {
         li {
