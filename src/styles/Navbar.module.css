@@ -41,10 +41,10 @@ body {
   color: #000;
 }
 
-.burgerMenu {
+.burger-menu {
   display: none;
 }
-.burgerMenu .menu-container {
+.burger-menu .menu-container {
   position: fixed;
   background-color: #333;
   width: 100%;
@@ -55,15 +55,15 @@ body {
   align-items: center;
   z-index: 1;
 }
-.burgerMenu .menu-container ul {
+.burger-menu .menu-container ul {
   list-style: none;
   text-align: center;
 }
-.burgerMenu .menu-container ul li {
+.burger-menu .menu-container ul li {
   padding: 10px;
   margin: 10px;
 }
-.burgerMenu .menu-container ul li a {
+.burger-menu .menu-container ul li a {
   text-transform: uppercase;
   text-decoration: none;
   color: #fff;
@@ -71,7 +71,7 @@ body {
   font-size: 2.5rem;
 }
 
-.burgerMenu.active {
+.burger-menu.active {
   display: flex;
 }
 
@@ -120,7 +120,7 @@ nav .account {
   .burgerBtn {
     font-size: 3.5rem;
   }
-  .burgerMenu .menu-container ul li a {
+  .burger-menu .menu-container ul li a {
     font-size: 3rem;
   }
   nav ul {
@@ -136,7 +136,7 @@ nav .account {
   .burgerBtn {
     visibility: hidden;
   }
-  .burgerMenu .menu-container ul li a {
+  .burger-menu .menu-container ul li a {
     font-size: 3.5rem;
   }
   nav {
@@ -147,7 +147,7 @@ nav .account {
   }
 }
 @media (min-width: 1100px) {
-  .burgerMenu .menu-container ul li a {
+  .burger-menu .menu-container ul li a {
     font-size: 4rem;
   }
 }/*# sourceMappingURL=Navbar.module.css.map */

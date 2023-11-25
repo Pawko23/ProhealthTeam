@@ -4,7 +4,7 @@ import NavbarStyles from '../styles/Navbar.module.css'
 const Navbar = () => {
     return (
         <section>
-            <div className={NavbarStyles.burgerMenu}>
+            <div className={NavbarStyles['burger-menu']}>
                 <div className={NavbarStyles.menuContainer}>
                     <ul>
                         <li><a href="/diet">Dieta</a></li>
