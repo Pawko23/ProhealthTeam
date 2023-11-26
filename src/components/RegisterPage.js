@@ -1,11 +1,11 @@
 import React from 'react';
-import '../styles/RegisterPage.css'
+import RegisterStyles from '../styles/RegisterPage.module.css'
 
 const RegisterPage = () => {
     return (
         <>
-            <div className="container">
-                <div className="login-box">
+            <div className={RegisterStyles.container}>
+                <div className={RegisterStyles['login-box']}>
                     <form action="">
                         <label for="email">Adres email:</label>
                         <input type="email" placeholder="Email"></input>
@@ -15,8 +15,8 @@ const RegisterPage = () => {
                         <input type="password" placeholder="Hasło"></input>
                         <label for="confirmPassword">Powtórz hasło:</label>
                         <input type="password" placeholder="Powtórz hasło"></input>
-                        <button type="submit" className="register">Zarejestruj</button>
-                        <button className="logIn">Zaloguj się</button>
+                        <button type="submit" className={RegisterStyles.register}>Zarejestruj</button>
+                        <button className={RegisterStyles.logIn}>Zaloguj się</button>
                     </form>
                 </div>
             </div>
