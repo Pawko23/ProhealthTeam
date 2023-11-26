@@ -9,18 +9,18 @@ const TrainingMain = () => {
     <>
       <Navbar />
       <Header />
-      <div className={TrainingMainStyles.trainingContainer}>
+      <div className={TrainingMainStyles['training-container']}>
       <h3>Wybierz:</h3>
-        <div className={TrainingMainStyles.athletesBox}>
-            <button className={TrainingMainStyles.athleteBtn}>Piłkarz</button>
-            <button className={TrainingMainStyles.athleteBtn}>Siatkarz</button>
-            <button className={TrainingMainStyles.athleteBtn}>Koszykarz</button>
+        <div className={TrainingMainStyles['athletes-box']}>
+            <button className={TrainingMainStyles['athlete-btn']}>Piłkarz</button>
+            <button className={TrainingMainStyles['athlete-btn']}>Siatkarz</button>
+            <button className={TrainingMainStyles['athlete-btn']}>Koszykarz</button>
         </div>
         <h3>Szukasz przykładowych planów na siłownię? Sprawdź nasze:</h3>
-        <div className={TrainingMainStyles.gymPlansBox}>
-            <button className={TrainingMainStyles.gymPlanBtn}>FBW</button>
-            <button className={TrainingMainStyles.gymPlanBtn}>Split</button>
-            <button className={TrainingMainStyles.gymPlanBtn}>Push & Pull & Legs</button>
+        <div className={TrainingMainStyles['gym-plans-box']}>
+            <button className={TrainingMainStyles['gym-plan-btn']}>FBW</button>
+            <button className={TrainingMainStyles['gym-plan-btn']}>Split</button>
+            <button className={TrainingMainStyles['gym-plan-btn']}>Push & Pull & Legs</button>
         </div>
       </div>
       <Footer />

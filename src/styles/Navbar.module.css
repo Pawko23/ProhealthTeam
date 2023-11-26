@@ -22,7 +22,7 @@ body {
   max-width: 1200px;
 }
 
-.burgerBtn {
+.burger-btn {
   position: fixed;
   top: 10px;
   right: 10px;
@@ -33,7 +33,7 @@ body {
   z-index: 1;
   cursor: pointer;
 }
-.burgerBtn #burger-icon {
+.burger-btn #burger-icon {
   color: #000;
 }
 
@@ -117,7 +117,7 @@ nav .account {
   }
 }
 @media (min-width: 576px) {
-  .burgerBtn {
+  .burger-btn {
     font-size: 3.5rem;
   }
   .burger-menu .menu-container ul li a {
@@ -128,12 +128,12 @@ nav .account {
   }
 }
 @media (min-width: 768px) {
-  .burgerBtn {
+  .burger-btn {
     font-size: 4rem;
   }
 }
 @media (min-width: 992px) {
-  .burgerBtn {
+  .burger-btn {
     visibility: hidden;
   }
   .burger-menu .menu-container ul li a {

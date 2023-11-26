@@ -22,7 +22,7 @@ body {
   max-width: 1200px;
 }
 
-.burgerBtn {
+.burger-btn {
   position: fixed;
   top: 10px;
   right: 10px;
@@ -123,7 +123,7 @@ nav {
 }
 
 @media (min-width: 576px) {
-  .burgerBtn {
+  .burger-btn {
     font-size: 3.5rem;
   }
 
@@ -147,13 +147,13 @@ nav {
 }
 
 @media (min-width: 768px) {
-  .burgerBtn {
+  .burger-btn {
     font-size: 4rem;
   }
 }
 
 @media (min-width: 992px) {
-  .burgerBtn {
+  .burger-btn {
     visibility: hidden;
   }
 

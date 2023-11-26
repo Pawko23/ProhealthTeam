@@ -5,7 +5,7 @@ const Navbar = () => {
     return (
         <section>
             <div className={NavbarStyles['burger-menu']}>
-                <div className={NavbarStyles.menuContainer}>
+                <div className={NavbarStyles['menu-container']}>
                     <ul>
                         <li><a href="/diet">Dieta</a></li>
                         <li><a href="/training">Trening</a></li>
@@ -27,7 +27,7 @@ const Navbar = () => {
                     <li><a href="/register">Zarejestruj się</a></li>
                 </ul>
             </nav>
-            <button className={NavbarStyles.burgerBtn} id="burger-btn"><i className="fa-solid fa-bars" id="burger-icon"></i></button>
+            <button className={NavbarStyles['burger-btn']} id="burger-btn"><i className="fa-solid fa-bars" id="burger-icon"></i></button>
         </section>
     )
 }
