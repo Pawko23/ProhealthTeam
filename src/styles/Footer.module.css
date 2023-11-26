@@ -21,7 +21,7 @@ footer {
   width: 100%;
   background: linear-gradient(45deg, rgba(8, 206, 255, 0.75), rgba(8, 24, 255, 0.75));
 }
-footer p {
+footer .footer-text {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -31,7 +31,7 @@ footer p {
 }
 
 @media (min-width: 576px) {
-  footer p {
+  footer .footer-text {
     font-size: 2.3rem;
   }
-}/*# sourceMappingURL=Footer.css.map */
+}/*# sourceMappingURL=Footer.module.css.map */

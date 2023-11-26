@@ -2,7 +2,8 @@ import React from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import '../styles/MainSection.css';
+import MainStyles from '../styles/MainSection.module.css';
+import classNames from 'classnames';
 
 const MainSection = () => {
   const settings = {
@@ -25,127 +26,127 @@ const MainSection = () => {
 
   return (
     <>
-      <section className='options-boxes'>
-        <h1 className='offers'>Oferujemy</h1>
-        <div className='options-container'>
-          <div className='options-box'>
+      <section className={MainStyles['options-boxes']}>
+        <h1 className={MainStyles.offers}>Oferujemy</h1>
+        <div className={MainStyles['options-container']}>
+          <div className={MainStyles['options-box']}>
             <h3>Dieta</h3>
-            <div className='options-box-img diet'></div>
-            <div className='options-box-info'>
-              <p className='options-box-text'>
+            <div className={classNames(MainStyles['options-box-img'], MainStyles.diet)}></div>
+            <div className={MainStyles['options-box-info']}>
+              <p className={MainStyles['options-box-text']}>
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                 Voluptatibus vero natus sequi eligendi velit repellat laudantium
                 cum rerum molestiae ipsam.
               </p>
             </div>
-            <a href='#' className='check-btn'>
+            <a href='#' className={MainStyles['check-btn']}>
               Sprawdź
             </a>
           </div>
-          <div className='options-box'>
+          <div className={MainStyles['options-box']}>
             <h3>Trening</h3>
-            <div className='options-box-img gym'></div>
-            <div className='options-box-info'>
-              <p className='options-box-text'>
+            <div className={classNames(MainStyles['options-box-img'], MainStyles.gym)}></div>
+            <div className={MainStyles['options-box-info']}>
+              <p className={MainStyles['options-box-text']}>
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                 Voluptatibus vero natus sequi eligendi velit repellat laudantium
                 cum rerum molestiae ipsam.
               </p>
             </div>
-            <a href='#' className='check-btn'>
+            <a href='#' className={MainStyles['check-btn']}>
               Sprawdź
             </a>
           </div>
-          <div className='options-box'>
+          <div className={MainStyles['options-box']}>
             <h3>Rehabilitacja</h3>
-            <div className='options-box-img rehab'></div>
-            <div className='options-box-info'>
-              <p className='options-box-text'>
+            <div className={classNames(MainStyles['options-box-img'], MainStyles.rehab)}></div>
+            <div className={MainStyles['options-box-info']}>
+              <p className={MainStyles['options-box-text']}>
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                 Voluptatibus vero natus sequi eligendi velit repellat laudantium
                 cum rerum molestiae ipsam.
               </p>
             </div>
-            <a href='#' className='check-btn'>
+            <a href='#' className={MainStyles['check-btn']}>
               Sprawdź
             </a>
           </div>
         </div>
       </section>
-      <section className='about'>
+      <section className={MainStyles['about']}>
         <h1>Osiągaj cele</h1>
-        <div className='about-container'>
-          <div className='about-box diet-box'>
+        <div className={MainStyles['about-container']}>
+          <div className={classNames(MainStyles['about-box'], MainStyles['diet-box'])}>
             <h3>Zadbaj o zdrowie</h3>
           </div>
-          <div className='about-box gym-box'>
+          <div className={classNames(MainStyles['about-box'], MainStyles['gym-box'])}>
             <h3>Osiągnij wymarzoną sylwetkę</h3>
           </div>
-          <div className='about-box rehab-box'>
+          <div className={classNames(MainStyles['about-box'], MainStyles['rehab-box'])}>
             <h3>Zażegnaj ból</h3>
           </div>
         </div>
       </section>
-      <section className='professionals'>
-        <div className='wrapper'>
+      <section className={MainStyles.professionals}>
+        <div className={MainStyles.wrapper}>
           <h1>Wsparcie profesjonalistów</h1>
-          <Slider {...settings} className='professionals-container'>
-            <div className='professional-box'>
-              <div className='professional-img'>
+          <Slider {...settings} className={MainStyles['professionals-container']}>
+            <div className={MainStyles['professional-box']}>
+              <div className={MainStyles['professional-img']}>
                 <img src='' alt=''></img>
               </div>
-              <div className='professional-info'>
-                <div className='professional-text'>
+              <div className={MainStyles['professional-info']}>
+                <div className={MainStyles['professional-text']}>
                   <p>Dietetyk</p>
                 </div>
               </div>
             </div>
-            <div className='professional-box'>
-              <div className='professional-img'>
+            <div className={MainStyles['professional-box']}>
+              <div className={MainStyles['professional-img']}>
                 <img src='img/trener.jpg' alt=''></img>
               </div>
-              <div className='professional-info'>
-                <div className='professional-text'>
+              <div className={MainStyles['professional-info']}>
+                <div className={MainStyles['professional-text']}>
                   <p>Trener</p>
                 </div>
               </div>
             </div>
-            <div className='professional-box'>
-              <div className='professional-img'>
+            <div className={MainStyles['professional-box']}>
+              <div className={MainStyles['professional-img']}>
                 <img src='img/rehabilitant.jpg' alt=''></img>
               </div>
-              <div className='professional-info'>
-                <div className='professional-text'>
+              <div className={MainStyles['professional-info']}>
+                <div className={MainStyles['professional-text']}>
                   <p>Fizjoterapeuta</p>
                 </div>
               </div>
             </div>
-            <div className='professional-box'>
-              <div className='professional-img'>
+            <div className={MainStyles['professional-box']}>
+              <div className={MainStyles['professional-img']}>
                 <img src='img/rehabilitant.jpg' alt=''></img>
               </div>
-              <div className='professional-info'>
-                <div className='professional-text'>
+              <div className={MainStyles['professional-info']}>
+                <div className={MainStyles['professional-text']}>
                   <p>Fizjoterapeuta</p>
                 </div>
               </div>
             </div>
-            <div className='professional-box'>
-              <div className='professional-img'>
+            <div className={MainStyles['professional-box']}>
+              <div className={MainStyles['professional-img']}>
                 <img src='img/rehabilitant.jpg' alt=''></img>
               </div>
-              <div className='professional-info'>
-                <div className='professional-text'>
+              <div className={MainStyles['professional-info']}>
+                <div className={MainStyles['professional-text']}>
                   <p>Fizjoterapeuta</p>
                 </div>
               </div>
             </div>
-            <div className='professional-box'>
-              <div className='professional-img'>
-                <img src='img/rehabilitant.jpg' alt=''></img>
+            <div className={MainStyles['professional-box']}>
+              <div className={MainStyles['professional-img']}>
+                <img src='../img/rehabilitant.jpg' alt=''></img>
               </div>
-              <div className='professional-info'>
-                <div className='professional-text'>
+              <div className={MainStyles['professional-info']}>
+                <div className={MainStyles['professional-text']}>
                   <p>Fizjoterapeuta</p>
                 </div>
               </div>

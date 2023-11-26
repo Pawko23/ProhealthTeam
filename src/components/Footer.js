@@ -1,12 +1,12 @@
 import React from 'react';
-import '../styles/Footer.css'
+import FooterStyles from '../styles/Footer.module.css';
 
 const Footer = () => {
   return (
     <footer>
-      <p className='footer-text'>
+      <p className={FooterStyles['footer-text']}>
         {' '}
-        &copy; <span className='footer-year'>2023</span> ProhealthTeam, Aleksander
+        &copy; <span className={FooterStyles['footer-year']}>2023</span> ProhealthTeam, Aleksander
         Pawlak{' '}
       </p>
     </footer>
