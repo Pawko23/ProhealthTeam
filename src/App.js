@@ -4,6 +4,7 @@ import HomePage from './components/HomePage'
 import RegisterPage from './components/RegisterPage'
 import LoginPage from './components/LoginPage';
 import TrainingMain from './components/TrainingMain';
+import DietMain from './components/DietMain';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Route path='/register' element={ <RegisterPage />} />
       <Route path='/login' element={ <LoginPage />} />
       <Route path='/training' element={ <TrainingMain />} />
+      <Route path='/diet' element={ <DietMain /> } />
     </Routes>
   )
 }
