@@ -3,7 +3,7 @@ import HeaderStyles from '../styles/Header.module.css'
 
 const Header = ( {heroImage, gradient, title} ) => {
     const image = {
-        backgroundImage: `${gradient}, url(${heroImage})`
+        backgroundImage: gradient ? `${gradient}, url(${heroImage})` : `url(${heroImage})`
     }
 
     return (
