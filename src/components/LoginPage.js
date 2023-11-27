@@ -12,7 +12,7 @@ const LoginPage = () => {
                         <label for='password'>Hasło:</label>
                         <input type='password' placeholder='Hasło'></input>
                         <button type='submit' className={LoginStyles.logIn}>Zaloguj się</button>
-                        <button className={LoginStyles.register}>Zarejestruj się</button>
+                        <button className={LoginStyles.register} href='/register'>Zarejestruj się</button>
                     </form>
                 </div>
             </div>

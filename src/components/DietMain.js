@@ -1,6 +1,7 @@
 import React from 'react';
 import DietMainStyles from '../styles/DietMain.module.css'
-
+import Header from './Header';
+import DietPageHero from '../img/diet.jpg'
 
 const DietMain = () => {
   return (
@@ -55,9 +56,9 @@ const DietMain = () => {
       <button className={DietMainStyles['burger-btn']} id='burger-btn'>
         <i className='fa-solid fa-bars' id='burger-icon'></i>
       </button>
-      <header>
-        <div className={DietMainStyles['diet-header']}></div>
-      </header>
+      <Header 
+        heroImage={DietPageHero}
+      />
       <div className={DietMainStyles.container}>
         <button className={DietMainStyles['progress-btn']} id='progress-btn'>
           Śledź progres

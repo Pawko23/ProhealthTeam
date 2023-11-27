@@ -1,11 +1,15 @@
 import React from 'react';
 import HeaderStyles from '../styles/Header.module.css'
 
-const Header = () => {
+const Header = ( {heroImage, gradient, title} ) => {
+    const image = {
+        backgroundImage: `${gradient}, url(${heroImage})`
+    }
+
     return (
-        <header className={HeaderStyles.header}>
-            <h1>ProhealthTeam</h1>
-        </header>
+        <div className={HeaderStyles.header} style={image}>
+            <h1> {title} </h1>
+        </div>
     )
 }
 

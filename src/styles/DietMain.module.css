@@ -103,13 +103,6 @@ nav .account {
   list-style: none;
 }
 
-header .diet-header {
-  background-image: url("../img/diet.jpg");
-  background-size: cover;
-  width: 100%;
-  height: 300px;
-}
-
 .container {
   position: relative;
   display: flex;
