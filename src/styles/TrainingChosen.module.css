@@ -1,0 +1,60 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  font-size: 1.6rem;
+}
+
+footer {
+  display: flex;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 75vh;
+}
+
+.option-box {
+  display: flex;
+  flex-direction: column;
+}
+.option-box ul {
+  list-style: none;
+  text-align: center;
+}
+.option-box ul li {
+  text-transform: uppercase;
+  padding: 20px;
+  cursor: pointer;
+}
+.option-box ul li i {
+  visibility: hidden;
+}
+
+@media (min-width: 992px) {
+  .container {
+    align-items: flex-start;
+  }
+  .option-box ul {
+    text-align: left;
+  }
+  .option-box ul li i {
+    visibility: visible;
+    padding: 5px;
+  }
+}/*# sourceMappingURL=TrainingChosen.module.css.map */

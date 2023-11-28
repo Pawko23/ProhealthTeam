@@ -5,6 +5,7 @@ import RegisterPage from './components/RegisterPage'
 import LoginPage from './components/LoginPage';
 import TrainingMain from './components/TrainingMain';
 import DietMain from './components/DietMain';
+import TrainingChosen from './components/TrainingChosen';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Route path='/login' element={ <LoginPage />} />
       <Route path='/training' element={ <TrainingMain />} />
       <Route path='/diet' element={ <DietMain /> } />
+      <Route path='/trainingchosen' element={ < TrainingChosen/> } />
     </Routes>
   )
 }
