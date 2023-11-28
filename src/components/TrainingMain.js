@@ -21,11 +21,9 @@ const TrainingMain = () => {
             <button className={TrainingMainStyles['athlete-btn']}>Siatkarz</button>
             <button className={TrainingMainStyles['athlete-btn']}>Koszykarz</button>
         </div>
-        <h3>Szukasz przykładowych planów na siłownię? Sprawdź nasze:</h3>
+        <h3>Szukasz przykładowych planów na siłownię? Sprawdź nasze przykładowe plany</h3>
         <div className={TrainingMainStyles['gym-plans-box']}>
-            <button className={TrainingMainStyles['gym-plan-btn']}>FBW</button>
-            <button className={TrainingMainStyles['gym-plan-btn']}>Split</button>
-            <button className={TrainingMainStyles['gym-plan-btn']}>Push & Pull & Legs</button>
+            <button className={TrainingMainStyles['gym-plan-btn']}>Sprawdź</button>
         </div>
       </div>
       <Footer />
