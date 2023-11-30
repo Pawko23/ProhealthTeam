@@ -12,4 +12,22 @@ html {
 body {
   font-family: "Inter", sans-serif;
   font-size: 1.6rem;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.container .human-box {
+  width: 400px;
+  height: 400px;
+  background-color: tomato;
+}
+.container .muscle-info {
+  width: 400px;
+  height: 150px;
+  background-color: royalblue;
 }/*# sourceMappingURL=RehabMain.module.css.map */

@@ -3,6 +3,7 @@ import RehabStyles from '../styles/RehabMain.module.css'
 import TrainingChosenHero from '../img/training-hero.jpg'
 import Navbar from "./Navbar";
 import Header from "./Header";
+import Footer from "./Footer";
 
 
 const RehabMain = () => {
@@ -18,6 +19,7 @@ const RehabMain = () => {
                 <div className={RehabStyles['muscle-info']}></div>
             </div>
             <div className={RehabStyles['professional-box']}></div>
+            <Footer />
         </>
     )
 }
