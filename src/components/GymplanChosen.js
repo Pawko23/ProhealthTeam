@@ -16,3 +16,5 @@ const GymplanChosen = ({gymPlanName}) => {
         </>
     )
 }
+
+export default GymplanChosen;
