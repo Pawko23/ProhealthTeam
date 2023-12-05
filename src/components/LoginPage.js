@@ -1,7 +1,20 @@
-import React from 'react';
+import React, {useEffect, useState } from 'react';
 import LoginStyles from '../styles/LoginPage.module.css'
 
 const LoginPage = () => {
+
+    const [backendUsers, setBackendUsers] = useState([{}])
+
+    useEffect(() => {
+        fetch("/api").then(
+            response => response.json()
+        ).then(
+            users => {
+                setBackendUsers(users)
+            }
+        )
+    }, [])
+
     return (
         <>
             <div className={LoginStyles.container}>
