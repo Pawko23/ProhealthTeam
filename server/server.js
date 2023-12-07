@@ -2,6 +2,8 @@ const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser') // mainly used for form post
 const router = require('./routes/router')
+const mongoose = require('mongoose')
+require('dotenv/config')
 
 const app = express()
 app.use(bodyParser.json())
@@ -16,21 +18,14 @@ const corsOptions = {
 app.use(cors(corsOptions))
 app.use('/', router)
 
+const dbOptions = {useNewUrlParser:true, useUnifiedTopology:true}
+mongoose.connect(process.env.DB_URI, dbOptions).then(() => 
+    console.log('Connected to DataBase')
+).catch(err => 
+    console.log(err)
+)
 
-
-
-
-
-const port = 5000
-const server = app.listen(port, ()=>{
+const port = process.env.PORT || 5000
+const server = app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 })
-
-
-
-
-// app.get('/api', (req,res) => {
-//     res.json({ "users": ["userOne", "userTwo", "userThree"] })
-// })
-
-// app.listen(5000, ()=>{console.log("Server started on port 5000");})
