@@ -3,17 +3,17 @@ import LoginStyles from '../styles/LoginPage.module.css'
 
 const LoginPage = () => {
 
-    const [backendUsers, setBackendUsers] = useState([{}])
+    // const [backendUsers, setBackendUsers] = useState([{}])
 
-    useEffect(() => {
-        fetch("/api").then(
-            response => response.json()
-        ).then(
-            users => {
-                setBackendUsers(users)
-            }
-        )
-    }, [])
+    // useEffect(() => {
+    //     fetch("/api").then(
+    //         response => response.json()
+    //     ).then(
+    //         users => {
+    //             setBackendUsers(users)
+    //         }
+    //     )
+    // }, [])
 
     return (
         <>
