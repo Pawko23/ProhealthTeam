@@ -1,5 +1,18 @@
+import { Recipes } from '../models/schemas'
+
 const express = require('express')
 const router = express.Router()
+
+router.get('/recipes', async (req, res) => {
+  try {
+    const recipes = await Recipes.find({})
+    res.json(recipes)
+  } catch (error){
+    console.log(error);
+    res.status(500).send('Sth went wrong')
+  }
+})
+
 
 router.get('/users', (req, res) => {
     const userData = [
