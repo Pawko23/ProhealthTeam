@@ -1,7 +1,6 @@
-import { Recipes } from '../models/schemas'
-
 const express = require('express')
 const router = express.Router()
+const { Recipes } = require('../models/schemas')
 
 router.get('/recipes', async (req, res) => {
   try {
