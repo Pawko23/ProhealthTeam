@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios'
 import DietMainStyles from '../styles/DietMain.module.css'
 import Header from './Header';
 import DietPageHero from '../img/diet.jpg'
 
 const DietMain = () => {
+
+  const [recipes, setRecipes] = useState([])
+
+  useEffect(() => {
+    axios.get('/recipes').then(response => {
+      setRecipes(response.data)
+    })
+    .catch(error => {
+      console.error('Error fetching data: ', error);
+    })
+  }, [])
+
   return (
     <>
       <div className={DietMainStyles['burger-menu']}>
@@ -71,51 +84,13 @@ const DietMain = () => {
             placeholder='Szukaj...'
           ></input>
         </div>
-        <div className={DietMainStyles['recipe-box']}>
-          <div className={DietMainStyles['recipe-img']}></div>
-          <p className={DietMainStyles['recipe-name']}>Makaron z kurczakiem</p>
-        </div>
-        <div className={DietMainStyles['recipe-box']}>
-          <div className={DietMainStyles['recipe-img']}></div>
-          <p className={DietMainStyles['recipe-name']}>Makaron z kurczakiem</p>
-        </div>
-        <div className={DietMainStyles['recipe-box']}>
-          <div className={DietMainStyles['recipe-img']}></div>
-          <p className={DietMainStyles['recipe-name']}>Makaron z kurczakiem</p>
-        </div>
-        <div className={DietMainStyles['recipe-box']}>
-          <div className={DietMainStyles['recipe-img']}></div>
-          <p className={DietMainStyles['recipe-name']}>Makaron z kurczakiem</p>
-        </div>
-        <div className={DietMainStyles['recipe-box']}>
-          <div className={DietMainStyles['recipe-img']}></div>
-          <p className={DietMainStyles['recipe-name']}>Makaron z kurczakiem</p>
-        </div>
-        <div className={DietMainStyles['recipe-box']}>
-          <div className={DietMainStyles['recipe-img']}></div>
-          <p className={DietMainStyles['recipe-name']}>Makaron z kurczakiem</p>
-        </div>
-        <div className={DietMainStyles['recipe-box']}>
-          <div className={DietMainStyles['recipe-img']}></div>
-          <p className={DietMainStyles['recipe-name']}>Makaron z kurczakiem</p>
-        </div>
-        <div className={DietMainStyles['recipe-box']}>
-          <div className={DietMainStyles['recipe-img']}></div>
-          <p className={DietMainStyles['recipe-name']}>Makaron z kurczakiem</p>
-        </div>
-        <div className={DietMainStyles['recipe-box']}>
-          <div className={DietMainStyles['recipe-img']}></div>
-          <p className={DietMainStyles['recipe-name']}>Makaron z kurczakiem</p>
-        </div>
-        <div className={DietMainStyles['recipe-box']}>
-          <div className={DietMainStyles['recipe-img']}></div>
-          <p className={DietMainStyles['recipe-name']}>Makaron z kurczakiem</p>
-        </div>
-        <div className={DietMainStyles['recipe-box']}>
-          <div className={DietMainStyles['recipe-img']}></div>
-          <p className={DietMainStyles['recipe-name']}>Makaron z kurczakiem</p>
-        </div>
-      </div>
+        {recipes.map((recipe) => (
+          <div key={recipe.id} className={DietMainStyles['recipe-box']}>
+            <div className={DietMainStyles['recipe-img']}>{recipe.type}</div>
+            <p className={DietMainStyles['recipe-name']}>{recipe.name}</p>
+          </div>
+        ))}
+      </div> 
     </>
   );
 };
