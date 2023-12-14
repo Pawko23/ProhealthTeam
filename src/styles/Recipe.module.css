@@ -12,4 +12,62 @@ html {
 body {
   font-family: "Inter", sans-serif;
   font-size: 1.6rem;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.container .recipe-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 50px auto;
+  padding: 10px;
+}
+.container .recipe-info .recipe-name {
+  padding: 10px;
+}
+.container .recipe-info .recipe-level {
+  padding: 10px;
+}
+.container .recipe-image {
+  width: 400px;
+  height: 350px;
+  background-image: url("../img/gym.jpg");
+}
+.container .macros-box {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  width: 400px;
+  height: 350px;
+  border: 2px solid black;
+  margin: 50px auto;
+}
+.container .macros-box .box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+}
+.container .ingredients-box {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+}
+.container .ingredients-box ul {
+  list-style: none;
+}
+.container .ingredients-box ul li {
+  padding: 10px;
+}
+.container .prepare-box {
+  width: 400px;
+  text-align: justify;
+  margin: 50px auto;
 }/*# sourceMappingURL=Recipe.module.css.map */
