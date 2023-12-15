@@ -5,7 +5,7 @@ import Navbar from './Navbar';
 import Header from './Header';
 import classNames from 'classnames';
 
-const Recipe = () => {
+const RecipeDetails = () => {
   return (
     <>
       <Navbar />
@@ -43,4 +43,4 @@ const Recipe = () => {
   );
 };
 
-export default Recipe;
+export default RecipeDetails;

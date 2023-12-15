@@ -7,7 +7,7 @@ import TrainingMain from './components/TrainingMain';
 import DietMain from './components/DietMain';
 import TrainingChosen from './components/TrainingChosen';
 import RehabMain from './components/RehabMain';
-import Recipe from './components/Recipe';
+import RecipeDetails from './components/RecipeDetails';
 
 function AppRoutes() {
   return (
@@ -19,7 +19,7 @@ function AppRoutes() {
       <Route path='/diet' element={<DietMain />} />
       <Route path='/trainingchosen' element={<TrainingChosen />} />
       <Route path='/rehabilitation' element={<RehabMain />} />
-      <Route path='/recipe' element={<Recipe />} />
+      <Route path='/recipes/:id' element={<RecipeDetails />} />
     </Routes>
   );
 }
