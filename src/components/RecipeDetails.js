@@ -4,24 +4,50 @@ import RecipeStyles from '../styles/Recipe.module.css';
 import Navbar from './Navbar';
 import Header from './Header';
 import classNames from 'classnames';
+import { useParams } from 'react-router-dom';
 
 const RecipeDetails = () => {
+
+  const { id } = useParams()
+
+  const [recipe, setRecipe] = useState(null);
+
+  useEffect(() => {
+    const fetchRecipe = async () => {
+      try {
+        const response = await fetch(`/recipes/${id}`);
+        const data = await response.json();
+        setRecipe(data);
+      } catch (error) {
+        console.error('Error fetching recipe:', error);
+      }
+    };
+
+    fetchRecipe();
+  }, [id]);
+
+  if (!recipe) {
+    return <div></div>;
+  }
+  
   return (
     <>
       <Navbar />
       <div className={RecipeStyles.container}>
 
         <div className={RecipeStyles['recipe-info']}>
-          <p className={RecipeStyles['recipe-name']}>Makaron z kurczakiem</p>
-          <p className={RecipeStyles['recipe-level']}>Średni</p>
+          <p className={RecipeStyles['recipe-name']}>{recipe.name}</p>
+          <p className={RecipeStyles['recipe-level']}>{recipe.difficulty}</p>
         </div>
 
-        <div className={RecipeStyles['recipe-image']}></div>
+        <div className={RecipeStyles['recipe-image']}>
+          <img></img>
+        </div>
         <div className={RecipeStyles['macros-box']}>
-          <div className={classNames(RecipeStyles.kcal, RecipeStyles.box)}>500kcal</div>
-          <div className={classNames(RecipeStyles.protein, RecipeStyles.box)}>6.5g</div>
-          <div className={classNames(RecipeStyles.fats, RecipeStyles.box)}>12g</div>
-          <div className={classNames(RecipeStyles.carbs, RecipeStyles.box)}>27g</div>
+          <div className={classNames(RecipeStyles.kcal, RecipeStyles.box)}>{recipe.kcal}</div>
+          <div className={classNames(RecipeStyles.protein, RecipeStyles.box)}>{recipe.protein}</div>
+          <div className={classNames(RecipeStyles.fats, RecipeStyles.box)}>{recipe.fats}</div>
+          <div className={classNames(RecipeStyles.carbs, RecipeStyles.box)}>{recipe.carbs}</div>
         </div>
 
         <div className={RecipeStyles['ingredients-box']}>

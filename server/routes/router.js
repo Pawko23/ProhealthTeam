@@ -1,17 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const { Recipes } = require('../models/schemas')
-const { computeHeadingLevel } = require('@testing-library/react')
 
-router.get('/recipes', async (req, res) => {
-  try {
-    const recipes = await Recipes.find({})
-    res.json(recipes)
-  } catch (error){
-    console.log(error);
-    res.status(500).send('Sth went wrong')
-  }
-})
 
 router.get('/recipes/:id', async (req, res) => {
   try {
@@ -26,6 +16,15 @@ router.get('/recipes/:id', async (req, res) => {
   }
 })
 
+router.get('/recipes', async (req, res) => {
+  try {
+    const recipes = await Recipes.find({})
+    res.json(recipes)
+  } catch (error){
+    console.log(error);
+    res.status(500).send('Sth went wrong')
+  }
+})
 
 router.get('/users', (req, res) => {
     const userData = [

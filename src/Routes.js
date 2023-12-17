@@ -16,9 +16,9 @@ function AppRoutes() {
       <Route path='/register' element={<RegisterPage />} />
       <Route path='/login' element={<LoginPage />} />
       <Route path='/training' element={<TrainingMain />} />
-      <Route path='/diet' element={<DietMain />} />
       <Route path='/trainingchosen' element={<TrainingChosen />} />
       <Route path='/rehabilitation' element={<RehabMain />} />
+      <Route path='/recipes' element={<DietMain />} />
       <Route path='/recipes/:id' element={<RecipeDetails />} />
     </Routes>
   );

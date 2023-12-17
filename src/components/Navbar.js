@@ -7,7 +7,7 @@ const Navbar = () => {
             <div className={NavbarStyles['burger-menu']}>
                 <div className={NavbarStyles['menu-container']}>
                     <ul>
-                        <li><a href="/diet">Dieta</a></li>
+                        <li><a href="/recipes">Dieta</a></li>
                         <li><a href="/training">Trening</a></li>
                         <li><a href="/rehabilitation">Rehabilitacja</a></li>
                         <li><a href="/login">Konto</a></li>
@@ -18,7 +18,7 @@ const Navbar = () => {
             <nav>
                 <ul>
                     <li><a className={NavbarStyles.logo} href="/">ProhealthTeam</a></li>
-                    <li><a href="/diet">Dieta</a></li>
+                    <li><a href="/recipes">Dieta</a></li>
                     <li><a href="/training">Trening</a></li>
                     <li><a href="/rehabilitation">Rehabilitacja</a></li>
                 </ul>

@@ -38,12 +38,12 @@ const DietMain = () => {
           ></input>
         </div>
         {recipes.map((recipe) => (
-          <Link key={recipe.id} to={`/recipes/${recipe.id}`}>
-            <div className={DietMainStyles['recipe-box']}>
+          <div className={DietMainStyles['recipe-box']} key={recipe._id}>
+            <Link to={`/recipes/${recipe._id}`}>
               <div className={DietMainStyles['recipe-img']}>{recipe.type}</div>
               <p className={DietMainStyles['recipe-name']}>{recipe.name}</p>
+            </Link>
           </div>
-          </Link>
         ))}
       </div> 
     </>
