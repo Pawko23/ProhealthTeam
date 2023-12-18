@@ -24,59 +24,59 @@ footer {
   display: none;
 }
 
-.training-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-size: cover;
-  height: 100vh;
-  width: 100%;
-  overflow: hidden;
+// .training-container {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+//   background-size: cover;
+//   height: 100vh;
+//   width: 100%;
+//   overflow: hidden;
 
-  h3 {
-    color: #fff;
-    padding: 10px;
-  }
+//   h3 {
+//     color: #fff;
+//     padding: 10px;
+//   }
 
-  .athletes-box {
-    width: 150px;
-    height: 400px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+//   .athletes-box {
+//     width: 150px;
+//     height: 400px;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     align-items: center;
 
-    .athlete-btn {
-      height: 50px;
-      width: 80px;
-      background-color: orange;
-      padding: 10px;
-      margin: 10px;
-      color: #fff;
-      border-radius: 10px;
-    }
-  }
+//     .athlete-btn {
+//       height: 50px;
+//       width: 80px;
+//       background-color: orange;
+//       padding: 10px;
+//       margin: 10px;
+//       color: #fff;
+//       border-radius: 10px;
+//     }
+//   }
 
-  .gym-plans-box {
-    width: 150px;
-    height: 400px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+//   .gym-plans-box {
+//     width: 150px;
+//     height: 400px;
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: center;
+//     align-items: center;
 
-    .gym-plan-btn {
-      height: 50px;
-      width: 80px;
-      background-color: orange;
-      padding: 10px;
-      margin: 10px;
-      color: #fff;
-      border-radius: 10px;
-    }
-  }
-}
+//     .gym-plan-btn {
+//       height: 50px;
+//       width: 80px;
+//       background-color: orange;
+//       padding: 10px;
+//       margin: 10px;
+//       color: #fff;
+//       border-radius: 10px;
+//     }
+//   }
+// }
 
 @media (min-width: 992px) {
   .training-container {
