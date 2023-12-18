@@ -20,8 +20,54 @@ body {
   display: none;
 }
 
-footer {
-  display: none;
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+}
+.container .heading {
+  width: 100%;
+}
+.container .heading h2 {
+  padding: 10px;
+  text-align: center;
+}
+.container .exercise-type {
+  width: 100%;
+}
+.container .exercise-type h3 {
+  padding: 10px;
+  cursor: pointer;
+}
+.container .exercise-type h3 i {
+  margin: 5px;
+}
+.container .exercise-type .exercises-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.container .exercise-type .exercises-list .exercise {
+  padding: 5px;
+}
+
+.gym-plans-container {
+  margin-top: 50px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #000;
+  color: #ffffff;
+  width: 100%;
+  height: 500px;
+}
+.gym-plans-container .slide {
+  padding: 10px;
+  margin: 20px auto;
 }
 
 @media (min-width: 992px) {
