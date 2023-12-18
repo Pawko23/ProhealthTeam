@@ -4,6 +4,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import MainStyles from '../styles/MainSection.module.css';
 import classNames from 'classnames';
+import { Link } from 'react-router-dom';
 
 const MainSection = () => {
   const settings = {
@@ -39,9 +40,7 @@ const MainSection = () => {
                 cum rerum molestiae ipsam.
               </p>
             </div>
-            <a href='#' className={MainStyles['check-btn']}>
-              Sprawdź
-            </a>
+            <Link to="/" className={MainStyles['check-btn']}>Sprawdź</Link>
           </div>
           <div className={MainStyles['options-box']}>
             <h3>Trening</h3>
@@ -53,9 +52,7 @@ const MainSection = () => {
                 cum rerum molestiae ipsam.
               </p>
             </div>
-            <a href='#' className={MainStyles['check-btn']}>
-              Sprawdź
-            </a>
+            <Link to="/" className={MainStyles['check-btn']}>Sprawdź</Link>
           </div>
           <div className={MainStyles['options-box']}>
             <h3>Rehabilitacja</h3>
@@ -67,9 +64,7 @@ const MainSection = () => {
                 cum rerum molestiae ipsam.
               </p>
             </div>
-            <a href='#' className={MainStyles['check-btn']}>
-              Sprawdź
-            </a>
+            <Link to="/" className={MainStyles['check-btn']}>Sprawdź</Link>
           </div>
         </div>
       </section>

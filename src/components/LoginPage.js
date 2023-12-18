@@ -1,4 +1,5 @@
 import React, {useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import LoginStyles from '../styles/LoginPage.module.css'
 
 const LoginPage = () => {
@@ -25,7 +26,7 @@ const LoginPage = () => {
                         <label for='password'>Hasło:</label>
                         <input type='password' placeholder='Hasło'></input>
                         <button type='submit' className={LoginStyles.logIn}>Zaloguj się</button>
-                        <button className={LoginStyles.register} href='/register'>Zarejestruj się</button>
+                        <button className={LoginStyles.register}><Link to="/register">Zarejestruj się</Link></button>
                     </form>
                 </div>
             </div>
