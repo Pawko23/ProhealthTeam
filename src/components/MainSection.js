@@ -40,7 +40,7 @@ const MainSection = () => {
                 cum rerum molestiae ipsam.
               </p>
             </div>
-            <Link to="/" className={MainStyles['check-btn']}>Sprawdź</Link>
+            <Link to="/recipes" className={MainStyles['check-btn']}>Sprawdź</Link>
           </div>
           <div className={MainStyles['options-box']}>
             <h3>Trening</h3>
@@ -52,7 +52,7 @@ const MainSection = () => {
                 cum rerum molestiae ipsam.
               </p>
             </div>
-            <Link to="/" className={MainStyles['check-btn']}>Sprawdź</Link>
+            <Link to="/training" className={MainStyles['check-btn']}>Sprawdź</Link>
           </div>
           <div className={MainStyles['options-box']}>
             <h3>Rehabilitacja</h3>
@@ -64,7 +64,7 @@ const MainSection = () => {
                 cum rerum molestiae ipsam.
               </p>
             </div>
-            <Link to="/" className={MainStyles['check-btn']}>Sprawdź</Link>
+            <Link to="/rehabilitation" className={MainStyles['check-btn']}>Sprawdź</Link>
           </div>
         </div>
       </section>
