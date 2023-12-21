@@ -115,19 +115,28 @@ nav {
     justify-content: center;
     align-items: center;
 
-    .progress-btn {
-      bottom: 5px;
-      text-align: center;
-      color: #fff;
-      text-transform: uppercase;
-      font-weight: 700;
-      padding: 10px;
-      margin-top: 15px;
-      height: 30px;
-      width: 150px;
-      background-color: orange;
-      border: none;
-      border-radius: 15px;
+    .diet-buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 10px;
+      .diet-btn {
+        bottom: 5px;
+        text-align: center;
+        color: #000;
+        text-transform: uppercase;
+        font-weight: 300;
+        padding: 10px;
+        margin-top: 15px;
+        height: 30px;
+        width: 150px;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+      }
+      .diet-btn:hover {
+        border: 1px solid green;
+      }
     }
 
 

@@ -25,9 +25,14 @@ const DietMain = () => {
       <Navbar />
       <Header heroImage={DietPageHero} />
       <div className={DietMainStyles.container}>
-        <button className={DietMainStyles['progress-btn']} id='progress-btn'>
-          Śledź progres
+        <div className={DietMainStyles['diet-buttons']}>
+        <button className={DietMainStyles['diet-btn']} id='progress-btn'>
+          Kalkulator BMI
         </button>
+        <button className={DietMainStyles['diet-btn']} id='progress-btn'>
+          Mój progres
+        </button>
+        </div>
 
         <div className={DietMainStyles['search-bar-box']}>
           <input

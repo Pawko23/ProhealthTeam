@@ -3,6 +3,7 @@ import axios from 'axios';
 import RecipeStyles from '../styles/Recipe.module.css';
 import Navbar from './Navbar';
 import Header from './Header';
+import Footer from './Footer';
 import classNames from 'classnames';
 import { useParams } from 'react-router-dom';
 
@@ -65,6 +66,7 @@ const RecipeDetails = () => {
           </p>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

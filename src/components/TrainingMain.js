@@ -101,7 +101,7 @@ const TrainingMain = () => {
       />
       <div className={TrainingMainStyles.container}>
         <div className={TrainingMainStyles.heading}>
-          <h2>Exercise List</h2>
+          <h2>Wybierz co Cię interesuje</h2>
         </div>
         {exerciseTypes.map((type) => (
           <ExerciseType
@@ -123,6 +123,18 @@ const TrainingMain = () => {
             </div>
           ))}
         </Slider>
+      </div>
+
+      <div className={TrainingMainStyles['personal-trainers-container']}>
+            <div className={TrainingMainStyles['personal-trainer-box']}>
+              <div className={TrainingMainStyles['trainer-box-up']}>
+                <div className={TrainingMainStyles['trainer-img']}></div>
+              </div>
+              <div className={TrainingMainStyles['trainer-box-down']}>
+                <p className={TrainingMainStyles.name}>Aleksander Pawlak</p>
+                <p className={TrainingMainStyles.email}>ap123@op.pl</p>
+              </div>
+            </div>
       </div>
 
       <Footer />

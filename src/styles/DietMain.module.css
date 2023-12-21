@@ -110,19 +110,28 @@ nav .account {
   justify-content: center;
   align-items: center;
 }
-.container .progress-btn {
+.container .diet-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+.container .diet-buttons .diet-btn {
   bottom: 5px;
   text-align: center;
-  color: #fff;
+  color: #000;
   text-transform: uppercase;
-  font-weight: 700;
+  font-weight: 300;
   padding: 10px;
   margin-top: 15px;
   height: 30px;
   width: 150px;
-  background-color: orange;
   border: none;
-  border-radius: 15px;
+  background-color: transparent;
+  cursor: pointer;
+}
+.container .diet-buttons .diet-btn:hover {
+  border: 1px solid green;
 }
 .container .search-bar-box {
   margin-top: 20px;
