@@ -158,6 +158,29 @@ nav {
         }
     }
 
+    .recipes-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 50px auto;
+
+      .meal-recipes {
+        text-align: center;
+        h3 {
+          font-weight: 300;
+          cursor: pointer;
+          i {
+            padding: 5px;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+
+
+
     .recipe-box {
       position: relative;
       display: flex;
