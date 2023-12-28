@@ -37,12 +37,8 @@ const DietMain = () => {
       <Header heroImage={DietPageHero} />
       <div className={DietMainStyles.container}>
         <div className={DietMainStyles['diet-buttons']}>
-          <button className={DietMainStyles['diet-btn']} id='progress-btn'>
-            Kalkulator BMI
-          </button>
-          <button className={DietMainStyles['diet-btn']} id='progress-btn'>
-            Mój progres
-          </button>
+          <button className={DietMainStyles['diet-btn']} id='progress-btn'><Link to='/bmicalculator'>Kalkulator BMI</Link></button>
+          <button className={DietMainStyles['diet-btn']} id='progress-btn'><Link to=''>Mój Progres</Link></button>
         </div>
 
         <div className={DietMainStyles['search-bar-box']}>

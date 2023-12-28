@@ -8,6 +8,7 @@ import DietMain from './components/DietMain';
 import TrainingChosen from './components/TrainingChosen';
 import RehabMain from './components/RehabMain';
 import RecipeDetails from './components/RecipeDetails';
+import BmiCalculator from './components/BmiCalculator';
 
 function AppRoutes() {
   return (
@@ -20,6 +21,7 @@ function AppRoutes() {
       <Route path='/rehabilitation' element={<RehabMain />} />
       <Route path='/recipes' element={<DietMain />} />
       <Route path='/recipes/:id' element={<RecipeDetails />} />
+      <Route path='/bmicalculator' element={<BmiCalculator />} />
     </Routes>
   );
 }
