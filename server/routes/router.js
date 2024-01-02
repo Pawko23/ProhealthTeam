@@ -1,7 +1,9 @@
 const express = require('express')
 const router = express.Router()
 const { Recipes } = require('../models/schemas')
-
+const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
+const { User } = require('../models/schemas')
 
 router.get('/recipes/:id', async (req, res) => {
   try {
@@ -27,37 +29,48 @@ router.get('/recipes', async (req, res) => {
 })
 
 
+// CREATE USER -- POST
+// REGISTER
 
+router.post('/register', async (req, res) => {
+  try {
+    const { email, username, password } = req.body
+    if (!email || !username || !password) {
+      return res.status(400).json({ error: "Missing required fields" });
+    }
+    const hashedPassword = await bcrypt.hash(password, 10)
+    const newUser = new User( { email, username, password: hashedPassword} )
+    await newUser.save()
+    res.status(201).json( { message: "User created successfully" })
+  } catch (error) {
+    console.log(error)
+    res.status(500).json( { error: "Error signing up" })
+  }
+})
 
+router.get('/register', async (req, res) => {
+  try {
+    const users = await User.find()
+    res.status(201).json(users)
+  } catch (error) {
+    res.status(500).json( { error: "Unable to get users"})
+  }
+})
 
-// router.get('/users', (req, res) => {
-//     const userData = [
-//         {
-//           "id": 1,
-//           "name": "Leanne Graham",
-//           "username": "Bret",
-//           "email": "Sincere@april.biz",
-//           "address": {
-//             "street": "Kulas Light",
-//             "suite": "Apt. 556",
-//             "city": "Gwenborough",
-//             "zipcode": "92998-3874",
-//             "geo": {
-//               "lat": "-37.3159",
-//               "lng": "81.1496"
-//             }
-//           },
-//           "phone": "1-770-736-8031 x56442",
-//           "website": "hildegard.org",
-//           "company": {
-//             "name": "Romaguera-Crona",
-//             "catchPhrase": "Multi-layered client-server neural-net",
-//             "bs": "harness real-time e-markets"
-//           }
-//         },
-//       ]
+//  LOGIN 
 
-//       res.send(userData)
+// router.post('/login', async (req, res) => {
+//   try {
+//     const { username, password } = req.body
+//   } catch(error) {
+
+//   }
 // })
+
+
+
+
+
+
 
 module.exports = router

@@ -2,13 +2,12 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const userSchema = new Schema({
-    name: {type: String},
-    email: {type: String},
-    website: {type: String},
-    entryDate: {type: Date, default:Date.now}
+    email: {type: String, required: true},
+    username: {type: String, required: true},
+    password: {type: String, required: true}
 })
 
-const Users = mongoose.model('Users', userSchema, 'users')
+const User = mongoose.model('User', userSchema, 'users')
 
 
 const recipeSchema = new Schema({
@@ -26,7 +25,7 @@ const recipeSchema = new Schema({
 const Recipes = mongoose.model('Recipes', recipeSchema, 'recipes')
 
 
-const mySchemas = {'Users':Users, "Recipes": Recipes}
+const mySchemas = {'User': User, "Recipes": Recipes}
 
 
 module.exports = mySchemas

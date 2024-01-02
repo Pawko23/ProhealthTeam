@@ -6,8 +6,6 @@ const mongoose = require('mongoose')
 require('dotenv/config')
 
 const app = express()
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended:false}))
 
 const corsOptions = {
     origin: '*',
@@ -16,6 +14,8 @@ const corsOptions = {
 }
 
 app.use(cors(corsOptions))
+// app.use(express.json())
+app.use(bodyParser.json())
 app.use('/', router)
 
 
