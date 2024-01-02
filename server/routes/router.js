@@ -4,6 +4,7 @@ const { Recipes } = require('../models/schemas')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const { User } = require('../models/schemas')
+require('dotenv/config')
 
 router.get('/recipes/:id', async (req, res) => {
   try {
@@ -59,13 +60,24 @@ router.get('/register', async (req, res) => {
 
 //  LOGIN 
 
-// router.post('/login', async (req, res) => {
-//   try {
-//     const { username, password } = req.body
-//   } catch(error) {
-
-//   }
-// })
+router.post('/login', async (req, res) => {
+  try {
+    const { username, password } = req.body
+    const user = await User.findOne( { username } )
+    if(!user) {
+      return res.status(401).json( { error: "Invalid credentials" })
+    }
+    const isPasswordValid = await bcrypt.compare(password, user.password)
+    if(!isPasswordValid) {
+      return res.status(401).json({ error: 'Ivalid credentials' })
+    }
+    const token = jwt.sign({ userId: user._id }, process.env.ACCESS_SECRET_KEY, { expiresIn: '1hr' })
+    console.log("Token: ", token)
+    res.json({ message: 'Login successful'})
+  } catch(error) {
+    res.status(500).json({ error: 'Error logging in' })
+  }
+})
 
 
 
