@@ -5,7 +5,6 @@ import LoginStyles from '../styles/LoginPage.module.css'
 
 const LoginPage = () => {
 
-    const [users, setUsers] = useState([])
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const navigate = useNavigate()
