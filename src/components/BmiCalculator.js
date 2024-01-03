@@ -67,6 +67,7 @@ const BmiCalculator = () => {
             </p>
         </div>
       </div>
+      <Footer />
     </>
   );
 };
