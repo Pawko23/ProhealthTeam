@@ -44,6 +44,20 @@ body {
                 padding: 10px;
                 margin: 5px;
             }
+
+            .result-box {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                margin: 20px auto;
+                width: 80%;
+                height: 70px;
+                border-radius: 10px;
+                color: #fff;
+            }
+
+
         }
     }
 }
