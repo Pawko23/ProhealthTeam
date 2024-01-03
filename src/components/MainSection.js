@@ -5,6 +5,9 @@ import 'slick-carousel/slick/slick-theme.css';
 import MainStyles from '../styles/MainSection.module.css';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
+import trainerProf from '../img/trener.jpg';
+import rehabProf from '../img/rehabilitant.jpg'
+import dietProf from '../img/dietetyk.jpg'
 
 const MainSection = () => {
   const settings = {
@@ -88,7 +91,7 @@ const MainSection = () => {
           <Slider {...settings} className={MainStyles['professionals-container']}>
             <div className={MainStyles['professional-box']}>
               <div className={MainStyles['professional-img']}>
-                <img src='' alt=''></img>
+                <img src={dietProf} alt=''></img>
               </div>
               <div className={MainStyles['professional-info']}>
                 <div className={MainStyles['professional-text']}>
@@ -98,7 +101,7 @@ const MainSection = () => {
             </div>
             <div className={MainStyles['professional-box']}>
               <div className={MainStyles['professional-img']}>
-                <img src='img/trener.jpg' alt=''></img>
+                <img src={trainerProf} alt=''></img>
               </div>
               <div className={MainStyles['professional-info']}>
                 <div className={MainStyles['professional-text']}>
@@ -108,7 +111,7 @@ const MainSection = () => {
             </div>
             <div className={MainStyles['professional-box']}>
               <div className={MainStyles['professional-img']}>
-                <img src='img/rehabilitant.jpg' alt=''></img>
+                <img src={rehabProf} alt=''></img>
               </div>
               <div className={MainStyles['professional-info']}>
                 <div className={MainStyles['professional-text']}>
@@ -118,7 +121,7 @@ const MainSection = () => {
             </div>
             <div className={MainStyles['professional-box']}>
               <div className={MainStyles['professional-img']}>
-                <img src='img/rehabilitant.jpg' alt=''></img>
+                <img src={rehabProf} alt=''></img>
               </div>
               <div className={MainStyles['professional-info']}>
                 <div className={MainStyles['professional-text']}>
@@ -128,7 +131,7 @@ const MainSection = () => {
             </div>
             <div className={MainStyles['professional-box']}>
               <div className={MainStyles['professional-img']}>
-                <img src='img/rehabilitant.jpg' alt=''></img>
+                <img src={rehabProf} alt=''></img>
               </div>
               <div className={MainStyles['professional-info']}>
                 <div className={MainStyles['professional-text']}>
@@ -138,7 +141,7 @@ const MainSection = () => {
             </div>
             <div className={MainStyles['professional-box']}>
               <div className={MainStyles['professional-img']}>
-                <img src='../img/rehabilitant.jpg' alt=''></img>
+                <img src={rehabProf} alt=''></img>
               </div>
               <div className={MainStyles['professional-info']}>
                 <div className={MainStyles['professional-text']}>

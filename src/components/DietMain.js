@@ -9,6 +9,9 @@ import { Link } from 'react-router-dom';
 
 
 const DietMain = () => {
+
+  const isLoggedIn = !!localStorage.getItem('token')
+
   const [recipes, setRecipes] = useState([]);
   const [searchQuery, setSearchQuery] = useState('')
 
@@ -34,7 +37,10 @@ const DietMain = () => {
       <div className={DietMainStyles.container}>
         <div className={DietMainStyles['diet-buttons']}>
           <button className={DietMainStyles['diet-btn']} id='progress-btn'><Link to='/bmicalculator'>Kalkulator BMI</Link></button>
-          <button className={DietMainStyles['diet-btn']} id='progress-btn'><Link to='/userprogress'>Mój Progres</Link></button>
+          <button className={DietMainStyles['diet-btn']} id='progress-btn'>
+            {isLoggedIn && <Link to='/userprogress'>Mój Progres</Link>}
+            {!isLoggedIn && <Link to='/login'>Mój Progres</Link>}
+          </button>
         </div>
 
         <div className={DietMainStyles['search-bar-box']}>
