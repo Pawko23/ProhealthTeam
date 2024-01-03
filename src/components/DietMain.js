@@ -10,14 +10,10 @@ import { Link } from 'react-router-dom';
 
 const DietMain = () => {
   const [recipes, setRecipes] = useState([]);
-  const [showBreakfastRecipes, setShowBreakRecipes] = useState(false);
-  const [showSecondBreakfastRecipes, setShowSecondBreakfastRecipes] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('')
 
-  const toggleBreakfastRecipes = () => {
-    setShowBreakRecipes(!showBreakfastRecipes);
-  }
-  const toggleIIBreakfastRecipes = () => {
-    setShowSecondBreakfastRecipes(!showSecondBreakfastRecipes);
+  const searchInput = (e) => {
+    setSearchQuery(e.target.value)
   }
 
   useEffect(() => {
@@ -46,13 +42,43 @@ const DietMain = () => {
             type='text'
             className={DietMainStyles['search-bar-input']}
             placeholder='Szukaj...'
+            value={searchQuery}
+            onChange={searchInput}
           ></input>
         </div>
-        <div className={DietMainStyles['recipes-container']}>
+
+
+        {recipes.map((recipe) => {
+        const recipeExists =
+          recipe.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          recipe.ingredients.some((ingredient) =>
+            ingredient.toLowerCase().includes(searchQuery.toLowerCase())
+          );
+
+        return recipeExists ? (
+          <Link to={`/recipes/${recipe._id}`}>
+                    <div
+                      className={DietMainStyles['recipe-box']}
+                      key={recipe._id}
+                    >
+                      <div className={DietMainStyles['recipe-img']}></div>
+                      <p className={DietMainStyles['recipe-name']}>
+                        {recipe.name}
+                      </p>
+                    </div>
+                  </Link>
+        ) : null;
+      })}
+
+
+
+
+
+
+        {/* <div className={DietMainStyles['recipes-container']}>
           <div className={DietMainStyles['meal-recipes']}>
-            <h3 onClick={toggleBreakfastRecipes}>ŚNIADANIA<i className={`fa-solid ${showBreakfastRecipes ? 'fa-chevron-up' : 'fa-chevron-down'}`}></i></h3>
-            {showBreakfastRecipes && (
-              <div>
+            <h3>ŚNIADANIA</h3>
+            <div>
                 {recipes
                 .filter((recipe) => recipe.type === 'breakfast')
                 .map((recipe) => (
@@ -69,12 +95,10 @@ const DietMain = () => {
                   </Link>
                 ))}
               </div>
-            )}
           </div>
           <div className={DietMainStyles['meal-recipes']}>
-            <h3 onClick={toggleIIBreakfastRecipes}>II ŚNIADANIA<i className={`fa-solid ${showSecondBreakfastRecipes ? 'fa-chevron-up' : 'fa-chevron-down'}`}></i></h3>
-            {showSecondBreakfastRecipes && (
-              <div>
+            <h3>II ŚNIADANIA</h3>
+            <div>
                 {recipes
                 .filter((recipe) => recipe.type === 'second_breakfast')
                 .map((recipe) => (
@@ -91,9 +115,8 @@ const DietMain = () => {
                   </Link>
                 ))}
               </div>
-            )}
           </div>
-        </div>
+        </div> */}
       </div>
       <Footer />
     </>
