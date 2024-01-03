@@ -34,7 +34,7 @@ const DietMain = () => {
       <div className={DietMainStyles.container}>
         <div className={DietMainStyles['diet-buttons']}>
           <button className={DietMainStyles['diet-btn']} id='progress-btn'><Link to='/bmicalculator'>Kalkulator BMI</Link></button>
-          <button className={DietMainStyles['diet-btn']} id='progress-btn'><Link to=''>Mój Progres</Link></button>
+          <button className={DietMainStyles['diet-btn']} id='progress-btn'><Link to='/userprogress'>Mój Progres</Link></button>
         </div>
 
         <div className={DietMainStyles['search-bar-box']}>
@@ -69,54 +69,6 @@ const DietMain = () => {
                   </Link>
         ) : null;
       })}
-
-
-
-
-
-
-        {/* <div className={DietMainStyles['recipes-container']}>
-          <div className={DietMainStyles['meal-recipes']}>
-            <h3>ŚNIADANIA</h3>
-            <div>
-                {recipes
-                .filter((recipe) => recipe.type === 'breakfast')
-                .map((recipe) => (
-                  <Link to={`/recipes/${recipe._id}`}>
-                    <div
-                      className={DietMainStyles['recipe-box']}
-                      key={recipe._id}
-                    >
-                      <div className={DietMainStyles['recipe-img']}></div>
-                      <p className={DietMainStyles['recipe-name']}>
-                        {recipe.name}
-                      </p>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-          </div>
-          <div className={DietMainStyles['meal-recipes']}>
-            <h3>II ŚNIADANIA</h3>
-            <div>
-                {recipes
-                .filter((recipe) => recipe.type === 'second_breakfast')
-                .map((recipe) => (
-                  <Link to={`/recipes/${recipe._id}`}>
-                    <div
-                      className={DietMainStyles['recipe-box']}
-                      key={recipe._id}
-                    >
-                      <div className={DietMainStyles['recipe-img']}></div>
-                      <p className={DietMainStyles['recipe-name']}>
-                        {recipe.name}
-                      </p>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-          </div>
-        </div> */}
       </div>
       <Footer />
     </>
