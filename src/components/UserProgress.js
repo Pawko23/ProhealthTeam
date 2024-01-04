@@ -1,23 +1,51 @@
 import React, { useState, useEffect } from 'react'
 import Link from 'react-router-dom'
+import axios from 'axios'
 import ProgressStyles from '../styles/UserProgress.module.css'
 import Navbar from './Navbar'
 import Header from './Header'
 import Footer from './Footer'
 import DietPageHero from '../img/diet.jpg';
+import { jwtDecode } from 'jwt-decode'
 
 const Weight = () => {
+
+    const [weight, setWeight] = useState('')
+    const [userId, setUserId] = useState('')
+
+    useEffect(() => {
+        const token = localStorage.getItem('token')
+        const decodedToken = jwtDecode(token)
+        const userId = decodedToken.userId
+        setUserId(userId)
+    }, [])
+
+
+
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        try {
+            const token = localStorage.getItem('token')
+            await axios.post('/userprogress', { userId, weight })
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return (
         <>
             <div className={ProgressStyles['weight-container']}>
-                <div className={ProgressStyles['data-box']}>
+                <form onSubmit={handleSubmit}>
                     <label>Ustaw swój cel</label>
-                    <input type='number'></input>
+                    {/* <input 
+                        type='number'
+                    /> */}
                     <label>Wprowadź obecną wagę:</label>
-                    <input type='number'></input>
-                </div>
+                    <input type='number' onChange={ (e) => setWeight(e.target.value)} value={weight}></input>
+                    <button type='submit'>Zapisz dane</button>
+                </form>
                 <div className={ProgressStyles['graph-box']}></div>
-                <button>Zapisz dane</button>
             </div>
         </>
     )
@@ -42,7 +70,7 @@ const Kcal = () => {
                     <p>Aktywność</p>
                     <div className={ProgressStyles['activity-box']}>
                         <div className={ProgressStyles['checkbox-inputs']}>
-                            <input type='checkbox'></input>
+                            <input type='checkbox'></input>a
                             <label>Niska( znikoma aktywność fizyczna )</label>
                         </div>
                         <div className={ProgressStyles['checkbox-inputs']}>

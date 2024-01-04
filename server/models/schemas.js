@@ -4,7 +4,8 @@ const Schema = mongoose.Schema
 const userSchema = new Schema({
     email: {type: String, required: true},
     username: {type: String, required: true},
-    password: {type: String, required: true}
+    password: {type: String, required: true},
+    weight: [ { type: Number }]
 })
 
 const User = mongoose.model('User', userSchema, 'users')

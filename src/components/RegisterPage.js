@@ -8,6 +8,7 @@ const RegisterPage = () => {
     const [email, setEmail] = useState('')
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    const [weight, setWeight] = useState([])
     const navigate = useNavigate()
 
 
@@ -23,11 +24,12 @@ const RegisterPage = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        axios.post('/register', { email, username, password}).then(() => {
+        axios.post('/register', { email, username, password, weight: []}).then(() => {
             alert('Registered successfuly!')
             setEmail('')
             setUsername('')
             setPassword('')
+            setWeight([])
             fetchUsers()
             navigate('/')
         })

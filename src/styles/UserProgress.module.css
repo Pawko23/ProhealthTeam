@@ -20,7 +20,7 @@ body {
   justify-content: center;
   align-items: center;
 }
-.weight-container .data-box {
+.weight-container form {
   display: flex;
   flex-direction: column;
   justify-content: center;
