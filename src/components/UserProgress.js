@@ -12,6 +12,7 @@ const Weight = () => {
 
     const [weight, setWeight] = useState('')
     const [userId, setUserId] = useState('')
+    const [goal, setGoal] = useState('')
 
     useEffect(() => {
         const token = localStorage.getItem('token')
@@ -27,7 +28,7 @@ const Weight = () => {
         e.preventDefault()
         try {
             const token = localStorage.getItem('token')
-            await axios.post('/userprogress', { userId, weight })
+            await axios.post('/userprogress', { userId, weight, goal })
         } catch (error) {
             console.log(error);
         }
@@ -38,9 +39,11 @@ const Weight = () => {
             <div className={ProgressStyles['weight-container']}>
                 <form onSubmit={handleSubmit}>
                     <label>Ustaw swój cel</label>
-                    {/* <input 
+                    <input 
                         type='number'
-                    /> */}
+                        onChange={ (e) => setGoal(e.target.value)}
+                        value={goal}
+                    />
                     <label>Wprowadź obecną wagę:</label>
                     <input type='number' onChange={ (e) => setWeight(e.target.value)} value={weight}></input>
                     <button type='submit'>Zapisz dane</button>
