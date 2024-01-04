@@ -81,7 +81,6 @@ router.post('/login', async (req, res) => {
 
 
 router.post('/userprogress', async (req,res) => {
-  console.log(req.body)
   const { userId, weight, goal } = req.body
 
   try {
@@ -102,6 +101,24 @@ router.post('/userprogress', async (req,res) => {
   }
 })
 
+router.get('/userprogress', async (req, res) => {
+  const token = req.header('Authorization')?.replace('Bearer ', '')
+
+  if(!token) {
+    return res.status(401).json( { error: 'Unauthorized' })
+  }
+  try {
+    const decodedToken = jwt.verify(token, process.env.ACCESS_SECRET_KEY)
+    const userId = decodedToken.userId
+    const user = await User.findById(userId)
+    if(!user) {
+      return res.status(404).json({ error: 'User not found' })
+    }
+    res.status(200).json({ weights: user.weight })
+  } catch(error) {
+    console.log(error)
+  }
+})
 
 
 

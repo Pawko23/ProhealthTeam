@@ -13,14 +13,32 @@ const Weight = () => {
     const [weight, setWeight] = useState('')
     const [userId, setUserId] = useState('')
     const [goal, setGoal] = useState('')
-
+    const [graphWeights, setGraphWeights] = useState([])
+    
     useEffect(() => {
         const token = localStorage.getItem('token')
         const decodedToken = jwtDecode(token)
         const userId = decodedToken.userId
         setUserId(userId)
+        if(token) {
+            fetchWeights(token)
+        }
     }, [])
 
+
+    const fetchWeights = (token) => {
+        axios.get('/userprogress', {
+            headers: { Authorization: `Bearer ${token}`}
+        }).then((res) => {
+            setGraphWeights(res.data)
+        }).catch((error) => {
+            console.log(error)
+        })
+    }
+
+    useEffect(() => {
+        console.log(graphWeights)
+    }, [graphWeights])
 
 
 
