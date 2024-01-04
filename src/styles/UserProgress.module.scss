@@ -13,3 +13,42 @@ body {
     font-family: 'Inter', sans-serif;
     font-size: 1.6rem;
 }
+
+.weight-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .data-box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.kcal-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .intake-box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+
+        .activity-box {
+            display: flex;
+            flex-direction: column;
+
+            .checkbox-inputs {
+                display: inline;
+            }
+        }
+
+    }
+}

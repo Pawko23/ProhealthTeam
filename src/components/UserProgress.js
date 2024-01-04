@@ -40,12 +40,20 @@ const Kcal = () => {
                     <label>Mężczyzna</label>
                     <input type='radio'></input>
                     <p>Aktywność</p>
-                    <label>Niska( znikoma aktywność fizyczna )</label>
-                    <input type='checkbox'></input>
-                    <label>Średnia( 1-3 treningi w tygodniu )</label>
-                    <input type='checkbox'></input>
-                    <label>Wysoka( więcej niż 3 treningi w tygodniu )</label>
-                    <input type='checkbox'></input>
+                    <div className={ProgressStyles['activity-box']}>
+                        <div className={ProgressStyles['checkbox-inputs']}>
+                            <input type='checkbox'></input>
+                            <label>Niska( znikoma aktywność fizyczna )</label>
+                        </div>
+                        <div className={ProgressStyles['checkbox-inputs']}>
+                            <input type='checkbox'></input>
+                            <label>Średnia( 1-3 treningi w tygodniu )</label>          
+                        </div>
+                        <div className={ProgressStyles['checkbox-inputs']}>
+                            <input type='checkbox'></input>
+                            <label>Wysoka( więcej niż 3 treningi w tygodniu )</label>
+                        </div>
+                    </div>
                     <button type='submit'>Oblicz</button>
                 </div>
                 <div className={ProgressStyles['intake-results']}>
