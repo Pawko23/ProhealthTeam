@@ -81,7 +81,7 @@ router.post('/login', async (req, res) => {
 
 
 router.post('/userprogress', async (req,res) => {
-  const { userId, weight, goal } = req.body
+  const { userId, weight, goal, currentDate } = req.body
 
   try {
     const user = await User.findById(userId)
@@ -92,6 +92,7 @@ router.post('/userprogress', async (req,res) => {
 
     user.weight.push(weight)
     user.goal = goal
+    user.date.push(currentDate)
     await user.save()
 
     res.status(200).json({ message: 'Weight saved successfuly' })
@@ -114,7 +115,7 @@ router.get('/userprogress', async (req, res) => {
     if(!user) {
       return res.status(404).json({ error: 'User not found' })
     }
-    res.status(200).json({ weights: user.weight })
+    res.status(200).json({ weights: user.weight, dates: user.date })
   } catch(error) {
     console.log(error)
   }

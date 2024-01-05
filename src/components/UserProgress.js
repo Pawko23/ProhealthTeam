@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react'
-import Link from 'react-router-dom'
+import React, { useState, useEffect, useRef } from 'react'
 import axios from 'axios'
 import ProgressStyles from '../styles/UserProgress.module.css'
 import Navbar from './Navbar'
@@ -7,6 +6,55 @@ import Header from './Header'
 import Footer from './Footer'
 import DietPageHero from '../img/diet.jpg';
 import { jwtDecode } from 'jwt-decode'
+import { Chart } from 'chart.js/auto'
+
+
+const Graph = ({ weights, dates, goal }) => {
+    useEffect(() => {
+        const ctx = document.getElementById('weightProgress').getContext('2d')
+        const chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: dates,
+                datasets: [
+                    {
+                        label: 'Weight',
+                        borderColor: 'blue',
+                        data: weights,
+                        fill: false
+                    },
+                    {
+                        label: 'Goal',
+                        borderColor: 'red',
+                        borderDash: [5, 5],
+                        data: Array(dates.length).fill(goal),
+                        fill: false
+                    }
+                ]
+            },
+            options: {
+                scales: {
+                    y: {
+                        ticks: {
+                            values: [40, 60, 80, 100, 120, 140, 160]
+                        }
+                    }
+                }
+            }
+        })
+
+        return () => {
+            chart.destroy()
+        }
+
+
+    }, [weights, dates, goal])
+
+    return <canvas id='weightProgress'></canvas>
+
+}
+
+
 
 const Weight = () => {
 
@@ -14,6 +62,7 @@ const Weight = () => {
     const [userId, setUserId] = useState('')
     const [goal, setGoal] = useState('')
     const [graphWeights, setGraphWeights] = useState([])
+    const [graphDates, setGraphDates] = useState([])
     
     useEffect(() => {
         const token = localStorage.getItem('token')
@@ -30,7 +79,8 @@ const Weight = () => {
         axios.get('/userprogress', {
             headers: { Authorization: `Bearer ${token}`}
         }).then((res) => {
-            setGraphWeights(res.data)
+            setGraphWeights(res.data.weights)
+            setGraphDates(res.data.dates)
         }).catch((error) => {
             console.log(error)
         })
@@ -38,15 +88,16 @@ const Weight = () => {
 
     useEffect(() => {
         console.log(graphWeights)
+        console.log(graphDates)
     }, [graphWeights])
 
 
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        const currentDate = new Date().toLocaleDateString('en-CA')
         try {
-            const token = localStorage.getItem('token')
-            await axios.post('/userprogress', { userId, weight, goal })
+            await axios.post('/userprogress', { userId, weight, goal, currentDate })
         } catch (error) {
             console.log(error);
         }
@@ -66,7 +117,13 @@ const Weight = () => {
                     <input type='number' onChange={ (e) => setWeight(e.target.value)} value={weight}></input>
                     <button type='submit'>Zapisz dane</button>
                 </form>
-                <div className={ProgressStyles['graph-box']}></div>
+                <div className={ProgressStyles['graph-box']}>
+                    <Graph 
+                        weights={graphWeights}
+                        dates={graphDates}
+                        goal={goal}
+                    />
+                </div>
             </div>
         </>
     )

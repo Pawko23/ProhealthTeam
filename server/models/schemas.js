@@ -6,7 +6,8 @@ const userSchema = new Schema({
     username: {type: String, required: true},
     password: {type: String, required: true},
     weight: [ { type: Number }],
-    goal: { type: Number }
+    goal: { type: Number },
+    date: [ { type: String }]
 })
 
 const User = mongoose.model('User', userSchema, 'users')
