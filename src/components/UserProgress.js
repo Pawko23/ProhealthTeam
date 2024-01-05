@@ -104,6 +104,11 @@ const Weight = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         const currentDate = new Date().toLocaleDateString('en-CA')
+
+        if(!weight) {
+            alert('You need to enter weight')
+            return
+        }
         try {
             await axios.post('/userprogress', { userId, weight, goal, currentDate })
         } catch (error) {
@@ -123,7 +128,7 @@ const Weight = () => {
                     />
                     <label>Wprowadź obecną wagę:</label>
                     <input type='number' onChange={ (e) => setWeight(e.target.value)} value={weight}></input>
-                    <button type='submit'>Zapisz dane</button>
+                    <button type='submit'>Dodaj</button>
                 </form>
                 <div className={ProgressStyles['graph-box']}>
                     <Graph 
