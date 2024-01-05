@@ -81,6 +81,7 @@ const Weight = () => {
         }).then((res) => {
             setGraphWeights(res.data.weights)
             setGraphDates(res.data.dates)
+            setGoal(res.data.goal)
         }).catch((error) => {
             console.log(error)
         })
@@ -90,6 +91,11 @@ const Weight = () => {
         console.log(graphWeights)
         console.log(graphDates)
     }, [graphWeights])
+
+
+    const mockedWeights = [61, 68, 70, 74, 78, 80]
+    const mockedDates = ['2024-01-05', '2024-01-25', '2024-02-10', '2024-03-05', '2024-04-05', '2024-05-05']
+    const mockedGoal = 80
 
 
 
@@ -119,9 +125,12 @@ const Weight = () => {
                 </form>
                 <div className={ProgressStyles['graph-box']}>
                     <Graph 
-                        weights={graphWeights}
-                        dates={graphDates}
+                        weights={mockedWeights}
+                        dates={mockedDates}
                         goal={goal}
+                        // weights={graphWeights}
+                        // dates={graphDates}
+                        // goal={goal}
                     />
                 </div>
             </div>

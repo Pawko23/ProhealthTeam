@@ -115,7 +115,7 @@ router.get('/userprogress', async (req, res) => {
     if(!user) {
       return res.status(404).json({ error: 'User not found' })
     }
-    res.status(200).json({ weights: user.weight, dates: user.date })
+    res.status(200).json({ weights: user.weight, dates: user.date, goal: user.goal })
   } catch(error) {
     console.log(error)
   }
