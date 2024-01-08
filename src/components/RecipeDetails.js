@@ -55,7 +55,7 @@ const RecipeDetails = () => {
           <h3>Składniki</h3>
           <ul>
             <li>czosnek</li>
-            <li>dupa</li>
+            <li>cos tam</li>
           </ul>
         </div>
 
