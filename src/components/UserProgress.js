@@ -194,37 +194,147 @@ const Weight = () => {
 }
 
 const Kcal = () => {
+
+    const [age, setAge] = useState(null)
+    const [weight, setWeight] = useState(null)
+    const [height, setHeight] = useState(null)
+    const [gender, setGender] = useState(null)
+    const [activity, setActivity] = useState({
+        none: false,
+        little: false,
+        moderate: false,
+        high: false,
+        veryHigh: false,
+        prof: false
+    })
+
+    const handleActivity = (checkboxName) => {
+        setActivity((prevActivity) => ({ ...prevActivity, [checkboxName]: !prevActivity[checkboxName] }));
+    };
+
+    const calculate = () => {
+        console.log(age)
+        console.log(weight)
+        console.log(height)
+        console.log(gender)
+        console.log(activity)
+
+        const values = {
+            none: 1.2,
+            little: 1.4,
+            moderate: 1.6,
+            high: 1.75,
+            veryHigh: 2.0,
+            prof: 2.4
+        }
+
+
+        const selectedActivity = Object.keys(activity).find(key => activity[key])
+        const selectedValue = values[selectedActivity]
+        console.log(selectedValue)
+
+
+
+        let BMR = 0
+        let TMR = 0
+        if(gender === 'female') {
+            BMR = (9.5634 * weight) + (1.8496 * height) - (4.6756 * age) + 655.0955
+            TMR = BMR * selectedValue
+        } else {
+            BMR = (13.7516 * weight) + (5.0033 * height) - (6.755 * age) + 66.473 
+            TMR = BMR * selectedValue
+        }
+
+        console.log("BMR: ", BMR)
+        console.log("TMR: ", TMR)
+
+
+    }
+
     return (
         <>
             <div className={ProgressStyles['kcal-container']}>
                 <div className={ProgressStyles['intake-box']}>
                     <p>Oblicz swoje zapotrzebowanie</p>
                     <label>Wiek</label>
-                    <input type='number'></input>
+                    <input type='number' 
+                        onChange={(e) => setAge(e.target.value)}
+                        value={age}
+                    />
                     <label>Waga</label>
-                    <input type='number'></input>
+                    <input type='number' 
+                        onChange={(e) => setWeight(e.target.value)}
+                        value={weight}
+                    />
                     <label>Wzrost</label>
-                    <input type='number'></input>
+                    <input type='number' 
+                        onChange={(e) => setHeight(e.target.value)}
+                        value={height}
+                    />
                     <label>Kobieta</label>
-                    <input type='radio'></input>
+                    <input type='radio'
+                        value='female'
+                        checked={gender==='female'}
+                        onChange={() => setGender('female')}
+                    />
                     <label>Mężczyzna</label>
-                    <input type='radio'></input>
+                    <input type='radio'
+                        value='male'
+                        checked={gender==='male'}
+                        onChange={() => setGender('male')}
+                    />
                     <p>Aktywność</p>
                     <div className={ProgressStyles['activity-box']}>
                         <div className={ProgressStyles['checkbox-inputs']}>
-                            <input type='checkbox'></input>a
-                            <label>Niska( znikoma aktywność fizyczna )</label>
+                            <input 
+                                type='checkbox' 
+                                checked={activity.none}
+                                onChange={() => handleActivity('none')}
+                            />
+                            <label>Brak ( brak aktywności fizycznej )</label>
                         </div>
                         <div className={ProgressStyles['checkbox-inputs']}>
-                            <input type='checkbox'></input>
-                            <label>Średnia( 1-3 treningi w tygodniu )</label>          
+                        <input 
+                                type='checkbox' 
+                                checked={activity.little}
+                                onChange={() => handleActivity('little')}
+                            />
+                            <label>Mała ( praca siedząca )</label>          
                         </div>
                         <div className={ProgressStyles['checkbox-inputs']}>
-                            <input type='checkbox'></input>
-                            <label>Wysoka( więcej niż 3 treningi w tygodniu )</label>
+                        <input 
+                                type='checkbox' 
+                                checked={activity.moderate}
+                                onChange={() => handleActivity('moderate')}
+                            />
+                            <label>Umiarkowana( praca na stojąco, sporadyczne ćwiczenia )</label>
+                        </div>
+                        <div className={ProgressStyles['checkbox-inputs']}>
+                        <input 
+                                type='checkbox' 
+                                checked={activity.high}
+                                onChange={() => handleActivity('high')}
+                            />
+                            <label>Duża( aktywny tryb życia, regularnie ćwicząca )</label>
+                        </div>
+                        <div className={ProgressStyles['checkbox-inputs']}>
+                        <input 
+                                type='checkbox' 
+                                checked={activity.veryHigh}
+                                onChange={() => handleActivity('veryHigh')}
+                            />
+                            <label>Bardzo duża ( bardzo aktywny tryb życia, codziennie ćwicząca )</label>
+                        </div>
+                        <div className={ProgressStyles['checkbox-inputs']}>
+                        <input 
+                                type='checkbox' 
+                                checked={activity.prof}
+                                onChange={() => handleActivity('prof')}
+                            />
+                            <label>Osoba zawodowo uprawiająca sport</label>
                         </div>
                     </div>
-                    <button type='submit'>Oblicz</button>
+                    <button type='submit' onClick={calculate}>Oblicz</button>
                 </div>
                 <div className={ProgressStyles['intake-results']}>
                     <label>Aby schudnąć: </label>
