@@ -82,7 +82,6 @@ router.post('/login', async (req, res) => {
 
 router.post('/userprogress', async (req,res) => {
   const { userId, weight, goal, currentDate } = req.body
-
   try {
     const user = await User.findById(userId)
 
@@ -91,8 +90,12 @@ router.post('/userprogress', async (req,res) => {
     }
 
     user.weight.push(weight)
-    user.goal = goal
     user.date.push(currentDate)
+
+    if(goal !== '') {
+      user.goal = goal
+    } 
+
     await user.save()
 
     res.status(200).json({ message: 'Weight saved successfuly' })
