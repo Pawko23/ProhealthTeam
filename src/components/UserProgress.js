@@ -11,7 +11,7 @@ import { Chart } from 'chart.js/auto'
 
 const Graph = ({ userId, weights, dates, goal }) => {
     
-    const [selectedPoint, setSelectedPoint] = useState(null)
+    const [selectedPoints, setSelectedPoints] = useState([])
 
     useEffect(() => {
         const ctx = document.getElementById('weightProgress').getContext('2d')
@@ -47,7 +47,15 @@ const Graph = ({ userId, weights, dates, goal }) => {
                 onClick: (event) => {
                     const activePoints = chart.getActiveElements(event)
                     if(activePoints.length > 0) {
-                        setSelectedPoint(activePoints[0].index)
+                        const selectedIndex = activePoints[0].index
+                        setSelectedPoints((prevSelected) => {
+                            const isSelected = prevSelected.includes(selectedIndex)
+                            if(isSelected) {
+                                return prevSelected.filter((index) => index !== selectedIndex)
+                            } else {
+                                return [...prevSelected, selectedIndex]
+                            }
+                        })
                     }
                 }
 
@@ -63,10 +71,14 @@ const Graph = ({ userId, weights, dates, goal }) => {
 
 
     const handleDelete = async () => {
-        if(selectedPoint !== null) {
+        if(selectedPoints.length > 0) {
             try {
-                await axios.delete(`/userprogress/weight/${userId}/${selectedPoint}`)
-                setSelectedPoint(null)
+                await axios.delete(`/userprogress/weight/${userId}/${selectedPoints}`, {
+                    data: { indices: selectedPoints }
+                })
+
+                setSelectedPoints([])
+                
             } catch (error) {
                 console.log('Error deleting data point: ', error)
             }
@@ -78,7 +90,7 @@ const Graph = ({ userId, weights, dates, goal }) => {
     return (
         <div>
             <canvas id='weightProgress'></canvas>
-            {selectedPoint !== null && (
+            {selectedPoints.length > 0 && (
                     <button onClick={handleDelete}>Usuń</button>
                 )
             }

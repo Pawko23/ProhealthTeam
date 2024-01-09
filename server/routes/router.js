@@ -131,10 +131,16 @@ router.delete('/userprogress/weight/:userId/:index', async (req, res) => {
     const userId = req.params.userId
     const index = parseInt(req.params.index)
 
+    const { indices } = req.body 
+
+
     const user = await User.findById(userId)
 
-    user.weight.splice(index, 1)
-    user.date.splice(index, 1)
+    indices.sort((a, b) => b - a)
+    indices.forEach((index) => {
+      user.weight.splice(index, 1)
+      user.date.splice(index, 1)
+    })
 
     await user.save()
     res.status(200).json({ message: 'data deleted successfully' })
