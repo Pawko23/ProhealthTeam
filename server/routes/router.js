@@ -123,5 +123,27 @@ router.get('/userprogress', async (req, res) => {
 
 
 
+//  WEIGHT AND DATE DELETE
+
+router.delete('/userprogress/weight/:userId/:index', async (req, res) => {
+  try {
+    console.log(req.params)
+    const userId = req.params.userId
+    const index = parseInt(req.params.index)
+
+    const user = await User.findById(userId)
+
+    user.weight.splice(index, 1)
+    user.date.splice(index, 1)
+
+    await user.save()
+    res.status(200).json({ message: 'data deleted successfully' })
+  } catch (error) {
+    console.log(error)
+    res.status(500).json( { error: 'Internal server error' } )
+  }
+})
+
+
 
 module.exports = router

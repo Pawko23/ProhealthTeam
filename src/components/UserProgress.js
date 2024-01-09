@@ -9,10 +9,13 @@ import { jwtDecode } from 'jwt-decode'
 import { Chart } from 'chart.js/auto'
 
 
-const Graph = ({ weights, dates, goal }) => {
+const Graph = ({ userId, weights, dates, goal }) => {
+    
+    const [selectedPoint, setSelectedPoint] = useState(null)
+
     useEffect(() => {
         const ctx = document.getElementById('weightProgress').getContext('2d')
-        const chart = new Chart(ctx, {
+        let chart = new Chart(ctx, {
             type: 'line',
             data: {
                 labels: dates,
@@ -39,7 +42,15 @@ const Graph = ({ weights, dates, goal }) => {
                             values: [40, 60, 80, 100, 120, 140, 160]
                         }
                     }
+                },
+                
+                onClick: (event) => {
+                    const activePoints = chart.getActiveElements(event)
+                    if(activePoints.length > 0) {
+                        setSelectedPoint(activePoints[0].index)
+                    }
                 }
+
             }
         })
 
@@ -50,7 +61,29 @@ const Graph = ({ weights, dates, goal }) => {
 
     }, [weights, dates, goal])
 
-    return <canvas id='weightProgress'></canvas>
+
+    const handleDelete = async () => {
+        if(selectedPoint !== null) {
+            try {
+                await axios.delete(`/userprogress/weight/${userId}/${selectedPoint}`)
+                setSelectedPoint(null)
+            } catch (error) {
+                console.log('Error deleting data point: ', error)
+            }
+        }
+    }
+
+
+
+    return (
+        <div>
+            <canvas id='weightProgress'></canvas>
+            {selectedPoint !== null && (
+                    <button onClick={handleDelete}>Usuń</button>
+                )
+            }
+        </div>
+    )
 
 }
 
@@ -74,7 +107,6 @@ const Weight = () => {
             fetchWeights(token)
         }
     }, [])
-
 
     const fetchWeights = (token) => {
         axios.get('/userprogress', {
@@ -132,8 +164,9 @@ const Weight = () => {
                 </form>
                 <div className={ProgressStyles['graph-box']}>
                     <Graph 
-                        weights={mockedWeights}
-                        dates={mockedDates}
+                        userId = {userId}
+                        weights={graphWeights}
+                        dates={graphDates}
                         goal={graphGoal}
                         // weights={graphWeights}
                         // dates={graphDates}
