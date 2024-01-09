@@ -23,8 +23,13 @@ const Graph = ({ userId, weights, dates, goal }) => {
                     {
                         label: 'Weight',
                         borderColor: 'blue',
+                        backgroundColor: 'blue',
                         data: weights,
-                        fill: false
+                        fill: false,
+                        pointRadius: (context) => {
+                            const index = context.dataIndex;
+                            return selectedPoints.includes(index) ? 6 : 3;
+                        }
                     },
                     {
                         label: 'Goal',
@@ -43,7 +48,6 @@ const Graph = ({ userId, weights, dates, goal }) => {
                         }
                     }
                 },
-                
                 onClick: (event) => {
                     const activePoints = chart.getActiveElements(event)
                     if(activePoints.length > 0) {
@@ -66,8 +70,7 @@ const Graph = ({ userId, weights, dates, goal }) => {
             chart.destroy()
         }
 
-
-    }, [weights, dates, goal])
+    }, [weights, dates, goal, selectedPoints])
 
 
     const handleDelete = async () => {
