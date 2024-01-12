@@ -97,7 +97,7 @@ const TrainingMain = () => {
         gradient={
           'linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0%, rgba(86, 76, 76, 1) 100%)'
         }
-        title={'Train'}
+        title={'Trening'}
       />
       <div className={TrainingMainStyles.container}>
         <div className={TrainingMainStyles.heading}>
@@ -131,7 +131,7 @@ const TrainingMain = () => {
                 <div className={TrainingMainStyles['trainer-img']}></div>
               </div>
               <div className={TrainingMainStyles['trainer-box-down']}>
-                <p className={TrainingMainStyles.name}>Aleksander Pawlak</p>
+                <p className={TrainingMainStyles.name}>Jakis trener</p>
                 <p className={TrainingMainStyles.email}>ap123@op.pl</p>
               </div>
             </div>
