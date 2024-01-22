@@ -14,7 +14,8 @@ const User = mongoose.model('User', userSchema, 'users')
 
 const jumpProgressSchema = new Schema({
     userId: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
-    jumpHeight: {type: Number, required: true},
+    jumpGoal: {type: Number},
+    jumpHeight: [ {type: Number} ],
     jumpDates: [ {type: String }]
 })
 

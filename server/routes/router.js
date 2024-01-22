@@ -1,9 +1,8 @@
 const express = require('express')
 const router = express.Router()
-const { Recipes, User } = require('../models/schemas')
+const { Recipes, User, JumpProgress } = require('../models/schemas')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-const JumpProgress = require('../models/schemas')
 require('dotenv/config')
 
 router.get('/recipes/:id', async (req, res) => {
@@ -160,11 +159,21 @@ router.delete('/userprogress/weight/:userId/:index', async (req, res) => {
 // JUMP PROGRESS
 
 router.post('/jump-progress', async(req, res) => {
-  const { jumpHeight } = req.body
-  const userId = req.user._id
+  console.log(req.body)
+
+  const userId = req.body.userId
 
   try {
-    const jumpProgress = new JumpProgress({ userId, jumpHeight});
+    let jumpProgress = await JumpProgress.findOne( {userId});
+    
+    if(!jumpProgress) {
+      jumpProgress = new JumpProgress({ userId: userId})
+    }
+
+    jumpProgress.jumpGoal = req.body.jumpGoal
+    jumpProgress.jumpHeight.push(req.body.jumpHeight)
+    jumpProgress.jumpDates.push(req.body.currentDate)
+
     await jumpProgress.save()
 
     res.status(201).json({ message: 'Jump progress saved successfully' })
@@ -174,16 +183,21 @@ router.post('/jump-progress', async(req, res) => {
   }
 })
 
-router.get('jump-progress', async(req, res) => {
-
-  const userId = req.user._id
-
+router.get('/jump-progress', async (req, res) => {
+  const token = req.header('Authorization')?.replace('Bearer ', '')
+  if(!token) {
+    return res.status(401).json( { error: 'Unauthorized' })
+  }
   try {
-    const jumpProgress = await JumpProgress.findOne({userId})
-    res.json( {jumpProgress} )
-  } catch (error) {
+    const decodedToken = jwt.verify(token, process.env.ACCESS_SECRET_KEY)
+    const userId = decodedToken.userId
+    const userJumps = await JumpProgress.findOne({userId})
+    if(!userJumps) {
+      return res.status(404).json({ error: 'User not found' })
+    }
+    res.status(200).json({ jumps: userJumps.jumpHeight, dates: userJumps.jumpDates, goal: userJumps.jumpGoal })
+  } catch(error) {
     console.log(error)
-    res.status(500).json({ message: 'Internal server error' })
   }
 })
 
