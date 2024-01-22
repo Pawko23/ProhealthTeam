@@ -9,7 +9,7 @@ import { jwtDecode } from 'jwt-decode'
 import { Chart } from 'chart.js/auto'
 
 
-const Graph = ({ userId, weights, dates, goal }) => {
+export const Graph = ({ userId, weights, dates, goal }) => {
     
     const [selectedPoints, setSelectedPoints] = useState([])
 

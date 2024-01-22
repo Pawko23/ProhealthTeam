@@ -3,6 +3,7 @@ const router = express.Router()
 const { Recipes, User } = require('../models/schemas')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
+const JumpProgress = require('../models/schemas')
 require('dotenv/config')
 
 router.get('/recipes/:id', async (req, res) => {
@@ -153,6 +154,38 @@ router.delete('/userprogress/weight/:userId/:index', async (req, res) => {
   }
 })
 
+
+
+
+// JUMP PROGRESS
+
+router.post('/jump-progress', async(req, res) => {
+  const { jumpHeight } = req.body
+  const userId = req.user._id
+
+  try {
+    const jumpProgress = new JumpProgress({ userId, jumpHeight});
+    await jumpProgress.save()
+
+    res.status(201).json({ message: 'Jump progress saved successfully' })
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ message: 'Internal server error' })
+  }
+})
+
+router.get('jump-progress', async(req, res) => {
+
+  const userId = req.user._id
+
+  try {
+    const jumpProgress = await JumpProgress.findOne({userId})
+    res.json( {jumpProgress} )
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ message: 'Internal server error' })
+  }
+})
 
 
 module.exports = router

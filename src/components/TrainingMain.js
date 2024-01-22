@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import TrainingMainStyles from '../styles/TrainingMain.module.css';
 import Header from './Header';
 import Navbar from './Navbar';
@@ -8,11 +9,14 @@ import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const ExerciseType = ({ typeName, exercises, isSelected, onTypeClick }) => {
+const ExerciseType = ({ typeName, specific, exercises, isSelected, onTypeClick }) => {
+
+  const isLoggedIn = !!localStorage.getItem('token')
+
   return (
     <>
       <div className={TrainingMainStyles['exercise-type']}>
-        <h3 onClick={() => onTypeClick(typeName)}>
+        <h3 onClick={() => onTypeClick(typeName, specific)}>
           <i class='fa-solid fa-plus'></i>
           {typeName}
         </h3>
@@ -21,9 +25,17 @@ const ExerciseType = ({ typeName, exercises, isSelected, onTypeClick }) => {
             <div className={TrainingMainStyles['exercises-list']}>
               {exercises.map((exercise) => (
                 <div key={exercise.id} className={TrainingMainStyles.exercise}>
-                  <p>{exercise.name}</p>
+                  <div className={TrainingMainStyles['exercise-details']}>
+                    <p className={TrainingMainStyles.name}>{exercise.name}</p>
+                    <p className={TrainingMainStyles.sets}>{exercise.sets}</p>
+                    <p className={TrainingMainStyles.reps}>{exercise.reps}</p>
+                  </div>
                 </div>
               ))}
+              <button className={TrainingMainStyles['progress-btn']} id='progress-btn'>
+                  {isLoggedIn && <Link to={`/training/${specific}`}>Progres</Link>}
+                  {!isLoggedIn && <Link to='/login'>Progres</Link>}
+              </button>
             </div>
           </div>
         )}
@@ -32,7 +44,7 @@ const ExerciseType = ({ typeName, exercises, isSelected, onTypeClick }) => {
   );
 };
 
-const TrainingMain = () => {
+const TrainingMain = () => {  
   const [selectedType, setSelectedType] = useState(null);
 
 
@@ -40,29 +52,41 @@ const TrainingMain = () => {
   const exerciseTypes = [
     {
       id: 1,
-      typeName: 'Speed',
+      typeName: 'Piłka nożna',
+      specific: 'stamina-progress',
       exercises: [
-        { id: 1, name: 'Sprint' },
-        { id: 2, name: 'Jumping Jacks' },
-        { id: 3, name: 'Agility Drills' },
+        { id: 1, name: 'Przysiad ze sztangą na karku', sets: '3 serie', reps: '8 powtórzeń' },
+        { id: 2, name: 'Wskoki na skrzynię', sets: '3 serie', reps: '12 powtórzeń' },
+        { id: 3, name: 'Wyciskanie sztangi na ławce poziomej', sets: '3 serie', reps: '8 powtórzeń' },
+        { id: 4, name: 'Podciąganie na drążku', sets: '3 serie', reps: '10 powtórzeń' },
+        { id: 5, name: 'Wyciskanie żołnierskie', sets: '3 serie', reps: '8 powtórzeń' },
+        { id: 6, name: 'Plank przodem', sets: '3 serie', reps: '1 minuta' },
       ],
     },
     {
       id: 2,
-      typeName: 'Power',
+      typeName: 'Siatkówka',
+      specific: 'jump-progress',
       exercises: [
-        { id: 4, name: 'Box Jumps' },
-        { id: 5, name: 'Medicine Ball Throws' },
-        { id: 6, name: 'Explosive Push-ups' },
+        { id: 7, name: 'Box Squat', sets: '4 serie', reps: '5 powtórzeń' },
+        { id: 8, name: 'Hip Thrust', sets: '4 serie', reps: '5 powtórzeń' },
+        { id: 9, name: 'Podciąganie na drążku', sets: '4 serie', reps: 'Max powtórzeń' },
+        { id: 10, name: 'Wyciskanie sztangi na ławce poziomej', sets: '4 serie', reps: '4 powtórzeń' },
+        { id: 11, name: 'Slam Ball', sets: '4 serie', reps: '6 powtórzeń' },
       ],
     },
     {
       id: 3,
-      typeName: 'Strength',
+      typeName: 'Koszykówka',
+      specific: 'eval-progress',
       exercises: [
-        { id: 7, name: 'Deadlifts' },
-        { id: 8, name: 'Bicep Curls' },
-        { id: 9, name: 'Leg Press' },
+        { id: 12, name: 'Przysiad ze sztangą', sets: '4 serie', reps: '8 powtórzeń' },
+        { id: 13, name: 'Wykroki / Zakroki', sets: '4 serie', reps: '8 powtórzeń' },
+        { id: 14, name: 'Wyciskanie sztangi na ławce poziomej', sets: '4 serie', reps: '5 powtórzeń' },
+        { id: 15, name: 'Zarzuty ze sztangą', sets: '4 serie', reps: '5 powtórzeń' },
+        { id: 16, name: 'Martwy ciąg', sets: '4 serie', reps: '5 powtórzeń' },
+        { id: 17, name: 'Wejścia na skrzynie', sets: '3 serie', reps: '12 powtórzeń' },
+        { id: 18, name: 'Podciąganie na drążku', sets: '3 serie', reps: '10 powtórzeń' },
       ],
     },
   ];
@@ -107,6 +131,7 @@ const TrainingMain = () => {
           <ExerciseType
             key={type.id}
             typeName={type.typeName}
+            specific={type.specific}
             exercises={type.exercises}
             isSelected={type.typeName === selectedType}
             onTypeClick={handleTypeClick}

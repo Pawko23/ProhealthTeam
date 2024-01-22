@@ -53,6 +53,13 @@ body {
 .container .exercise-type .exercises-list .exercise {
   padding: 5px;
 }
+.container .exercise-type .exercises-list .exercise .exercise-details {
+  display: flex;
+  flex-direction: row;
+}
+.container .exercise-type .exercises-list .exercise .exercise-details p {
+  padding: 10px;
+}
 
 .gym-plans-container {
   background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0%, rgb(86, 76, 76) 100%), url("../img/gym-plans-hero.jpg");
