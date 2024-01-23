@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const { Recipes, User, JumpProgress, StaminaProgress } = require('../models/schemas')
+const { Recipes, User, JumpProgress, StaminaProgress, EvalProgress } = require('../models/schemas')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 require('dotenv/config')
@@ -296,6 +296,79 @@ router.delete('/stamina-progress/:userId/:index', async (req, res) => {
 
     await staminaProgress.save()
     res.status(200).json({ message: 'User stamina progress deleted successfully' })
+  } catch (error) {
+    console.log(error)
+    res.status(500).json( { error: 'Internal server error' } )
+  }
+})
+
+// EVAL
+
+router.post('/eval-progress', async(req, res) => {
+  console.log(req.body)
+
+  const userId = req.body.userId
+
+  try {
+    let evalProgress = await EvalProgress.findOne( {userId});
+    
+    if(!evalProgress) {
+      evalProgress = new EvalProgress({ userId: userId})
+    }
+
+    if(req.body.evalGoal !== '') {
+      evalProgress.evalGoal = req.body.evalGoal
+    } 
+
+    
+    evalProgress.eval.push(req.body.evalScore)
+    evalProgress.evalDates.push(req.body.currentDate)
+
+    await evalProgress.save()
+
+    res.status(201).json({ message: 'Eval progress saved successfully' })
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ message: 'Internal server error' })
+  }
+})
+
+router.get('/eval-progress', async (req, res) => {
+  const token = req.header('Authorization')?.replace('Bearer ', '')
+  if(!token) {
+    return res.status(401).json( { error: 'Unauthorized' })
+  }
+  try {
+    const decodedToken = jwt.verify(token, process.env.ACCESS_SECRET_KEY)
+    const userId = decodedToken.userId
+    const userEval = await EvalProgress.findOne({userId})
+    if(!userEval) {
+      return res.status(404).json({ error: 'User not found' })
+    }
+    res.status(200).json({ eval: userEval.eval, dates: userEval.evalDates, goal: userEval.evalGoal })
+  } catch(error) {
+    console.log(error)
+  }
+})
+
+router.delete('/eval-progress/:userId/:index', async (req, res) => {
+  try {
+    console.log(req.params)
+    const userId = req.params.userId
+    const index = parseInt(req.params.index)
+    const { indices } = req.body 
+
+
+    let evalProgress = await EvalProgress.findOne( {userId});
+
+    indices.sort((a, b) => b - a)
+    indices.forEach((index) => {
+      evalProgress.eval.splice(index, 1)
+      evalProgress.evalDates.splice(index, 1)
+    })
+
+    await evalProgress.save()
+    res.status(200).json({ message: 'User eval progress deleted successfully' })
   } catch (error) {
     console.log(error)
     res.status(500).json( { error: 'Internal server error' } )
