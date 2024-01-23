@@ -9,7 +9,7 @@ import { jwtDecode } from 'jwt-decode'
 import { Chart } from 'chart.js/auto'
 
 
-export const Graph = ({ userId, weights, dates, goal }) => {
+export const Graph = ({ userId, weights, dates, goal, deleteEndpoint }) => {
     
     const [selectedPoints, setSelectedPoints] = useState([])
 
@@ -76,7 +76,7 @@ export const Graph = ({ userId, weights, dates, goal }) => {
     const handleDelete = async () => {
         if(selectedPoints.length > 0) {
             try {
-                await axios.delete(`/userprogress/weight/${userId}/${selectedPoints}`, {
+                await axios.delete(`${deleteEndpoint}/${userId}/${selectedPoints}`, {
                     data: { indices: selectedPoints }
                 })
 
@@ -183,6 +183,7 @@ const Weight = () => {
                         weights={graphWeights}
                         dates={graphDates}
                         goal={graphGoal}
+                        deleteEndpoint={'/userprogress/weight'}
                         // weights={graphWeights}
                         // dates={graphDates}
                         // goal={goal}

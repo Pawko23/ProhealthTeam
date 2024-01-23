@@ -171,7 +171,7 @@ router.post('/jump-progress', async(req, res) => {
     }
 
     if(req.body.jumpGoal !== '') {
-      jumpProgress.jumpGoal = jumpGoal
+      jumpProgress.jumpGoal = req.body.jumpGoal
     } 
 
     
@@ -202,6 +202,30 @@ router.get('/jump-progress', async (req, res) => {
     res.status(200).json({ jumps: userJumps.jumpHeight, dates: userJumps.jumpDates, goal: userJumps.jumpGoal })
   } catch(error) {
     console.log(error)
+  }
+})
+
+router.delete('/jump-progress/:userId/:index', async (req, res) => {
+  try {
+    console.log(req.params)
+    const userId = req.params.userId
+    const index = parseInt(req.params.index)
+    const { indices } = req.body 
+
+
+    let jumpProgress = await JumpProgress.findOne( {userId});
+
+    indices.sort((a, b) => b - a)
+    indices.forEach((index) => {
+      jumpProgress.jumpHeight.splice(index, 1)
+      jumpProgress.jumpDates.splice(index, 1)
+    })
+
+    await jumpProgress.save()
+    res.status(200).json({ message: 'User jump progress deleted successfully' })
+  } catch (error) {
+    console.log(error)
+    res.status(500).json( { error: 'Internal server error' } )
   }
 })
 

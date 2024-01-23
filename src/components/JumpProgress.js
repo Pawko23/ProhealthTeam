@@ -92,6 +92,7 @@ const JumpProgress = () => {
                         weights={graphJumps}
                         dates={graphDates}
                         goal={graphGoal}
+                        deleteEndpoint={'/jump-progress'}
                     />
                 </div>
             </div>
