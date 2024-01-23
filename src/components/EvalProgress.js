@@ -61,6 +61,7 @@ const EvalProgress = () => {
         try {
             console.log(userId, evalGoal, evalScore, currentDate)
             await axios.post('/eval-progress', { userId, evalGoal, evalScore, currentDate })
+            window.location.reload()
         } catch (error) {
             console.log(error);
         }

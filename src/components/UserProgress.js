@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import ProgressStyles from '../styles/UserProgress.module.css'
 import Navbar from './Navbar'
@@ -79,7 +80,7 @@ export const Graph = ({ userId, weights, dates, goal, deleteEndpoint }) => {
                 await axios.delete(`${deleteEndpoint}/${userId}/${selectedPoints}`, {
                     data: { indices: selectedPoints }
                 })
-
+                window.location.reload()
                 setSelectedPoints([])
                 
             } catch (error) {
@@ -112,7 +113,8 @@ const Weight = () => {
     const [graphWeights, setGraphWeights] = useState([])
     const [graphDates, setGraphDates] = useState([])
     const [graphGoal, setGraphGoal] = useState('')
-    
+    const navigate = useNavigate()
+
     useEffect(() => {
         const token = localStorage.getItem('token')
         const decodedToken = jwtDecode(token)
@@ -121,7 +123,16 @@ const Weight = () => {
         if(token) {
             fetchWeights(token)
         }
-    }, [])
+
+        const isRendered = localStorage.getItem('rendered' === 'true')
+        if(!isRendered) {
+            localStorage.setItem('rendered', 'true')
+            localStorage.setItem('selectedOption', 'weight')
+            navigate('/userprogress?rendered=true')
+        }
+
+    }, [navigate])
+
 
     const fetchWeights = (token) => {
         axios.get('/userprogress', {
@@ -146,10 +157,8 @@ const Weight = () => {
     const mockedDates = ['2024-01-05', '2024-01-25', '2024-02-10', '2024-03-05', '2024-04-05', '2024-05-05', '2024-05-05']
     const mockedGoal = 80
 
-
-
     const handleSubmit = async (e) => {
-        e.preventDefault()
+        // e.preventDefault()
         const currentDate = new Date().toLocaleDateString('en-CA')
 
         if(!weight) {
@@ -158,6 +167,7 @@ const Weight = () => {
         }
         try {
             await axios.post('/userprogress', { userId, weight, goal, currentDate })
+            navigate('/userprogress?rendered=true')
         } catch (error) {
             console.log(error);
         }
@@ -354,10 +364,10 @@ const Kcal = () => {
 
 const UserProgress = () => {
     
-    const [option, setOption] = useState(null)
-
-    const selectOption = (option) => {
-        setOption(option)
+    const [option, setOption] = useState(localStorage.getItem('selectedOption') || null)
+    const selectOption = (selectedOption) => {
+        setOption(selectedOption)
+        localStorage.setItem('selectedOption', selectedOption)
     }
     
     return (

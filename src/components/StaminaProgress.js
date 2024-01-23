@@ -61,6 +61,7 @@ const StaminaProgress = () => {
         try {
             console.log(userId, staminaGoal, staminaTime, currentDate)
             await axios.post('/stamina-progress', { userId, staminaGoal, staminaTime, currentDate })
+            window.location.reload()
         } catch (error) {
             console.log(error);
         }

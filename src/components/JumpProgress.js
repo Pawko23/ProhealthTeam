@@ -61,6 +61,7 @@ const JumpProgress = () => {
         try {
             console.log(userId, jumpGoal, jumpHeight, currentDate)
             await axios.post('/jump-progress', { userId, jumpGoal, jumpHeight, currentDate })
+            window.location.reload()
         } catch (error) {
             console.log(error);
         }
