@@ -33,7 +33,7 @@ const Navbar = () => {
                         <li><Link to='/rehabilitation'>Rehabilitacja</Link></li>
                         {isLoggedIn ? (
                             <>
-                                <li><Link to='/login'>Konto</Link></li>
+                                <li><Link to='/account'>Konto</Link></li>
                                 <li><Link to='/' onClick={signOut}>Wyloguj się</Link></li>
                             </>
                         ) : (
@@ -55,7 +55,7 @@ const Navbar = () => {
                 <ul className={NavbarStyles.account}>
                     {isLoggedIn ? (
                         <>
-                            <li><Link to='/login'>Konto</Link></li>
+                            <li><Link to='/account'>Konto</Link></li>
                             <li><Link to='/' onClick={signOut}>Wyloguj się</Link></li>
                         </>
                     ) : (

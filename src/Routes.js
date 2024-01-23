@@ -12,6 +12,7 @@ import BmiCalculator from './components/BmiCalculator';
 import UserProgress from './components/UserProgress';
 import StaminaProgress from './components/StaminaProgress';
 import EvalProgress from './components/EvalProgress';
+import Account from './components/Account';
 
 function AppRoutes() {
   return (
@@ -19,6 +20,7 @@ function AppRoutes() {
       <Route path='/' element={<HomePage />} />
       <Route path='/register' element={<RegisterPage />} />
       <Route path='/login' element={<LoginPage />} />
+      <Route path='/account' element={<Account />} />
       <Route path='/training' element={<TrainingMain />} />
       <Route path='/training/stamina-progress' element={<StaminaProgress />} />
       <Route path='/training/jump-progress' element={<JumpProgress />} />
