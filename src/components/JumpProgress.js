@@ -66,6 +66,7 @@ const JumpProgress = () => {
         }
     }
 
+    
     return (
         <>
             <Navbar />
@@ -81,20 +82,17 @@ const JumpProgress = () => {
                         onChange={ (e) => setJumpGoal(e.target.value)}
                         value={jumpGoal}
                     />
-                    <label>Wprowadź obecną wagę:</label>
+                    <label>Jak wysoko skaczesz?: </label>
                     <input type='number' onChange={ (e) => setJumpHeight(e.target.value)} value={jumpHeight}></input>
                     <button type='submit'>Dodaj</button>
                 </form>
                 <div className={Styles['']}>
-                    {/* <Graph 
+                    <Graph 
                         userId = {userId}
-                        weights={graphWeights}
+                        weights={graphJumps}
                         dates={graphDates}
                         goal={graphGoal}
-                        // weights={graphWeights}
-                        // dates={graphDates}
-                        // goal={goal}
-                    /> */}
+                    />
                 </div>
             </div>
         </>

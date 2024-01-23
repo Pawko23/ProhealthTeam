@@ -170,7 +170,11 @@ router.post('/jump-progress', async(req, res) => {
       jumpProgress = new JumpProgress({ userId: userId})
     }
 
-    jumpProgress.jumpGoal = req.body.jumpGoal
+    if(req.body.jumpGoal !== '') {
+      jumpProgress.jumpGoal = jumpGoal
+    } 
+
+    
     jumpProgress.jumpHeight.push(req.body.jumpHeight)
     jumpProgress.jumpDates.push(req.body.currentDate)
 
