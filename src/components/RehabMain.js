@@ -12,7 +12,7 @@ const RehabMain = () => {
             <Navbar />
             <Header 
                 heroImage={TrainingChosenHero}
-                title={'Rehabilitation'}
+                title={'Rehabilitacja'}
             />
             <div className={RehabStyles.container}>
                 <div className={RehabStyles['human-box']}></div>
