@@ -57,8 +57,26 @@ body {
   display: flex;
   flex-direction: row;
 }
+.container .exercise-type .exercises-list .exercise .exercise-details .name {
+  cursor: pointer;
+}
 .container .exercise-type .exercises-list .exercise .exercise-details p {
   padding: 10px;
+}
+
+.exercise-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border: 2px solid #ccc;
+  z-index: 1000;
+}
+
+.popup-content {
+  text-align: center;
 }
 
 .gym-plans-container {

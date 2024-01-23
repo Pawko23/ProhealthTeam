@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import ExercisePopup from './ExercisePopup';
 import TrainingMainStyles from '../styles/TrainingMain.module.css';
 import Header from './Header';
 import Navbar from './Navbar';
@@ -13,6 +14,13 @@ const ExerciseType = ({ typeName, specific, exercises, isSelected, onTypeClick }
 
   const isLoggedIn = !!localStorage.getItem('token')
 
+  const [selectedExercise, setSelectedExercise] = useState(null)
+
+  const handleInformation = (exercise) => {
+    setSelectedExercise(exercise)
+  }
+
+
   return (
     <>
       <div className={TrainingMainStyles['exercise-type']}>
@@ -24,7 +32,7 @@ const ExerciseType = ({ typeName, specific, exercises, isSelected, onTypeClick }
           <div>
             <div className={TrainingMainStyles['exercises-list']}>
               {exercises.map((exercise) => (
-                <div key={exercise.id} className={TrainingMainStyles.exercise}>
+                <div key={exercise.id} className={TrainingMainStyles.exercise} onClick={() => handleInformation(exercise)}>
                   <div className={TrainingMainStyles['exercise-details']}>
                     <p className={TrainingMainStyles.name}>{exercise.name}</p>
                     <p className={TrainingMainStyles.sets}>{exercise.sets}</p>
@@ -38,6 +46,12 @@ const ExerciseType = ({ typeName, specific, exercises, isSelected, onTypeClick }
               </button>
             </div>
           </div>
+        )}
+        {selectedExercise && (
+          <ExercisePopup 
+            exercise={selectedExercise}
+            onClose={()=>setSelectedExercise(null)}
+          />
         )}
       </div>
     </>
