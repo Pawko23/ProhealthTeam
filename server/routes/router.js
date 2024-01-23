@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const { Recipes, User, JumpProgress } = require('../models/schemas')
+const { Recipes, User, JumpProgress, StaminaProgress } = require('../models/schemas')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 require('dotenv/config')
@@ -223,6 +223,79 @@ router.delete('/jump-progress/:userId/:index', async (req, res) => {
 
     await jumpProgress.save()
     res.status(200).json({ message: 'User jump progress deleted successfully' })
+  } catch (error) {
+    console.log(error)
+    res.status(500).json( { error: 'Internal server error' } )
+  }
+})
+
+//  STAMINA
+
+router.post('/stamina-progress', async(req, res) => {
+  console.log(req.body)
+
+  const userId = req.body.userId
+
+  try {
+    let staminaProgress = await StaminaProgress.findOne( {userId});
+    
+    if(!staminaProgress) {
+      staminaProgress = new StaminaProgress({ userId: userId})
+    }
+
+    if(req.body.staminaGoal !== '') {
+      staminaProgress.staminaGoal = req.body.staminaGoal
+    } 
+
+    
+    staminaProgress.staminaTime.push(req.body.staminaTime)
+    staminaProgress.staminaDates.push(req.body.currentDate)
+
+    await staminaProgress.save()
+
+    res.status(201).json({ message: 'Stamina progress saved successfully' })
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ message: 'Internal server error' })
+  }
+})
+
+router.get('/stamina-progress', async (req, res) => {
+  const token = req.header('Authorization')?.replace('Bearer ', '')
+  if(!token) {
+    return res.status(401).json( { error: 'Unauthorized' })
+  }
+  try {
+    const decodedToken = jwt.verify(token, process.env.ACCESS_SECRET_KEY)
+    const userId = decodedToken.userId
+    const userStamina = await StaminaProgress.findOne({userId})
+    if(!userStamina) {
+      return res.status(404).json({ error: 'User not found' })
+    }
+    res.status(200).json({ stamina: userStamina.staminaTime, dates: userStamina.staminaDates, goal: userStamina.staminaGoal })
+  } catch(error) {
+    console.log(error)
+  }
+})
+
+router.delete('/stamina-progress/:userId/:index', async (req, res) => {
+  try {
+    console.log(req.params)
+    const userId = req.params.userId
+    const index = parseInt(req.params.index)
+    const { indices } = req.body 
+
+
+    let staminaProgress = await StaminaProgress.findOne( {userId});
+
+    indices.sort((a, b) => b - a)
+    indices.forEach((index) => {
+      staminaProgress.staminaTime.splice(index, 1)
+      staminaProgress.staminaDates.splice(index, 1)
+    })
+
+    await staminaProgress.save()
+    res.status(200).json({ message: 'User stamina progress deleted successfully' })
   } catch (error) {
     console.log(error)
     res.status(500).json( { error: 'Internal server error' } )

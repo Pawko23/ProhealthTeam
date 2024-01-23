@@ -21,6 +21,15 @@ const jumpProgressSchema = new Schema({
 
 const JumpProgres = mongoose.model('JumpProgress', jumpProgressSchema, 'jumpprogress')
 
+const staminaProgressSchema = new Schema({
+    userId: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
+    staminaGoal: {type: Number},
+    staminaTime: [ {type: Number} ],
+    staminaDates: [ {type: String }]
+})
+
+const StaminaProgress = mongoose.model('StaminaProgress', staminaProgressSchema, 'staminaprogress')
+
 
 const recipeSchema = new Schema({
     type: { type: String },
@@ -37,7 +46,7 @@ const recipeSchema = new Schema({
 const Recipes = mongoose.model('Recipes', recipeSchema, 'recipes')
 
 
-const mySchemas = {'User': User, 'JumpProgress': JumpProgres, "Recipes": Recipes}
+const mySchemas = {'User': User, 'JumpProgress': JumpProgres, 'StaminaProgress': StaminaProgress, "Recipes": Recipes}
 
 
 module.exports = mySchemas
