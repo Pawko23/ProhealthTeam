@@ -87,8 +87,8 @@ const BmiCalculator = () => {
         <div className={CalcStyles['calculator-box']} style={{ height: calculatorHeight}}>
           <h3>Kalkulator BMI</h3>
           <form onSubmit={handleSubmit}>
-            <label>Wiek: </label>
-            <input type='number' value={age} onChange={handleAge}></input>
+            {/* <label>Wiek: </label>
+            <input type='number' value={age} onChange={handleAge}></input> */}
             <label>Wzrost: </label>
             <input type='number' value={height} onChange={handleHeight}></input>
             <label>Waga: </label>
@@ -105,15 +105,14 @@ const BmiCalculator = () => {
       </div>
       <div className={CalcStyles['bmi-info-container']}>
         <div className={CalcStyles['bmi-info']}>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                aliquip ex ea commodo consequat. Duis aute irure dolor in
-                reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                culpa qui officia deserunt mollit anim id est laborum.
-            </p>
+            <p>Mniejsze od 16: Wygłodzenie</p>
+            <p>16 - 16.99: Wychudzenie</p>
+            <p>17 - 18.4: Niedowaga</p>
+            <p>18.5 - 24.99: Waga prawidłowa</p>
+            <p>25 - 29.99: Nadwaga</p>
+            <p>30 - 34.99: I stopień otyłości</p>
+            <p>35 - 39.99: II stopień otyłości</p>
+            <p>Powyżej 40: Otyłość skrajna</p>
         </div>
       </div>
       <Footer />

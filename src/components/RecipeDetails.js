@@ -42,21 +42,18 @@ const RecipeDetails = () => {
         </div>
 
         <div className={RecipeStyles['recipe-image']}>
-          <img></img>
+          {recipe.image}
         </div>
         <div className={RecipeStyles['macros-box']}>
-          <div className={classNames(RecipeStyles.kcal, RecipeStyles.box)}>{recipe.kcal}</div>
-          <div className={classNames(RecipeStyles.protein, RecipeStyles.box)}>{recipe.protein}</div>
-          <div className={classNames(RecipeStyles.fats, RecipeStyles.box)}>{recipe.fats}</div>
-          <div className={classNames(RecipeStyles.carbs, RecipeStyles.box)}>{recipe.carbs}</div>
+          <div className={classNames(RecipeStyles.kcal, RecipeStyles.box)}>{recipe.kcal} Kcal</div>
+          <div className={classNames(RecipeStyles.protein, RecipeStyles.box)}>{recipe.protein} Białka</div>
+          <div className={classNames(RecipeStyles.fats, RecipeStyles.box)}>{recipe.fats} Tłuszczy</div>
+          <div className={classNames(RecipeStyles.carbs, RecipeStyles.box)}>{recipe.carbs} Węglowodanów</div>
         </div>
 
         <div className={RecipeStyles['ingredients-box']}>
           <h3>Składniki</h3>
-          <ul>
-            <li>czosnek</li>
-            <li>cos tam</li>
-          </ul>
+            {recipe.ingredients}
         </div>
 
         <div className={RecipeStyles['prepare-box']}>

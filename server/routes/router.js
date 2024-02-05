@@ -38,9 +38,11 @@ router.post('/register', async (req, res) => {
     if (!email || !username || !password) {
       return res.status(400).json({ error: "Missing required fields" });
     }
+
     const hashedPassword = await bcrypt.hash(password, 10)
-    const newUser = new User( { email, username, password: hashedPassword, weight: []} )
+    const newUser = new User( { email, username, password: hashedPassword, weight: [], date: []} )
     await newUser.save()
+
     res.status(201).json( { message: "User created successfully" })
   } catch (error) {
     console.log(error)
@@ -193,8 +195,11 @@ router.get('/jump-progress', async (req, res) => {
     return res.status(401).json( { error: 'Unauthorized' })
   }
   try {
+
     const decodedToken = jwt.verify(token, process.env.ACCESS_SECRET_KEY)
     const userId = decodedToken.userId
+    
+    
     const userJumps = await JumpProgress.findOne({userId})
     if(!userJumps) {
       return res.status(404).json({ error: 'User not found' })

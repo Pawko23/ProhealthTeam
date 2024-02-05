@@ -38,9 +38,8 @@ const MainSection = () => {
             <div className={classNames(MainStyles['options-box-img'], MainStyles.diet)}></div>
             <div className={MainStyles['options-box-info']}>
               <p className={MainStyles['options-box-text']}>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Voluptatibus vero natus sequi eligendi velit repellat laudantium
-                cum rerum molestiae ipsam.
+                Kalkulatory BMI oraz zapotrzebowania kalorycznego, 
+                zwizualizowany progres wagi
               </p>
             </div>
             <Link to="/recipes" className={MainStyles['check-btn']}>Sprawdź</Link>
@@ -50,9 +49,7 @@ const MainSection = () => {
             <div className={classNames(MainStyles['options-box-img'], MainStyles.gym)}></div>
             <div className={MainStyles['options-box-info']}>
               <p className={MainStyles['options-box-text']}>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Voluptatibus vero natus sequi eligendi velit repellat laudantium
-                cum rerum molestiae ipsam.
+                Plany treningowe rozwijające wydolność, wyskok oraz umiejętności gry w koszykówkę, przykładowe plany na siłownię
               </p>
             </div>
             <Link to="/training" className={MainStyles['check-btn']}>Sprawdź</Link>
@@ -62,9 +59,7 @@ const MainSection = () => {
             <div className={classNames(MainStyles['options-box-img'], MainStyles.rehab)}></div>
             <div className={MainStyles['options-box-info']}>
               <p className={MainStyles['options-box-text']}>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Voluptatibus vero natus sequi eligendi velit repellat laudantium
-                cum rerum molestiae ipsam.
+                Interaktywny szkielet z mięśniami, propozycje bezpiecznego zażegnania bólu na własną rękę 
               </p>
             </div>
             <Link to="/rehabilitation" className={MainStyles['check-btn']}>Sprawdź</Link>

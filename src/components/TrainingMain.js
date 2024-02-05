@@ -174,6 +174,24 @@ const TrainingMain = () => {
                 <p className={TrainingMainStyles.email}>ap123@op.pl</p>
               </div>
             </div>
+            {/* <div className={TrainingMainStyles['personal-trainer-box']}>
+              <div className={TrainingMainStyles['trainer-box-up']}>
+                <div className={TrainingMainStyles['trainer-img']}></div>
+              </div>
+              <div className={TrainingMainStyles['trainer-box-down']}>
+                <p className={TrainingMainStyles.name}>Jakis trener</p>
+                <p className={TrainingMainStyles.email}>ap123@op.pl</p>
+              </div>
+            </div>
+            <div className={TrainingMainStyles['personal-trainer-box']}>
+              <div className={TrainingMainStyles['trainer-box-up']}>
+                <div className={TrainingMainStyles['trainer-img']}></div>
+              </div>
+              <div className={TrainingMainStyles['trainer-box-down']}>
+                <p className={TrainingMainStyles.name}>Jakis trener</p>
+                <p className={TrainingMainStyles.email}>ap123@op.pl</p>
+              </div>
+            </div> */}
       </div>
 
       <Footer />

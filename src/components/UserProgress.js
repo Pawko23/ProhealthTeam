@@ -210,6 +210,8 @@ const Kcal = () => {
     const [weight, setWeight] = useState(null)
     const [height, setHeight] = useState(null)
     const [gender, setGender] = useState(null)
+    const [bmr, setBMR] = useState(0)
+    const [tmr, setTMR] = useState(0)
     const [activity, setActivity] = useState({
         none: false,
         little: false,
@@ -244,16 +246,18 @@ const Kcal = () => {
         const selectedValue = values[selectedActivity]
         console.log(selectedValue)
 
-
-
         let BMR = 0
         let TMR = 0
         if(gender === 'female') {
             BMR = (9.5634 * weight) + (1.8496 * height) - (4.6756 * age) + 655.0955
             TMR = BMR * selectedValue
+            setBMR(BMR)
+            setTMR(TMR)
         } else {
             BMR = (13.7516 * weight) + (5.0033 * height) - (6.755 * age) + 66.473 
             TMR = BMR * selectedValue
+            setBMR(BMR)
+            setTMR(TMR)
         }
 
         console.log("BMR: ", BMR)
@@ -348,12 +352,7 @@ const Kcal = () => {
                     <button type='submit' onClick={calculate}>Oblicz</button>
                 </div>
                 <div className={ProgressStyles['intake-results']}>
-                    <label>Aby schudnąć: </label>
-                    <p>2300</p>
-                    <label>Aby utrzymać: </label>
-                    <p>2500</p>
-                    <label>Aby przytyć: </label>
-                    <p>2800</p>
+                    <p>{tmr}</p>
                 </div>
             </div>
         </>

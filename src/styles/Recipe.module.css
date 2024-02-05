@@ -60,12 +60,6 @@ body {
   flex-direction: column;
   width: 400px;
 }
-.container .ingredients-box ul {
-  list-style: none;
-}
-.container .ingredients-box ul li {
-  padding: 10px;
-}
 .container .prepare-box {
   width: 400px;
   text-align: justify;
