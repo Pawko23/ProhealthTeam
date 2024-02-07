@@ -29,7 +29,7 @@ body {
 
     .login-box {
         width: 250px;
-        height: 400px;
+        height: 450px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -51,6 +51,18 @@ body {
                 padding: 10px;
                 border: 1px dotted grey;
                 border-radius: 10px;
+            }
+
+            .password-pattern {
+                padding: 10px;
+                ul {
+                    list-style: none;
+                    font-size: 15px;
+                    li {
+                        padding: 2px;
+                        color: red;
+                    }
+                }
             }
 
             button {

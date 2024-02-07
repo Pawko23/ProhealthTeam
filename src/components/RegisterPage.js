@@ -11,7 +11,12 @@ const RegisterPage = () => {
     const [weight, setWeight] = useState([])
     const [goal, setGoal] = useState('')
     const [date, setDate] = useState([])
+    const [patternDisplay, setPatternDisplay] = useState( { display: 'none' } )
     const navigate = useNavigate()
+
+
+    const passwordPattern = /^(?=.*[A-Z])(?=.*[\W_])(?=.*\d).{8,}$/
+
 
 
     useEffect(() => {
@@ -26,20 +31,27 @@ const RegisterPage = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        axios.post('/register', { email, username, password, weight: [], goal, date: []}).then(() => {
-            alert('Registered successfuly!')
-            setEmail('')
-            setUsername('')
-            setPassword('')
-            setWeight([])
-            setGoal('')
-            setDate([])
-            fetchUsers()
-            navigate('/')
-        })
-        .catch((error) => {
-            console.log('Unable to register user')
-        })
+
+        if(passwordPattern.test(password)) {
+            console.log("Password matches the pattern!");
+            axios.post('/register', { email, username, password, weight: [], goal, date: []}).then(() => {
+                alert('Registered successfuly!')
+                setEmail('')
+                setUsername('')
+                setPassword('')
+                setWeight([])
+                setGoal('')
+                setDate([])
+                fetchUsers()
+                navigate('/')
+            })
+            .catch((error) => {
+                console.log('Unable to register user')
+            })
+        } else {
+            console.log("Password does not match the pattern!");
+            setPatternDisplay( { display: 'flex' })
+        }
     }
 
     return (
@@ -68,6 +80,15 @@ const RegisterPage = () => {
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                         />
+                        <div className={RegisterStyles['password-pattern']} style={patternDisplay}>
+                            <ul>
+                                <li>Password needs to be:</li>
+                                <li>At least 1 uppercase letter</li>
+                                <li>At least 1 digit</li>
+                                <li>At least 1 special character</li>
+                                <li>At least 8 characters long</li>
+                            </ul>
+                        </div>
                         <button type="submit" className={RegisterStyles.register}>Zarejestruj</button>
                         <Link to='/login'>Zaloguj się</Link>
                     </form>

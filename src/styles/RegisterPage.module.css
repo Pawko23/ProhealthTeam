@@ -21,7 +21,7 @@ body {
 }
 .container .login-box {
   width: 250px;
-  height: 400px;
+  height: 450px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -42,6 +42,17 @@ body {
   padding: 10px;
   border: 1px dotted grey;
   border-radius: 10px;
+}
+.container .login-box form .password-pattern {
+  padding: 10px;
+}
+.container .login-box form .password-pattern ul {
+  list-style: none;
+  font-size: 15px;
+}
+.container .login-box form .password-pattern ul li {
+  padding: 2px;
+  color: red;
 }
 .container .login-box form button {
   cursor: pointer;
