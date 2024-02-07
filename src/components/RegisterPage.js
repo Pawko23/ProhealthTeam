@@ -11,10 +11,12 @@ const RegisterPage = () => {
     const [weight, setWeight] = useState([])
     const [goal, setGoal] = useState('')
     const [date, setDate] = useState([])
-    const [patternDisplay, setPatternDisplay] = useState( { display: 'none' } )
+    const [passwordPatternDisplay, setPasswordPatternDisplay] = useState( { display: 'none' } )
+    const [emailPatternDisplay, setEmailPatternDisplay] = useState( { display: 'none' } )
     const navigate = useNavigate()
 
 
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     const passwordPattern = /^(?=.*[A-Z])(?=.*[\W_])(?=.*\d).{8,}$/
 
 
@@ -32,8 +34,23 @@ const RegisterPage = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        if(passwordPattern.test(password)) {
-            console.log("Password matches the pattern!");
+        if(!emailPattern.test(email)) {
+            console.log('Email pattern does not match');
+            setEmailPatternDisplay( { display: 'flex' })
+            setPasswordPatternDisplay( { display: 'none' })
+        } 
+        if (!passwordPattern.test(password)) {
+            console.log('Password pattern does not match');
+            setPasswordPatternDisplay( { display: 'flex' })
+            setEmailPatternDisplay( { display: 'none' } )
+        } 
+        if (!emailPattern.test(email) && (!passwordPattern.test(password))) {
+            setEmailPatternDisplay( { display: 'flex' })
+            setPasswordPatternDisplay( { display: 'flex' })
+        } 
+        if(emailPattern.test(email) && passwordPattern.test(password)) {
+            setEmailPatternDisplay( { display: 'none' } )
+            setPasswordPatternDisplay( { display: 'none' })
             axios.post('/register', { email, username, password, weight: [], goal, date: []}).then(() => {
                 alert('Registered successfuly!')
                 setEmail('')
@@ -48,9 +65,6 @@ const RegisterPage = () => {
             .catch((error) => {
                 console.log('Unable to register user')
             })
-        } else {
-            console.log("Password does not match the pattern!");
-            setPatternDisplay( { display: 'flex' })
         }
     }
 
@@ -61,11 +75,12 @@ const RegisterPage = () => {
                     <form onSubmit={handleSubmit}>
                         <label>Adres email:</label>
                         <input
-                            type="email" 
+                            type="text" 
                             placeholder="Email" 
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                         />
+                        <p style={emailPatternDisplay}>Email needs to contain @ </p>
                         <label>Nazwa użytkownika:</label>
                         <input
                             type="text" 
@@ -80,7 +95,7 @@ const RegisterPage = () => {
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                         />
-                        <div className={RegisterStyles['password-pattern']} style={patternDisplay}>
+                        <div className={RegisterStyles['password-pattern']} style={passwordPatternDisplay}>
                             <ul>
                                 <li>Password needs to be:</li>
                                 <li>At least 1 uppercase letter</li>
