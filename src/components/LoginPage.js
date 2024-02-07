@@ -7,6 +7,7 @@ const LoginPage = () => {
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    const [invalidCredentials, setInvalidCredentials] = useState( { display: 'none' } )
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -26,7 +27,7 @@ const LoginPage = () => {
             console.log(response.data)
             const token = response.data.token
             console.log(token)
-            alert('Logn successful!')
+            console.log('Login successfull');
             setUsername('')
             setPassword('')
             fetchUsers()
@@ -34,7 +35,7 @@ const LoginPage = () => {
             window.location.reload()
             localStorage.setItem('token', token)
         } catch (error) {
-            alert('Ivalid credentials')
+            setInvalidCredentials( { display: 'flex' })
             console.log('Login error')
         }
     }
@@ -58,6 +59,7 @@ const LoginPage = () => {
                             value={password}
                             onChange={(e) => setPassword(e.target.value)} 
                         />
+                        <p style={invalidCredentials}>Nieprawidłowy login lub hasło</p>
                         <button type='submit' className={LoginStyles.logIn}>Zaloguj się</button>
                         <button className={LoginStyles.register}><Link to="/register">Zarejestruj się</Link></button>
                     </form>
