@@ -97,6 +97,9 @@ body {
   padding: 10px;
   margin: 20px auto;
 }
+.gym-plans-container .slide h3 {
+  cursor: pointer;
+}
 
 .personal-trainers-container {
   margin: 50px auto;

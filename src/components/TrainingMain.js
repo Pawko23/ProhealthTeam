@@ -127,6 +127,111 @@ const TrainingMain = () => {
     { id: 3, content: 'PUSH & PULL & LEGS' },
   ];
 
+  const fbwPlan = [
+    {
+      excA: [
+        'Przysiady 5x5',
+        'Wyciskanie leżąc 5x5',
+        'Wiosłowanie 5x5',
+        'Wznosy bokiem 3x8',
+        'Hip Thrust 3x8',
+        'Allahy 3x8',
+        'Łydki 3x8'
+      ],
+      excB: [
+        'Martwy ciąg klasyczny 5x5',
+        'Wyciskanie żołnierskie 5x5',
+        'Podciąganie wąsko 5x5',
+        'Zakroki 3x8',
+        'Odwodziciele 3x8',
+        'Deska x3',
+        'Łydki 3x8'
+      ]
+    }
+  ]
+
+  const splitPlan = [
+    {
+      id: 1,
+      day: 'Poniedziałek',
+      exc: [
+        'Wyciskanie leżac 4x 8-12',
+        'Wyciskanie hantli na ławce skośnej 4x 8-12',
+        'Rozpiętki 4x 8-12',
+        'Francuzy 3x 10-12',
+        'Linka na triceps 3x 8-12'
+      ]
+    },
+    {
+      id: 2,
+      day: 'Środa',
+      exc: [
+        'Podciąganie neutralne 4xMR',
+        'Lat pulldowns 4x 10-12',
+        'Wiosłowanie sztangą 4x 10-12',
+        'Facepull 4x 10-12',
+        'Bicep curls 3x10',
+        'Hammer curls 3x10'
+      ]
+    },
+    {
+      id: 3,
+      day: 'Piątek',
+      exc: [
+        'Przysiad ze sztangą 4x 10-12',
+        'Martwy ciąg klasyczny 4x 10-12',
+        'Hack squat 4x 10-12',
+        'Lying leg curls 4x 10-12'
+      ]
+    }
+  ]
+
+  const pplPlan = [
+    {
+      id: 1,
+      day: 'Poniedziałek (PUSH)',
+      exc: [
+        'Wyciskanie hantli na ławce poziomej 4x 5-8',
+        'Wyciskanie hantli na ławce skośnej 4x 8-10',
+        'Rozpiętki 4x 10-12',
+        'Wyciskanie żołnierskie 4x 5-8',
+        'Wznosy bokiem 4x 10-20',
+        'Wyciskanie sztangi wąskim chwytem na ławce poziomej 3x 6-8',
+        'Pompki na poręczach 4x 8-10'
+      ]
+    },
+    {
+      id: 2,
+      day: 'Wtorek (PULL)',
+      exc: [
+        'Martwy ciąg klasyczny 4x 5-8',
+        'Wiosłowanie sztangą nachwytem 4x 8-12',
+        'Lat pulldowns 4x 8-12',
+        'Wiosłowanie hantlem jednorącz 4x 10-12',
+        'Bicep curls 3x 8-10',
+        'Hammer curls 3x 8-12'
+      ]
+    },
+    {
+      id: 3,
+      day: 'Piątek (LEGS)',
+      exc: [
+        'Przysiad ze sztangą 4x 10-12',
+        'Martwy ciąg klasyczny 4x 10-12',
+        'Hack squat 4x 10-12',
+        'Lying leg curls 4x 10-12'
+      ]
+    }
+  ]
+
+
+  const [selectedPlan, setSelectedPlan] = useState('')
+  
+  const planPicked = (name) => {
+    console.log(name)
+    setSelectedPlan(name)
+  }
+
   return (
     <>
       <Navbar />
@@ -158,11 +263,54 @@ const TrainingMain = () => {
         <Slider {...settings}>
           {gymPlans.map((item) => (
             <div className={TrainingMainStyles.slide} key={item.id}>
-              <h3>{item.content}</h3>
+              <h3 onClick={() => planPicked(item.content)}>{item.content}</h3>
             </div>
           ))}
         </Slider>
       </div>
+      {selectedPlan === 'FBW' && 
+            <div className={TrainingMainStyles['plan-selected']}>
+              {fbwPlan.map((item, index) => (
+                <div key={index}>
+                  <ul>
+                    <h4>Plan A:</h4>
+                    {item.excA.map((excercise, idx) => (
+                      <li key={idx}>{excercise}</li>
+                    ))}
+                    <h4>Plan B:</h4>
+                    {item.excB.map((excercise, idx) => (
+                      <li key={idx}>{excercise}</li>
+                    ))}
+                  </ul>
+                </div>                
+              ))}
+            </div>
+          } {selectedPlan === 'SPLIT' && 
+          <div className={TrainingMainStyles['plan-seleced']}>
+            {splitPlan.map((item, index) => (
+              <div key={index}>
+                <h4>{item.day}</h4>
+                <ul>
+                  {item.exc.map((exercise, idx) => (
+                    <li key={idx}>{exercise}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}  
+          </div>}
+          {selectedPlan === 'PUSH & PULL & LEGS' && 
+            <div className={TrainingMainStyles['plan-seleced']}>
+            {pplPlan.map((item, index) => (
+              <div key={index}>
+                <h4>{item.day}</h4>
+                <ul>
+                  {item.exc.map((exercise, idx) => (
+                    <li key={idx}>{exercise}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}  
+          </div>}
 
       <div className={TrainingMainStyles['personal-trainers-container']}>
             <div className={TrainingMainStyles['personal-trainer-box']}>

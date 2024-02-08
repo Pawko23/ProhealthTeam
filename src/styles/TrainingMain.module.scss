@@ -103,6 +103,10 @@ body {
   .slide {
     padding: 10px;
     margin: 20px auto;
+
+    h3 {
+      cursor: pointer;
+    }
   }
 }
 
