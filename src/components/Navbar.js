@@ -6,14 +6,6 @@ import classNames from 'classnames';
 const Navbar = () => {
 
     const isLoggedIn = !!localStorage.getItem('token')
-
-
-
-
-
-
-
-    
     const navigate = useNavigate()
 
     const [menuActive, setMenuActive] = useState(false)

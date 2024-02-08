@@ -4,12 +4,14 @@ import styles from '../styles/AccountStyles.module.css'
 import Header from "./Header";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { jwtDecode } from 'jwt-decode'
 import HomePageHero from '../img/hero-main-big.jpg'
+import PopupDefault from "./PopupDefault";
 
 const Account = () => {
-
+    const navigate = useNavigate()
     const [userId, setUserId] = useState('')
     const [userLogin, setUserLogin] = useState('')
     const [userEmail, setUserEmail] = useState('')
@@ -50,9 +52,17 @@ const Account = () => {
                 headers: { Authorization: `Bearer ${token}`}
             })
             console.log('User deleted succ')
+            localStorage.removeItem('token')
+            navigate('/')
         } catch (error) {
             console.error('Error deleting user', error)
         }
+    }
+
+
+    const [showPopup, setShowPopup] = useState(false)
+    const togglePopup = () => {
+        setShowPopup(!showPopup)
     }
 
     return (
@@ -81,7 +91,14 @@ const Account = () => {
                         <p>Kcal intake: {userIntake}</p>
                     </div>
                 </div>
-                <button className={styles['delete-button']} onClick={deleteUser}>Usuń konto</button>
+                <button className={styles['delete-button']} onClick={togglePopup}>Usuń konto</button>
+                {showPopup && (
+                        <PopupDefault 
+                            info={'Czy na pewno usunąć konto?'}
+                            onClose={()=>deleteUser()}
+                        />
+                    )
+                }
             </div>
         </>
     )
