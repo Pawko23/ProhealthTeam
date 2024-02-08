@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const { Recipes, User, JumpProgress, StaminaProgress, EvalProgress } = require('../models/schemas')
+const { Recipes, User, JumpProgress, StaminaProgress, EvalProgress, UserCalcs } = require('../models/schemas')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 require('dotenv/config')
@@ -80,30 +80,49 @@ router.post('/login', async (req, res) => {
   }
 })
 
-
-
 router.post('/userprogress', async (req,res) => {
-  const { userId, weight, goal, currentDate } = req.body
-  try {
-    const user = await User.findById(userId)
 
-    if(!user) {
-      return res.status(404).json({ error: 'User not found' })
+  if(req.body.hasOwnProperty('tmr')) {
+    const { userId, tmr } = req.body
+    try {
+      let userCalcs = await UserCalcs.findOne( {userId});
+      
+      if(!userCalcs) {
+        userCalcs = new UserCalcs({ userId: userId, kcalIntake: tmr })
+      } else {
+        userCalcs.kcalIntake = tmr
+      }
+      
+      await userCalcs.save()
+  
+      res.status(201).json({ message: 'Kcalories intake saved' })
+    } catch (error) {
+      console.log(error)
+      res.status(500).json({ message: 'Internal server error' })
     }
-
-    user.weight.push(weight)
-    user.date.push(currentDate)
-
-    if(goal !== '') {
-      user.goal = goal
-    } 
-
-    await user.save()
-
-    res.status(200).json({ message: 'Weight saved successfuly' })
-  } catch (error) {
-    console.log(error)
-    res.status(500).json({ error: 'Internal server error ' })
+  } else {
+    const { userId, weight, goal, currentDate } = req.body
+    try {
+      const user = await User.findById(userId)
+  
+      if(!user) {
+        return res.status(404).json({ error: 'User not found' })
+      }
+  
+      user.weight.push(weight)
+      user.date.push(currentDate)
+  
+      if(goal !== '') {
+        user.goal = goal
+      } 
+  
+      await user.save()
+  
+      res.status(200).json({ message: 'Weight saved successfuly' })
+    } catch (error) {
+      console.log(error)
+      res.status(500).json({ error: 'Internal server error ' })
+    }
   }
 })
 
@@ -382,8 +401,6 @@ router.delete('/eval-progress/:userId/:index', async (req, res) => {
 
 
 
-
-
 //  ACCOUNT ROUTES
 
 router.get('/account', async (req, res) => {
@@ -396,10 +413,16 @@ router.get('/account', async (req, res) => {
     const decodedToken = jwt.verify(token, process.env.ACCESS_SECRET_KEY)
     const userId = decodedToken.userId
     const user = await User.findById(userId)
+    const userIntake = await UserCalcs.findOne({userId})
     if(!user) {
       return res.status(404).json({ error: 'User not found' })
     }
-    res.status(200).json({ username: user.username, email: user.email })
+    let tmr = 0
+    console.log(userIntake);
+    if(userIntake && userIntake.kcalIntake != null) {
+      tmr = userIntake.kcalIntake
+    }
+    res.status(200).json({ username: user.username, email: user.email, kcalIntake: tmr })
   } catch(error) {
     console.log(error)
   }

@@ -13,6 +13,7 @@ const Account = () => {
     const [userId, setUserId] = useState('')
     const [userLogin, setUserLogin] = useState('')
     const [userEmail, setUserEmail] = useState('')
+    const [userIntake, setUserIntake] = useState(null)
 
     useEffect(() => {
         const token = localStorage.getItem('token')
@@ -21,7 +22,7 @@ const Account = () => {
         if(token) {
             fetchUser(token)
         }
-    }, [])
+    }, [userIntake])
 
     const fetchUser = (token) => {
         axios.get('/account', {
@@ -29,8 +30,10 @@ const Account = () => {
         }).then((res) => {
             setUserLogin(res.data.username)
             setUserEmail(res.data.email)
+            setUserIntake(res.data.kcalIntake)
             console.log(userLogin)
             console.log(userEmail)
+            console.log(userIntake);
         }).catch((error) => {
             console.log(error)
         })
@@ -60,7 +63,7 @@ const Account = () => {
                 <div className={styles['calcs-info']}>
                     <div>
                         <p>BMI: </p>
-                        <p>Kcal intake: </p>
+                        <p>Kcal intake: {userIntake}</p>
                     </div>
                 </div>
                 <button className={styles['delete-button']}>Usuń konto</button>

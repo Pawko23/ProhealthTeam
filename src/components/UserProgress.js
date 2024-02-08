@@ -128,7 +128,7 @@ const Weight = () => {
         if(!isRendered) {
             localStorage.setItem('rendered', 'true')
             localStorage.setItem('selectedOption', 'weight')
-            navigate('/userprogress?rendered=true')
+            // navigate('/userprogress?rendered=true')
         }
 
     }, [navigate])
@@ -158,7 +158,7 @@ const Weight = () => {
     const mockedGoal = 80
 
     const handleSubmit = async (e) => {
-        // e.preventDefault()
+        e.preventDefault()
         const currentDate = new Date().toLocaleDateString('en-CA')
 
         if(!weight) {
@@ -167,7 +167,7 @@ const Weight = () => {
         }
         try {
             await axios.post('/userprogress', { userId, weight, goal, currentDate })
-            navigate('/userprogress?rendered=true')
+            // navigate('/userprogress?rendered=true')
         } catch (error) {
             console.log(error);
         }
@@ -266,6 +266,30 @@ const Kcal = () => {
 
     }
 
+    const [userId, setUserId] = useState('')
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        const token = localStorage.getItem('token')
+        const decodedToken = jwtDecode(token)
+        const userId = decodedToken.userId
+        setUserId(userId)
+        console.log(userId)
+    }, [])
+
+    const saveIntake = async (e) => {
+        if(!tmr) {
+            alert('You need to calculate calories intake first')
+            return
+        }
+        try {
+            await axios.post('/userprogress', { userId, tmr })
+            // navigate('/userprogress?rendered=true')
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return (
         <>
             <div className={ProgressStyles['kcal-container']}>
@@ -350,6 +374,9 @@ const Kcal = () => {
                         </div>
                     </div>
                     <button type='submit' onClick={calculate}>Oblicz</button>
+                    {tmr !== 0 && bmr !== 0 && (
+                        <button onClick={saveIntake}>Zapisz</button>
+                    )}
                 </div>
                 <div className={ProgressStyles['intake-results']}>
                     <p>{tmr}</p>

@@ -12,6 +12,16 @@ const userSchema = new Schema({
 
 const User = mongoose.model('User', userSchema, 'users')
 
+const userCalcsSchema = new Schema({
+    userId: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
+    bmi: { type: Number },
+    kcalIntake: { type: Number }
+})
+
+const UserCalcs = mongoose.model('UserCalcs', userCalcsSchema, 'usercalcs')
+
+
+
 const jumpProgressSchema = new Schema({
     userId: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
     jumpGoal: {type: Number},
@@ -58,7 +68,7 @@ const recipeSchema = new Schema({
 const Recipes = mongoose.model('Recipes', recipeSchema, 'recipes')
 
 
-const mySchemas = {'User': User, 'JumpProgress': JumpProgres, 'StaminaProgress': StaminaProgress, 'EvalProgress': EvalProgress, "Recipes": Recipes}
+const mySchemas = { 'User': User, 'JumpProgress': JumpProgres, 'StaminaProgress': StaminaProgress, 'EvalProgress': EvalProgress, "Recipes": Recipes, 'UserCalcs' : UserCalcs }
 
 
 module.exports = mySchemas
