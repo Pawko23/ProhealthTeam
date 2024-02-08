@@ -450,11 +450,30 @@ router.post('/bmicalculator', async (req,res) => {
   }
 })
 
-router.delete('/account', async (req, res) => {
-  console.log(req.body)
-  res.status(200)
+router.delete('/account/:userId', async (req, res) => {
+  try {
+    const userId = req.params.userId
+    const deletedUser = await User.findByIdAndDelete(userId)
+    
+    if(!deletedUser) {
+      return res.status(404).json( { message: 'User not found' })
+    }
+  
+    await JumpProgress.deleteMany( {userId} )
+    await StaminaProgress.deleteMany( {userId} )
+    await EvalProgress.deleteMany( {userId} )
+    await UserCalcs.deleteMany( {userId} )
+  
+    res.status(201).json( { message: 'User and its related documents deleted successfully' } )
+  } catch (error) {
+    console.error('Error deleting user and documents', error)
+    res.status(500).json({ message: 'Internal server error' })
+  }
+
 })
 
 
+
+// const { Recipes, User, JumpProgress, StaminaProgress, EvalProgress, UserCalcs } = require('../models/schemas')
 
 module.exports = router

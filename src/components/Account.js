@@ -43,17 +43,15 @@ const Account = () => {
     }
     
 
-    const deleteUser = async (userId) => {
+    const deleteUser = async () => {
         try {
-            const response = await axios.delete('account', {
-                data: { userId }
+            const token = localStorage.getItem('token')
+            await axios.delete(`/account/${userId}`, {
+                headers: { Authorization: `Bearer ${token}`}
             })
-    
-            if(response.status === 200){
-                console.log('User deleted successfully')
-            }
+            console.log('User deleted succ')
         } catch (error) {
-            console.error('Error deleting account', error)
+            console.error('Error deleting user', error)
         }
     }
 
