@@ -5,9 +5,38 @@ import Header from "./Header";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { Link } from 'react-router-dom'
+import { jwtDecode } from 'jwt-decode'
 import HomePageHero from '../img/hero-main-big.jpg'
 
 const Account = () => {
+
+    const [userId, setUserId] = useState('')
+    const [userLogin, setUserLogin] = useState('')
+    const [userEmail, setUserEmail] = useState('')
+
+    useEffect(() => {
+        const token = localStorage.getItem('token')
+        const decodedToken = jwtDecode(token)
+        setUserId(decodedToken.userId)
+        if(token) {
+            fetchUser(token)
+        }
+    }, [])
+
+    const fetchUser = (token) => {
+        axios.get('/account', {
+            headers: { Authorization: `Bearer ${token}`}
+        }).then((res) => {
+            setUserLogin(res.data.username)
+            setUserEmail(res.data.email)
+            console.log(userLogin)
+            console.log(userEmail)
+        }).catch((error) => {
+            console.log(error)
+        })
+    }
+    
+
     return (
         <>
             <Navbar />
@@ -19,8 +48,8 @@ const Account = () => {
             <div className={styles['account-container']}>
                 <div className={styles['user-box']}>
                     <div>
-                        <p>Login: </p>
-                        <p>email: </p>
+                        <p>Login: {userLogin}</p>
+                        <p>email: {userEmail}</p>
                     </div>
                 </div>
                 <div className={styles['fav-recipes']}>
