@@ -256,8 +256,8 @@ const Kcal = () => {
         } else {
             BMR = (13.7516 * weight) + (5.0033 * height) - (6.755 * age) + 66.473 
             TMR = BMR * selectedValue
-            setBMR(BMR)
-            setTMR(TMR)
+            setBMR(Number(BMR.toFixed(2)))
+            setTMR(Number(TMR.toFixed(2)))
         }
 
         console.log("BMR: ", BMR)

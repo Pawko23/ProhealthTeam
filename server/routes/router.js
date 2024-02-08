@@ -418,11 +418,15 @@ router.get('/account', async (req, res) => {
       return res.status(404).json({ error: 'User not found' })
     }
     let tmr = 0
+    let bmiTemp = 0
     console.log(userIntake);
     if(userIntake && userIntake.kcalIntake != null) {
       tmr = userIntake.kcalIntake
     }
-    res.status(200).json({ username: user.username, email: user.email, bmi: userIntake.bmi, kcalIntake: tmr })
+    if(userIntake && userIntake.bmi != null) {
+      bmiTemp = userIntake.bmi
+    }
+    res.status(200).json({ username: user.username, email: user.email, bmi: bmiTemp, kcalIntake: tmr })
   } catch(error) {
     console.log(error)
   }
@@ -446,6 +450,10 @@ router.post('/bmicalculator', async (req,res) => {
   }
 })
 
+router.delete('/account', async (req, res) => {
+  console.log(req.body)
+  res.status(200)
+})
 
 
 

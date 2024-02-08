@@ -43,6 +43,20 @@ const Account = () => {
     }
     
 
+    const deleteUser = async (userId) => {
+        try {
+            const response = await axios.delete('account', {
+                data: { userId }
+            })
+    
+            if(response.status === 200){
+                console.log('User deleted successfully')
+            }
+        } catch (error) {
+            console.error('Error deleting account', error)
+        }
+    }
+
     return (
         <>
             <Navbar />
@@ -69,7 +83,7 @@ const Account = () => {
                         <p>Kcal intake: {userIntake}</p>
                     </div>
                 </div>
-                <button className={styles['delete-button']}>Usuń konto</button>
+                <button className={styles['delete-button']} onClick={deleteUser}>Usuń konto</button>
             </div>
         </>
     )
