@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios'
+import { jwtDecode } from 'jwt-decode'
 import Navbar from './Navbar';
 import Header from './Header';
 import Footer from './Footer';
@@ -70,12 +72,36 @@ const BmiCalculator = () => {
 
         const heightToMeters = height / 100;
         const bmiResult = weight / (heightToMeters * heightToMeters);
-        setBmi(bmiResult);
+        setBmi(Number(bmiResult.toFixed(2)));
 
         setCalculatorHeight('80%');
         console.log("Twoje BMI wynosi: ", bmiResult);
     }
 
+    const isButtonDisabled = isNaN(parseFloat(height)) || isNaN(parseFloat(weight))
+
+    const [userId, setUserId] = useState('')
+
+    useEffect(() => {
+        const token = localStorage.getItem('token')
+        const decodedToken = jwtDecode(token)
+        const userId = decodedToken.userId
+        setUserId(userId)
+        console.log(userId)
+    }, [])
+
+    const saveBmi = async (e) => {
+      if(!bmi) {
+        alert('You need to calculate your BMI first')
+        return
+      }
+      try {
+          await axios.post('/bmicalculator', { userId, bmi })
+          // navigate('/userprogress?rendered=true')
+      } catch (error) {
+          console.log(error);
+      }
+    }
 
   return (
     <>
@@ -93,12 +119,15 @@ const BmiCalculator = () => {
             <input type='number' value={height} onChange={handleHeight}></input>
             <label>Waga: </label>
             <input type='number' value={weight} onChange={handleWeight}></input>
-            <button type='submit'>Oblicz</button>
+            <button type='submit' disabled={isButtonDisabled}>Oblicz</button>
             {bmi && (
-              <div className={CalcStyles['result-box']} style={{backgroundColor: resultColor}}>
-                <p>Result: {bmi}</p>
-                <p>{bmiMessage}</p>
-              </div>
+              <>
+                <div className={CalcStyles['result-box']} style={{backgroundColor: resultColor}}>
+                  <p>Result: {bmi}</p>
+                  <p>{bmiMessage}</p>
+                </div>
+                <button onClick={saveBmi}>Zapisz</button>
+              </>
             )}
           </form>
         </div>

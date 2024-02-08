@@ -13,6 +13,7 @@ const Account = () => {
     const [userId, setUserId] = useState('')
     const [userLogin, setUserLogin] = useState('')
     const [userEmail, setUserEmail] = useState('')
+    const [userBmi, setUserBmi] = useState(null)
     const [userIntake, setUserIntake] = useState(null)
 
     useEffect(() => {
@@ -30,9 +31,11 @@ const Account = () => {
         }).then((res) => {
             setUserLogin(res.data.username)
             setUserEmail(res.data.email)
+            setUserBmi(res.data.bmi)
             setUserIntake(res.data.kcalIntake)
             console.log(userLogin)
             console.log(userEmail)
+            console.log(userBmi)
             console.log(userIntake);
         }).catch((error) => {
             console.log(error)
@@ -62,7 +65,7 @@ const Account = () => {
                 </div>
                 <div className={styles['calcs-info']}>
                     <div>
-                        <p>BMI: </p>
+                        <p>BMI: {userBmi}</p>
                         <p>Kcal intake: {userIntake}</p>
                     </div>
                 </div>

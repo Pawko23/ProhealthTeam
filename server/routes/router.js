@@ -422,11 +422,31 @@ router.get('/account', async (req, res) => {
     if(userIntake && userIntake.kcalIntake != null) {
       tmr = userIntake.kcalIntake
     }
-    res.status(200).json({ username: user.username, email: user.email, kcalIntake: tmr })
+    res.status(200).json({ username: user.username, email: user.email, bmi: userIntake.bmi, kcalIntake: tmr })
   } catch(error) {
     console.log(error)
   }
 })
+
+router.post('/bmicalculator', async (req,res) => {
+  console.log(req.body)
+  const { userId, bmi } = req.body
+  try {
+    let userCalcs = await UserCalcs.findOne({ userId: userId })
+    if(!userCalcs) {
+      userCalcs = new UserCalcs( { userId: userId, bmi: bmi })
+    } else {
+      userCalcs.bmi = bmi
+    }
+    await userCalcs.save()
+    res.status(201).json( { message: 'Bmi saved successfully' } )
+  } catch (error) {  
+    console.log(error)
+    res.status(500).json({ message: 'Internal server error' })
+  }
+})
+
+
 
 
 module.exports = router
