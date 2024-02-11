@@ -16,7 +16,7 @@ const BmiCalculator = () => {
     const [calculatorHeight, setCalculatorHeight] = useState('75%');
     const [resultColor, setResultColor] = useState('')
     const [bmiMessage, setBmiMessage] = useState('')
-
+    const isLoggedIn = !!localStorage.getItem('token')
     const handleAge = (event) => {
         setAge(event.target.value);
     }
@@ -83,13 +83,15 @@ const BmiCalculator = () => {
     const [userId, setUserId] = useState('')
 
     useEffect(() => {
-        const token = localStorage.getItem('token')
-        const decodedToken = jwtDecode(token)
-        const userId = decodedToken.userId
-        setUserId(userId)
-        console.log(userId)
+      const token = localStorage.getItem('token')
+        if(token) {
+          const decodedToken = jwtDecode(token)
+          const userId = decodedToken.userId
+          setUserId(userId)
+          console.log(userId)
+        }
     }, [])
-
+    
     const saveBmi = async (e) => {
       if(!bmi) {
         alert('You need to calculate your BMI first')
@@ -126,7 +128,9 @@ const BmiCalculator = () => {
                   <p>Result: {bmi}</p>
                   <p>{bmiMessage}</p>
                 </div>
+                {isLoggedIn && 
                 <button onClick={saveBmi}>Zapisz</button>
+                }
               </>
             )}
           </form>
