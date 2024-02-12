@@ -9,10 +9,22 @@ import Footer from "./Footer";
 
 const RehabMain = () => {
 
-    const [fillColor, setFillColor] = useState('red')
+    const [fillColor, setFillColor] = useState('transparent')
+    const [lineCoordinates, setLineCoordinates] = useState(null)
+    const [pathLine, setPathLine] = useState(null)
 
-    const handleClick = () => {
-        setFillColor('green')
+    const handleClick = (event) => {
+        const circle = event.target
+        const bbox = circle.getBBox()
+        const centerX = bbox.x + bbox.width / 2
+        const centerY = bbox.y + bbox.height / 2
+        const endX = centerX + 100
+        const endY = centerY
+        const controlPointX = centerX + 50; // x coordinate for the control point (halfway between start and end)
+        const controlPointY = centerY - 50; // y coordinate for the control point (45 degrees up)
+        setLineCoordinates({ startX: centerX, startY: centerY, endX, endY })
+        setPathLine(`M ${centerX},${centerY} L ${controlPointX},${controlPointY} L ${endX}, ${endY}`)
+        // setFillColor('green')
     }
 
     return (
@@ -25,7 +37,16 @@ const RehabMain = () => {
             <section className={styles['model-container']}>
                 <svg width="400" height="600" viewBox="0 0 400 600">
                     <image href={HumanModel} x="0" y="0" width="400" height="600" className={styles['human-model']}></image>
-                    <rect id="muscle1" x="15" y="0" width="20" height="20" fill={fillColor} onClick={handleClick} />
+                    <circle id="muscle1" cx="255" cy="115" r="7" fill={fillColor} onClick={handleClick} />
+                    {lineCoordinates && (
+                        <line 
+                            x1={lineCoordinates.startX}
+                            y1={lineCoordinates.startY}
+                            x2={lineCoordinates.endX}
+                            y2={lineCoordinates.endY}
+                            stroke="black"
+                        />
+                    )}
                 </svg>
             </section>
             <Footer />

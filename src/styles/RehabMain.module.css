@@ -24,6 +24,5 @@ body {
   align-items: center;
 }
 .model-container svg image {
-  transform: scale(1);
   transform-origin: center;
 }/*# sourceMappingURL=RehabMain.module.css.map */
