@@ -14,22 +14,37 @@ body {
     font-size: 1.6rem;
 }
 
-.container {
+.model-container {
+    overflow: hidden;
+    width: 100%;
+    padding: 20px;
+    margin: 15px auto;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    .human-box{
-        width: 400px;
-        height: 400px;
-        background-color: tomato;
-    }   
-    .muscle-info{
-        width: 400px;
-        height: 150px;
-        background-color: royalblue;
+
+    svg {
+        image {
+            transform: scale(1);
+            transform-origin: center;
+        }
     }
 }
 
-.professional-box{}
+//.container {
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: center;
+    // align-items: center;
+    // width: 100%;
+    // .human-box{
+    //     width: 400px;
+    //     height: 400px;
+    //     background-color: tomato;
+    // }   
+    // .muscle-info{
+    //     width: 400px;
+    //     height: 150px;
+    //     background-color: royalblue;
+    // }
+//}

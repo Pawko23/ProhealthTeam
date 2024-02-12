@@ -14,20 +14,16 @@ body {
   font-size: 1.6rem;
 }
 
-.container {
+.model-container {
+  overflow: hidden;
+  width: 100%;
+  padding: 20px;
+  margin: 15px auto;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
 }
-.container .human-box {
-  width: 400px;
-  height: 400px;
-  background-color: tomato;
-}
-.container .muscle-info {
-  width: 400px;
-  height: 150px;
-  background-color: royalblue;
+.model-container svg image {
+  transform: scale(1);
+  transform-origin: center;
 }/*# sourceMappingURL=RehabMain.module.css.map */
