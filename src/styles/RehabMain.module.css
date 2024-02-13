@@ -14,6 +14,17 @@ body {
   font-size: 1.6rem;
 }
 
+@keyframes toggleEffect {
+  0% {
+    box-shadow: none;
+  }
+  50% {
+    box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.5);
+  }
+  100% {
+    box-shadow: none;
+  }
+}
 .model-container {
   overflow: hidden;
   width: 100%;
@@ -23,6 +34,14 @@ body {
   justify-content: center;
   align-items: center;
 }
+.model-container svg {
+  height: 600px;
+  width: 100%;
+}
 .model-container svg image {
   transform-origin: center;
+}
+
+.circle {
+  animation: toggleEffect 2s infinite ease-in-out;
 }/*# sourceMappingURL=RehabMain.module.css.map */
