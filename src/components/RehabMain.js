@@ -15,9 +15,18 @@ const RehabMain = () => {
     const [showPopup, setShowPopup] = useState(false)
 
     const musclesData = {
+        'Czworoboczny': 'Masaż mięśnia czworobocznego',
         'Naramienny': 'Masaż mięśnia naramiennego',
+        'Piersiowy większy': 'Masaż piersiowego większego',
         'biceps': 'Masaż bicepsu',
-        'Piersiowy większy': 'Masaż piersiowego większego'
+        'Naramienny': 'Masaż mięśnia naramiennego',
+        'Prosty brzucha': 'Masaż mięśnia prostego brzucha',
+        'Ramienno-promieniowy': 'Masaż mięśnia ramienno-promieniowego',
+        'Skośny zewnętrzny brzucha': 'Masaż mięśnia skośnego zewnętrznego brzucha',
+        'Glistowate ręki': 'Masaż mięśni glistowatych ręki',
+        'Prosty uda': 'Masaż mięśnia prostego uda',
+        'Obszerny przyśrodkowy': 'Masaż mięśnia obszernego przyśrodkowego',
+        'Piszczelowy przedni': 'Masaż mięśnia piszczelowego przedniego'
     }
 
     const togglePopup = (muscleInfo) => {
