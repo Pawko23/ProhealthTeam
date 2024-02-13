@@ -23,7 +23,7 @@ const RehabMain = () => {
         const bbox = circle.getBBox()
         const centerX = bbox.x + bbox.width / 2
         const centerY = bbox.y + bbox.height / 2
-        const endX = centerX - 100
+        const endX = centerX + 100
         const endY = centerY
         const controlPointX = centerX + 50; // x coordinate for the control point (halfway between start and end)
         const controlPointY = centerY - 50; // y coordinate for the control point (45 degrees up)
@@ -40,27 +40,27 @@ const RehabMain = () => {
         // setFillColor('green')
     }
 
-    // const handleBone = (event, bone) => {
-    //     const circle = event.target
-    //     const bbox = circle.getBBox()
-    //     const centerX = bbox.x + bbox.width / 2
-    //     const centerY = bbox.y + bbox.height / 2
-    //     const endX = centerX + 100
-    //     const endY = centerY
-    //     const controlPointX = centerX + 50; // x coordinate for the control point (halfway between start and end)
-    //     const controlPointY = centerY - 50; // y coordinate for the control point (45 degrees up)
+    const handleBone = (event, bone) => {
+        const circle = event.target
+        const bbox = circle.getBBox()
+        const centerX = bbox.x + bbox.width / 2
+        const centerY = bbox.y + bbox.height / 2
+        const endX = centerX - 100
+        const endY = centerY
+        const controlPointX = centerX + 50; // x coordinate for the control point (halfway between start and end)
+        const controlPointY = centerY - 50; // y coordinate for the control point (45 degrees up)
 
-    //     const existingIndex = lineCoordinates.findIndex(coord => coord.muscle === muscle)
-    //     if(existingIndex !== -1) {
-    //         setLineCoordinates(prevCoordinates => prevCoordinates.filter((_, index) => index!== existingIndex))
-    //     } else {
-    //         setLineCoordinates(prevCoordinates => [...prevCoordinates, { startX: centerX, startY: centerY, endX, endY, muscle }])
-    //     }
-    //     setMuscleGuide(musclesData.muscle)
-    //     // setPathLine(`M ${centerX},${centerY} L ${controlPointX},${controlPointY} L ${endX}, ${endY}`)
-    //     console.log(muscle);
-    //     // setFillColor('green')
-    // }
+        const existingIndex = lineCoordinates.findIndex(coord => coord.bone === bone)
+        if(existingIndex !== -1) {
+            setLineCoordinates(prevCoordinates => prevCoordinates.filter((_, index) => index!== existingIndex))
+        } else {
+            setLineCoordinates(prevCoordinates => [...prevCoordinates, { startX: centerX, startY: centerY, endX, endY, bone }])
+        }
+        setMuscleGuide(musclesData.bone)
+        // setPathLine(`M ${centerX},${centerY} L ${controlPointX},${controlPointY} L ${endX}, ${endY}`)
+        console.log(bone);
+        // setFillColor('green')
+    }
 
     return (
         <>
@@ -84,6 +84,16 @@ const RehabMain = () => {
                     <circle id="naramienny" cx="235" cy="330" r="10" fill='transparent' onClick={(event) => handleMuscle(event, 'Prosty uda')} />
                     <circle id="naramienny" cx="220" cy="375" r="6" fill='transparent' onClick={(event) => handleMuscle(event, 'Obszerny przyśrodkowy')} />
                     <circle id="naramienny" cx="232" cy="460" r="6" fill='transparent' onClick={(event) => handleMuscle(event, 'Piszczelowy przedni')} />
+                    <circle id="naramienny" cx="199" cy="72" r="5" fill='transparent' onClick={(event) => handleBone(event, 'Żuchwa')} />
+                    <circle id="naramienny" cx="180" cy="104" r="5" fill='transparent' onClick={(event) => handleBone(event, 'Obojczyk')} />
+                    <circle id="naramienny" cx="199" cy="135" r="5" fill='transparent' onClick={(event) => handleBone(event, 'Mostek')} />
+                    <circle id="naramienny" cx="132" cy="195" r="5" fill='transparent' onClick={(event) => handleBone(event, 'Kość ramienna')} />
+                    <circle id="naramienny" cx="115" cy="232" r="5" fill='transparent' onClick={(event) => handleBone(event, 'Kość promieniowa')} />
+                    <circle id="naramienny" cx="117" cy="250" r="5" fill='transparent' onClick={(event) => handleBone(event, 'Kość łokciowa')} />
+                    <circle id="naramienny" cx="165" cy="340" r="5" fill='transparent' onClick={(event) => handleBone(event, 'Kość udowa')} />
+                    <circle id="naramienny" cx="173" cy="406" r="5" fill='transparent' onClick={(event) => handleBone(event, 'Rzepka')} />
+                    <circle id="naramienny" cx="170" cy="455" r="5" fill='transparent' onClick={(event) => handleBone(event, 'Kość piszczelowa')} />
+                    <circle id="naramienny" cx="163" cy="475" r="5" fill='green' onClick={(event) => handleBone(event, 'Kość strzałkowa')} />
                     {lineCoordinates.map((coords, index) => (
                             <React.Fragment key={index}>
                             <line 
@@ -93,7 +103,10 @@ const RehabMain = () => {
                                 y2={coords.endY}
                                 stroke="black"
                             />
-                            <text x={coords.endX + 10} y={coords.endY} fontSize="12">{coords.muscle}</text>
+                            {coords.muscle ? 
+                                <text x={coords.endX - 10} y={coords.endY-5} fontSize="12">{coords.muscle}</text>
+                            : <text x={coords.endX - 10} y={coords.endY - 5} fontSize="12">{coords.bone}</text>
+                            }
                         </React.Fragment>
                     )
                     
