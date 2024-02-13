@@ -38,10 +38,9 @@ body {
   height: 600px;
   width: 100%;
 }
-.model-container svg image {
+.model-container svg .human-model {
   transform-origin: center;
 }
-
-.circle {
+.model-container svg .circle {
   animation: toggleEffect 2s infinite ease-in-out;
 }/*# sourceMappingURL=RehabMain.module.css.map */

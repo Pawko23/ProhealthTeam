@@ -17,4 +17,5 @@
 
 .popup-content {
   text-align: center;
+  z-index: 1000;
 }/*# sourceMappingURL=PopupDefaultStyles.module.css.map */

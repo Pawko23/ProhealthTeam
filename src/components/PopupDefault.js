@@ -2,7 +2,7 @@ import React from "react";
 import styles from '../styles/PopupDefaultStyles.module.css'
 
 const PopupDefault = ( {info, onClose} ) => {
-
+    console.log(info)
     const handleConfirm = () => {
         onClose()
     }

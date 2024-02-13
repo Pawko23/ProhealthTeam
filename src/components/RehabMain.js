@@ -5,17 +5,25 @@ import HumanModel from '../img/bones-muscles.png'
 import Navbar from "./Navbar";
 import Header from "./Header";
 import Footer from "./Footer";
+import PopupDefault from "./PopupDefault";
 
 
 const RehabMain = () => {
 
     const [lineCoordinates, setLineCoordinates] = useState([])
     const [muscleGuide, setMuscleGuide] = useState('')
-    // const [pathLine, setPathLine] = useState(null)
+    const [showPopup, setShowPopup] = useState(false)
 
     const musclesData = {
-        'Mięsień naramienny': 'Masaż mięśnia naramiennego',
+        'Naramienny': 'Masaż mięśnia naramiennego',
         'biceps': 'Masaż bicepsu',
+        'Piersiowy większy': 'Masaż piersiowego większego'
+    }
+
+    const togglePopup = (muscleInfo) => {
+        setMuscleGuide(muscleInfo)
+        setShowPopup(!showPopup)
+        console.log(showPopup)
     }
 
     const handleMuscle = (event, muscle) => {
@@ -25,19 +33,12 @@ const RehabMain = () => {
         const centerY = bbox.y + bbox.height / 2
         const endX = centerX + 100
         const endY = centerY
-        const controlPointX = centerX + 50; // x coordinate for the control point (halfway between start and end)
-        const controlPointY = centerY - 50; // y coordinate for the control point (45 degrees up)
-
         const existingIndex = lineCoordinates.findIndex(coord => coord.muscle === muscle)
         if(existingIndex !== -1) {
             setLineCoordinates(prevCoordinates => prevCoordinates.filter((_, index) => index!== existingIndex))
         } else {
             setLineCoordinates(prevCoordinates => [...prevCoordinates, { startX: centerX, startY: centerY, endX, endY, muscle }])
         }
-        setMuscleGuide(musclesData.muscle)
-        // setPathLine(`M ${centerX},${centerY} L ${controlPointX},${controlPointY} L ${endX}, ${endY}`)
-        console.log(muscle);
-        // setFillColor('green')
     }
 
     const handleBone = (event, bone) => {
@@ -47,8 +48,6 @@ const RehabMain = () => {
         const centerY = bbox.y + bbox.height / 2
         const endX = centerX - 100
         const endY = centerY
-        const controlPointX = centerX + 50; // x coordinate for the control point (halfway between start and end)
-        const controlPointY = centerY - 50; // y coordinate for the control point (45 degrees up)
 
         const existingIndex = lineCoordinates.findIndex(coord => coord.bone === bone)
         if(existingIndex !== -1) {
@@ -56,10 +55,6 @@ const RehabMain = () => {
         } else {
             setLineCoordinates(prevCoordinates => [...prevCoordinates, { startX: centerX, startY: centerY, endX, endY, bone }])
         }
-        setMuscleGuide(musclesData.bone)
-        // setPathLine(`M ${centerX},${centerY} L ${controlPointX},${controlPointY} L ${endX}, ${endY}`)
-        console.log(bone);
-        // setFillColor('green')
     }
 
     return (
@@ -70,10 +65,19 @@ const RehabMain = () => {
                 title={'Rehabilitacja'}
             />
             <section className={styles['model-container']}>
-                <svg viewBox="0 0 400 600">
+                <svg viewBox="0 0 400 600" className={styles.svg}>
+                    <style>
+                        {
+                            `
+                                .circle {
+                                    animation: toggleEffect 2s infinite ease-in-out;
+                                }
+                            `
+                        }
+                    </style>
                     <image href={HumanModel} x="0" y="0" width="400" height="600" className={styles['human-model']}></image>
-                    <circle id="naramienny" cx="210" cy="85" r="6" fill='transparent' onClick={(event) => handleMuscle(event, 'Mostkowo-obojczykowo-sutkowy')} />
-                    <circle id="naramienny" cx="230" cy="97" r="6" fill='transparent' onClick={(event) => handleMuscle(event, 'Czworoboczny')} />
+                    <circle className={styles.circle} id="naramienny" cx="210" cy="85" r="6" fill='transparent' onClick={(event) => handleMuscle(event, 'Mostkowo-obojczykowo-sutkowy')} />
+                    <circle id="naramienny" cx="230" cy="97" r="6" fill='transparent' onClick={(event) => handleMuscle(event, 'Czworoboczny')} className={styles['circle']} />
                     <circle id="naramienny" cx="255" cy="115" r="7" fill='transparent' onClick={(event) => handleMuscle(event, 'Naramienny')} />
                     <circle id="naramienny" cx="225" cy="135" r="7" fill='transparent' onClick={(event) => handleMuscle(event, 'Piersiowy większy')} />
                     <circle id="naramienny" cx="258" cy="165" r="7" fill='transparent' onClick={(event) => handleMuscle(event, 'Biceps')} />
@@ -93,7 +97,7 @@ const RehabMain = () => {
                     <circle id="naramienny" cx="165" cy="340" r="5" fill='transparent' onClick={(event) => handleBone(event, 'Kość udowa')} />
                     <circle id="naramienny" cx="173" cy="406" r="5" fill='transparent' onClick={(event) => handleBone(event, 'Rzepka')} />
                     <circle id="naramienny" cx="170" cy="455" r="5" fill='transparent' onClick={(event) => handleBone(event, 'Kość piszczelowa')} />
-                    <circle id="naramienny" cx="163" cy="475" r="5" fill='green' onClick={(event) => handleBone(event, 'Kość strzałkowa')} />
+                    <circle id="naramienny" cx="163" cy="475" r="5" fill='transparent' onClick={(event) => handleBone(event, 'Kość strzałkowa')} />
                     {lineCoordinates.map((coords, index) => (
                             <React.Fragment key={index}>
                             <line 
@@ -104,14 +108,20 @@ const RehabMain = () => {
                                 stroke="black"
                             />
                             {coords.muscle ? 
-                                <text x={coords.endX - 10} y={coords.endY-5} fontSize="12">{coords.muscle}</text>
+                                <text x={coords.endX - 10} y={coords.endY-5} fontSize="12" onClick={(event) => togglePopup(musclesData[coords.muscle])}>{coords.muscle}</text>
                             : <text x={coords.endX - 10} y={coords.endY - 5} fontSize="12">{coords.bone}</text>
                             }
                         </React.Fragment>
-                    )
-                    
-                    )}
+                        
+                    ))}
                 </svg>
+                {showPopup && (
+                                <PopupDefault 
+                                    info={muscleGuide}
+                                    onClose={togglePopup}
+                                />
+                            )
+                            }
             </section>
             <Footer />
         </>

@@ -38,17 +38,16 @@ body {
     svg {
         height: 600px;
         width: 100%;
-        image {
+        .human-model {
             // transform: scale(1);
             transform-origin: center;
         }
-
+        .circle {
+            animation: toggleEffect 2s infinite ease-in-out;
+        }
     }
 }
 
-.circle {
-    animation: toggleEffect 2s infinite ease-in-out;
-}
 
 
 //.container {
