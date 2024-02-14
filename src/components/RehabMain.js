@@ -10,9 +10,12 @@ import PopupDefault from "./PopupDefault";
 
 const RehabMain = () => {
 
-    const [lineCoordinates, setLineCoordinates] = useState([])
+    const [lineCoordinatesMuscles, setLineCoordinatesMuscles] = useState([])
+    const [lineCoordinatesBones, setLineCoordinatesBones] = useState([])
     const [muscleGuide, setMuscleGuide] = useState('')
     const [showPopup, setShowPopup] = useState(false)
+    const [showAll, setShowAll] = useState(false)
+    const [showBones, setShowBones] = useState(false)
 
     const musclesData = {
         'Czworoboczny': 'Masaż mięśnia czworobocznego',
@@ -42,11 +45,11 @@ const RehabMain = () => {
         const centerY = bbox.y + bbox.height / 2
         const endX = centerX + 100
         const endY = centerY
-        const existingIndex = lineCoordinates.findIndex(coord => coord.muscle === muscle)
+        const existingIndex = lineCoordinatesMuscles.findIndex(coord => coord.muscle === muscle)
         if(existingIndex !== -1) {
-            setLineCoordinates(prevCoordinates => prevCoordinates.filter((_, index) => index!== existingIndex))
+            setLineCoordinatesMuscles(prevCoordinates => prevCoordinates.filter((_, index) => index!== existingIndex))
         } else {
-            setLineCoordinates(prevCoordinates => [...prevCoordinates, { startX: centerX, startY: centerY, endX, endY, muscle }])
+            setLineCoordinatesMuscles(prevCoordinates => [...prevCoordinates, { startX: centerX, startY: centerY, endX, endY, muscle }])
         }
     }
 
@@ -58,12 +61,46 @@ const RehabMain = () => {
         const endX = centerX - 100
         const endY = centerY
 
-        const existingIndex = lineCoordinates.findIndex(coord => coord.bone === bone)
+        const existingIndex = lineCoordinatesBones.findIndex(coord => coord.bone === bone)
         if(existingIndex !== -1) {
-            setLineCoordinates(prevCoordinates => prevCoordinates.filter((_, index) => index!== existingIndex))
+            setLineCoordinatesBones(prevCoordinates => prevCoordinates.filter((_, index) => index!== existingIndex))
         } else {
-            setLineCoordinates(prevCoordinates => [...prevCoordinates, { startX: centerX, startY: centerY, endX, endY, bone }])
+            setLineCoordinatesBones(prevCoordinates => [...prevCoordinates, { startX: centerX, startY: centerY, endX, endY, bone }])
         }
+    }
+
+    const showAllMuscles = () => {
+        const muscleCircles = document.querySelectorAll('#muscle')
+        muscleCircles.forEach((circle) => {
+            const muscle = circle.getAttribute('data-muscle-name')
+            const x = parseFloat(circle.getAttribute('cx'))
+            const y = parseFloat(circle.getAttribute('cy'))
+            const r = parseFloat(circle.getAttribute('r'))
+            handleMuscle( {target: circle }, muscle, {x,y,r})
+        })
+        setShowAll(true)
+    }
+
+    const hideAllMuscles = () => {
+        setLineCoordinatesMuscles([])
+        setShowAll(false)
+    }
+
+    const showAllBones = () => {
+        const boneCircles = document.querySelectorAll('#bone')
+        boneCircles.forEach((circle) => {
+            const bone = circle.getAttribute('data-bone-name')
+            const x = parseFloat(circle.getAttribute('cx'))
+            const y = parseFloat(circle.getAttribute('cy'))
+            const r = parseFloat(circle.getAttribute('r'))
+            handleBone( {target: circle }, bone, {x,y,r})
+        })
+        setShowBones(true)
+    }
+
+    const hideAllBones = () => {
+        setLineCoordinatesBones([])
+        setShowBones(false)
     }
 
     return (
@@ -74,6 +111,14 @@ const RehabMain = () => {
                 title={'Rehabilitacja'}
             />
             <section className={styles['model-container']}>
+                <div className={styles['muscles-button-box']}>
+                    <button onClick={showAllMuscles} disabled={showAll}>Pokaż mięśnie</button>
+                    <button onClick={hideAllMuscles} disabled={!showAll}>Ukryj mięśnie</button>      
+                </div> 
+                <div className={styles['bones-button-box']}>
+                    <button onClick={showAllBones} disabled={showBones}>Pokaż kości</button>
+                    <button onClick={hideAllBones} disabled={!showBones}>Ukryj Kości</button>      
+                </div> 
                 <svg viewBox="0 0 400 600" className={styles.svg}>
                     <style>
                         {
@@ -86,28 +131,28 @@ const RehabMain = () => {
                     </style>
                     <image href={HumanModel} x="0" y="0" width="400" height="600" className={styles['human-model']}></image>
                     <circle className={styles.circle} id="naramienny" cx="210" cy="85" r="6" fill='transparent' onClick={(event) => handleMuscle(event, 'Mostkowo-obojczykowo-sutkowy')} />
-                    <circle id="naramienny" cx="230" cy="97" r="6" fill='transparent' onClick={(event) => handleMuscle(event, 'Czworoboczny')} className={styles['circle']} />
-                    <circle id="naramienny" cx="255" cy="115" r="7" fill='transparent' onClick={(event) => handleMuscle(event, 'Naramienny')} />
-                    <circle id="naramienny" cx="225" cy="135" r="7" fill='transparent' onClick={(event) => handleMuscle(event, 'Piersiowy większy')} />
-                    <circle id="naramienny" cx="258" cy="165" r="7" fill='transparent' onClick={(event) => handleMuscle(event, 'Biceps')} />
-                    <circle id="naramienny" cx="215" cy="180" r="6" fill='transparent' onClick={(event) => handleMuscle(event, 'Prosty brzucha')} />
-                    <circle id="naramienny" cx="279" cy="205" r="6" fill='transparent' onClick={(event) => handleMuscle(event, 'Ramienno-promieniowy')} />
-                    <circle id="naramienny" cx="240" cy="245" r="6" fill='transparent' onClick={(event) => handleMuscle(event, 'Skośny zewnętrzny brzucha')} />
-                    <circle id="naramienny" cx="302" cy="290" r="6" fill='transparent' onClick={(event) => handleMuscle(event, 'Glistowate ręki')} />
-                    <circle id="naramienny" cx="235" cy="330" r="10" fill='transparent' onClick={(event) => handleMuscle(event, 'Prosty uda')} />
-                    <circle id="naramienny" cx="220" cy="375" r="6" fill='transparent' onClick={(event) => handleMuscle(event, 'Obszerny przyśrodkowy')} />
-                    <circle id="naramienny" cx="232" cy="460" r="6" fill='transparent' onClick={(event) => handleMuscle(event, 'Piszczelowy przedni')} />
-                    <circle id="naramienny" cx="199" cy="72" r="5" fill='transparent' onClick={(event) => handleBone(event, 'Żuchwa')} />
-                    <circle id="naramienny" cx="180" cy="104" r="5" fill='transparent' onClick={(event) => handleBone(event, 'Obojczyk')} />
-                    <circle id="naramienny" cx="199" cy="135" r="5" fill='transparent' onClick={(event) => handleBone(event, 'Mostek')} />
-                    <circle id="naramienny" cx="132" cy="195" r="5" fill='transparent' onClick={(event) => handleBone(event, 'Kość ramienna')} />
-                    <circle id="naramienny" cx="115" cy="232" r="5" fill='transparent' onClick={(event) => handleBone(event, 'Kość promieniowa')} />
-                    <circle id="naramienny" cx="117" cy="250" r="5" fill='transparent' onClick={(event) => handleBone(event, 'Kość łokciowa')} />
-                    <circle id="naramienny" cx="165" cy="340" r="5" fill='transparent' onClick={(event) => handleBone(event, 'Kość udowa')} />
-                    <circle id="naramienny" cx="173" cy="406" r="5" fill='transparent' onClick={(event) => handleBone(event, 'Rzepka')} />
-                    <circle id="naramienny" cx="170" cy="455" r="5" fill='transparent' onClick={(event) => handleBone(event, 'Kość piszczelowa')} />
-                    <circle id="naramienny" cx="163" cy="475" r="5" fill='transparent' onClick={(event) => handleBone(event, 'Kość strzałkowa')} />
-                    {lineCoordinates.map((coords, index) => (
+                    <circle id="muscle" data-muscle-name="Czworoboczny" cx="230" cy="97" r="6" fill='transparent' onClick={(event) => handleMuscle(event, 'Czworoboczny')} className={styles['circle']} />
+                    <circle id="muscle" data-muscle-name="Naramienny" cx="255" cy="115" r="7" fill='transparent' onClick={(event) => handleMuscle(event, 'Naramienny')} />
+                    <circle id="muscle" data-muscle-name="Piersiowy większy" cx="225" cy="135" r="7" fill='transparent' onClick={(event) => handleMuscle(event, 'Piersiowy większy')} />
+                    <circle id="muscle" data-muscle-name="Biceps" cx="258" cy="165" r="7" fill='transparent' onClick={(event) => handleMuscle(event, 'Biceps')} />
+                    <circle id="muscle" data-muscle-name="Prosty brzucha" cx="215" cy="180" r="6" fill='transparent' onClick={(event) => handleMuscle(event, 'Prosty brzucha')} />
+                    <circle id="muscle" data-muscle-name="Ramienno-promieniowy" cx="279" cy="205" r="6" fill='transparent' onClick={(event) => handleMuscle(event, 'Ramienno-promieniowy')} />
+                    <circle id="muscle" data-muscle-name="Skośny zewnętrzny brzucha" cx="240" cy="245" r="6" fill='transparent' onClick={(event) => handleMuscle(event, 'Skośny zewnętrzny brzucha')} />
+                    <circle id="muscle" data-muscle-name="Glistowate ręki" cx="302" cy="290" r="6" fill='transparent' onClick={(event) => handleMuscle(event, 'Glistowate ręki')} />
+                    <circle id="muscle" data-muscle-name="Prosty uda" cx="235" cy="330" r="10" fill='transparent' onClick={(event) => handleMuscle(event, 'Prosty uda')} />
+                    <circle id="muscle" data-muscle-name="Obszerny przyśrodkowy" cx="220" cy="375" r="6" fill='transparent' onClick={(event) => handleMuscle(event, 'Obszerny przyśrodkowy')} />
+                    <circle id="muscle" data-muscle-name="Piszczelowy przedni" cx="232" cy="460" r="6" fill='transparent' onClick={(event) => handleMuscle(event, 'Piszczelowy przedni')} />
+                    <circle id="bone" data-bone-name="Żuchwa" cx="199" cy="72" r="5" fill='transparent' onClick={(event) => handleBone(event, 'Żuchwa')} />
+                    <circle id="bone" data-bone-name="Obojczyk" cx="180" cy="104" r="5" fill='transparent' onClick={(event) => handleBone(event, 'Obojczyk')} />
+                    <circle id="bone" data-bone-name="Mostek" cx="199" cy="135" r="5" fill='transparent' onClick={(event) => handleBone(event, 'Mostek')} />
+                    <circle id="bone" data-bone-name="Kość ramienna" cx="132" cy="195" r="5" fill='transparent' onClick={(event) => handleBone(event, 'Kość ramienna')} />
+                    <circle id="bone" data-bone-name="Kość promieniowa" cx="115" cy="232" r="5" fill='transparent' onClick={(event) => handleBone(event, 'Kość promieniowa')} />
+                    <circle id="bone" data-bone-name="Kość łokciowa" cx="117" cy="250" r="5" fill='transparent' onClick={(event) => handleBone(event, 'Kość łokciowa')} />
+                    <circle id="bone" data-bone-name="Kość udowa" cx="165" cy="340" r="5" fill='transparent' onClick={(event) => handleBone(event, 'Kość udowa')} />
+                    <circle id="bone" data-bone-name="Rzepka" cx="173" cy="406" r="5" fill='transparent' onClick={(event) => handleBone(event, 'Rzepka')} />
+                    <circle id="bone" data-bone-name="Kość piszczelowa" cx="170" cy="455" r="5" fill='transparent' onClick={(event) => handleBone(event, 'Kość piszczelowa')} />
+                    <circle id="bone" data-bone-name="Kość strzałkowa" cx="163" cy="475" r="5" fill='transparent' onClick={(event) => handleBone(event, 'Kość strzałkowa')} />
+                    {lineCoordinatesMuscles.map((coords, index) => (
                             <React.Fragment key={index}>
                             <line 
                                 x1={coords.startX}
@@ -116,13 +161,22 @@ const RehabMain = () => {
                                 y2={coords.endY}
                                 stroke="black"
                             />
-                            {coords.muscle ? 
-                                <text x={coords.endX - 10} y={coords.endY-5} fontSize="12" onClick={(event) => togglePopup(musclesData[coords.muscle])}>{coords.muscle}</text>
-                            : <text x={coords.endX - 10} y={coords.endY - 5} fontSize="12">{coords.bone}</text>
-                            }
+                            <text x={coords.endX - 10} y={coords.endY - 5} fontSize="12" onClick={(event) => togglePopup(musclesData[coords.muscle])}>{coords.muscle}</text>
                         </React.Fragment>
                         
                     ))}
+                    {lineCoordinatesBones.map((coords, index) => (
+                        <React.Fragment key={index}>
+                        <line 
+                            x1={coords.startX}
+                            y1={coords.startY}
+                            x2={coords.endX}
+                            y2={coords.endY}
+                            stroke="black"
+                        />
+                        <text x={coords.endX - 10} y={coords.endY - 5} fontSize="12">{coords.bone}</text>
+    </React.Fragment>
+))}
                 </svg>
                 {showPopup && (
                                 <PopupDefault 

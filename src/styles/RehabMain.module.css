@@ -31,8 +31,13 @@ body {
   padding: 20px;
   margin: 15px auto;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.model-container .muscles-button-box button {
+  padding: 5px;
+  margin: 5px;
 }
 .model-container svg {
   height: 600px;
