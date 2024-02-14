@@ -119,6 +119,7 @@ const RehabMain = () => {
                     <button onClick={showAllBones} disabled={showBones}>Pokaż kości</button>
                     <button onClick={hideAllBones} disabled={!showBones}>Ukryj Kości</button>      
                 </div> 
+                <p>Kliknij na nazwę mięśnia aby poznać instrukcję masażu</p>
                 <svg viewBox="0 0 400 600" className={styles.svg}>
                     <style>
                         {
