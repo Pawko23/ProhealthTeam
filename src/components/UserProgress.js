@@ -213,17 +213,29 @@ const Kcal = () => {
     const [gender, setGender] = useState(null)
     const [bmr, setBMR] = useState(0)
     const [tmr, setTMR] = useState(0)
-    const [activity, setActivity] = useState({
-        none: false,
-        little: false,
-        moderate: false,
-        high: false,
-        veryHigh: false,
-        prof: false
-    })
+    const [activity, setActivity] = useState([
+        { name: "Brak", description: "Brak aktywności fizycznej", checked: false, pointer: 1.2 },
+        { name: "Mała", description: "Osoba wykonująca pracę siedzącą", checked: false, pointer: 1.4 },
+        { name: "Umiarkowana", description: "Osoba wykonująca pracę na stojąco", checked: false, pointer: 1.6 },
+        { name: "Duża", description: "Osoba prowadząca aktywny tryb życia, regularnie ćwicząca", checked: false, pointer: 1.75 },
+        { name: "Bardzo duża", description: "Osoba prowadząca bardzo aktywny tryb życia, codziennie ćwicząca", checked: false, pointer: 2.0 },
+        { name: "Prof", description: "Osoba zawodowo uprawiająca sport", checked: false, pointer: 2.4 }
+    ]);
 
-    const handleActivity = (checkboxName) => {
-        setActivity((prevActivity) => ({ ...prevActivity, [checkboxName]: !prevActivity[checkboxName] }));
+    const handleActivity = (index) => {
+        const updatedActivity = [...activity];
+        updatedActivity.forEach((item, i) => {
+            if (i === index) {
+                item.checked = !item.checked;
+            } else {
+                item.checked = false;
+            }
+        });
+        setActivity(updatedActivity);
+    };
+
+    const isButtonDisabled = () => {
+        return !(age && weight && height && gender && activity.some(item => item.checked));
     };
 
     const calculate = () => {
@@ -233,19 +245,10 @@ const Kcal = () => {
         console.log(gender)
         console.log(activity)
 
-        const values = {
-            none: 1.2,
-            little: 1.4,
-            moderate: 1.6,
-            high: 1.75,
-            veryHigh: 2.0,
-            prof: 2.4
-        }
+        const selectedActivity = activity.find(item => item.checked === true);
+        const selectedValue = selectedActivity ? selectedActivity.pointer : 0;
+        console.log("Selected Value:", selectedValue);
 
-
-        const selectedActivity = Object.keys(activity).find(key => activity[key])
-        const selectedValue = values[selectedActivity]
-        console.log(selectedValue)
 
         let BMR = 0
         let TMR = 0
@@ -263,12 +266,9 @@ const Kcal = () => {
 
         console.log("BMR: ", BMR)
         console.log("TMR: ", TMR)
-
-
     }
 
     const [userId, setUserId] = useState('')
-    const navigate = useNavigate()
 
     useEffect(() => {
         const token = localStorage.getItem('token')
@@ -285,7 +285,7 @@ const Kcal = () => {
         }
         try {
             await axios.post('/userprogress', { userId, tmr })
-            // navigate('/userprogress?rendered=true')
+            alert('Zapisano zapotrzebowanie kaloryczne')
         } catch (error) {
             console.log(error);
         }
@@ -325,56 +325,14 @@ const Kcal = () => {
                     />
                     <p>Aktywność</p>
                     <div className={ProgressStyles['activity-box']}>
-                        <div className={ProgressStyles['checkbox-inputs']}>
-                            <input 
-                                type='checkbox' 
-                                checked={activity.none}
-                                onChange={() => handleActivity('none')}
-                            />
-                            <label>Brak ( brak aktywności fizycznej )</label>
-                        </div>
-                        <div className={ProgressStyles['checkbox-inputs']}>
-                        <input 
-                                type='checkbox' 
-                                checked={activity.little}
-                                onChange={() => handleActivity('little')}
-                            />
-                            <label>Mała ( praca siedząca )</label>          
-                        </div>
-                        <div className={ProgressStyles['checkbox-inputs']}>
-                        <input 
-                                type='checkbox' 
-                                checked={activity.moderate}
-                                onChange={() => handleActivity('moderate')}
-                            />
-                            <label>Umiarkowana( praca na stojąco, sporadyczne ćwiczenia )</label>
-                        </div>
-                        <div className={ProgressStyles['checkbox-inputs']}>
-                        <input 
-                                type='checkbox' 
-                                checked={activity.high}
-                                onChange={() => handleActivity('high')}
-                            />
-                            <label>Duża( aktywny tryb życia, regularnie ćwicząca )</label>
-                        </div>
-                        <div className={ProgressStyles['checkbox-inputs']}>
-                        <input 
-                                type='checkbox' 
-                                checked={activity.veryHigh}
-                                onChange={() => handleActivity('veryHigh')}
-                            />
-                            <label>Bardzo duża ( bardzo aktywny tryb życia, codziennie ćwicząca )</label>
-                        </div>
-                        <div className={ProgressStyles['checkbox-inputs']}>
-                        <input 
-                                type='checkbox' 
-                                checked={activity.prof}
-                                onChange={() => handleActivity('prof')}
-                            />
-                            <label>Osoba zawodowo uprawiająca sport</label>
-                        </div>
+                    {activity.map((item, index) => (
+                            <div className={ProgressStyles['checkbox-inputs']} key={index}>
+                                <input type='checkbox' checked={item.checked} onChange={() => handleActivity(index)} />
+                                <label>{item.name} - {item.description}</label>
+                            </div>
+                    ))}
                     </div>
-                    <button type='submit' onClick={calculate}>Oblicz</button>
+                    <button type='submit' onClick={calculate} disabled={isButtonDisabled()}>Oblicz</button>
                     {tmr !== 0 && bmr !== 0 && (
                         <button onClick={saveIntake}>Zapisz</button>
                     )}

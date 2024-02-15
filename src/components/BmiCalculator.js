@@ -99,7 +99,7 @@ const BmiCalculator = () => {
       }
       try {
           await axios.post('/bmicalculator', { userId, bmi })
-          // navigate('/userprogress?rendered=true')
+          alert('Zapisano BMI!')
       } catch (error) {
           console.log(error);
       }
