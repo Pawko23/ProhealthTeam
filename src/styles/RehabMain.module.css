@@ -48,4 +48,7 @@ body {
 }
 .model-container svg .circle {
   animation: toggleEffect 2s infinite ease-in-out;
+}
+.model-container svg text {
+  cursor: pointer;
 }/*# sourceMappingURL=RehabMain.module.css.map */

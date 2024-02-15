@@ -25,7 +25,7 @@ const RehabMain = () => {
         'Czworoboczny': 'Masaż mięśnia czworobocznego',
         'Naramienny': 'Masaż mięśnia naramiennego',
         'Piersiowy większy': 'Masaż piersiowego większego',
-        'biceps': 'Masaż bicepsu',
+        'Biceps': 'Masaż bicepsu',
         'Naramienny': 'Masaż mięśnia naramiennego',
         'Prosty brzucha': 'Masaż mięśnia prostego brzucha',
         'Ramienno-promieniowy': 'Masaż mięśnia ramienno-promieniowego',
@@ -75,15 +75,24 @@ const RehabMain = () => {
 
     const showAllMuscles = () => {
         const muscleCircles = document.querySelectorAll('#muscle')
-        muscleCircles.forEach((circle) => {
-            const muscle = circle.getAttribute('data-muscle-name')
-            const x = parseFloat(circle.getAttribute('cx'))
-            const y = parseFloat(circle.getAttribute('cy'))
-            const r = parseFloat(circle.getAttribute('r'))
-            handleMuscle( {target: circle }, muscle, {x,y,r})
+        setLineCoordinatesMuscles(prevCoordinates => {
+            let updatedCoordinates = [...prevCoordinates]
+            muscleCircles.forEach((circle) => {
+                const muscle = circle.getAttribute('data-muscle-name')
+                const x = parseFloat(circle.getAttribute('cx'))
+                const y = parseFloat(circle.getAttribute('cy'))
+                const r = parseFloat(circle.getAttribute('r'))
+                // Check if the muscle is already shown
+                const existingIndex = updatedCoordinates.findIndex(coord => coord.muscle === muscle)
+                if (existingIndex === -1) {
+                    updatedCoordinates.push({ startX: x, startY: y, endX: x + 100, endY: y, muscle })
+                }
+            })
+            setShowAll(true)
+            return updatedCoordinates
         })
-        setShowAll(true)
     }
+    
 
     const hideAllMuscles = () => {
         setLineCoordinatesMuscles([])
@@ -92,15 +101,23 @@ const RehabMain = () => {
 
     const showAllBones = () => {
         const boneCircles = document.querySelectorAll('#bone')
-        boneCircles.forEach((circle) => {
-            const bone = circle.getAttribute('data-bone-name')
-            const x = parseFloat(circle.getAttribute('cx'))
-            const y = parseFloat(circle.getAttribute('cy'))
-            const r = parseFloat(circle.getAttribute('r'))
-            handleBone( {target: circle }, bone, {x,y,r})
+        setLineCoordinatesBones(prevCoordinates => {
+            let updatedCoordinates = [...prevCoordinates]
+            boneCircles.forEach((circle) => {
+                const bone = circle.getAttribute('data-bone-name')
+                const x = parseFloat(circle.getAttribute('cx'))
+                const y = parseFloat(circle.getAttribute('cy'))
+                const r = parseFloat(circle.getAttribute('r'))
+                const existingIndex = updatedCoordinates.findIndex(coord => coord.bone === bone)
+                if (existingIndex === -1) {
+                    updatedCoordinates.push({ startX: x, startY: y, endX: x - 100, endY: y, bone })
+                }
+            })
+            setShowBones(true)
+            return updatedCoordinates
         })
-        setShowBones(true)
     }
+    
 
     const hideAllBones = () => {
         setLineCoordinatesBones([])

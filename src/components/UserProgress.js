@@ -33,7 +33,7 @@ export const Graph = ({ userId, weights, dates, goal, deleteEndpoint, pointName 
                         }
                     },
                     {
-                        label: 'Goal',
+                        label: 'Gol',
                         borderColor: 'red',
                         borderDash: [5, 5],
                         data: Array(dates.length).fill(goal),

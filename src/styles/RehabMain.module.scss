@@ -53,6 +53,9 @@ body {
         .circle {
             animation: toggleEffect 2s infinite ease-in-out;
         }
+        text {
+            cursor: pointer;
+        }
     }
 }
 
