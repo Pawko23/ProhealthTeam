@@ -59,7 +59,9 @@ const RecipeDetails = () => {
 
         <div className={RecipeStyles['ingredients-box']}>
           <h3>Składniki</h3>
-            {recipe.ingredients}
+            {recipe.ingredients.map((ingredient) => (
+              <li>{ingredient}</li>
+            ))}
         </div>
 
         <div className={RecipeStyles['prepare-box']}>
