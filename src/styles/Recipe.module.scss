@@ -39,9 +39,12 @@ body {
     }
 
     .recipe-image {
-        width: 400px;
-        height: 350px;
-        background-image: url('../img/gym.jpg');
+        img {
+            width: 400px;
+            height: 350px;
+            background-size: cover;
+            background-position: center;
+        }
     }
 
     .macros-box {

@@ -67,7 +67,9 @@ const DietMain = () => {
                       className={DietMainStyles['recipe-box']}
                       key={recipe._id}
                     >
-                      <div className={DietMainStyles['recipe-img']}></div>
+                      <div className={DietMainStyles['recipe-img']}>
+                        <img src={recipe.image} alt={recipe.name}/>
+                      </div>
                       <p className={DietMainStyles['recipe-name']}>
                         {recipe.name}
                       </p>

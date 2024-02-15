@@ -35,10 +35,11 @@ body {
 .container .recipe-info .recipe-level {
   padding: 10px;
 }
-.container .recipe-image {
+.container .recipe-image img {
   width: 400px;
   height: 350px;
-  background-image: url("../img/gym.jpg");
+  background-size: cover;
+  background-position: center;
 }
 .container .macros-box {
   display: grid;

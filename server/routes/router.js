@@ -1,4 +1,5 @@
 const express = require('express')
+const mongoose = require('mongoose')
 const router = express.Router()
 const { Recipes, User, JumpProgress, StaminaProgress, EvalProgress, UserCalcs } = require('../models/schemas')
 const bcrypt = require('bcrypt')
@@ -7,10 +8,15 @@ require('dotenv/config')
 
 router.get('/recipes/:id', async (req, res) => {
   try {
+    console.log(req.params)
+    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+      return res.status(404).json({ message: 'Invalid recipe ID' });
+    }
     const recipeDetails = await Recipes.findById(req.params.id)
     if(!recipeDetails) {
       return res.status(404).json({ message: 'Recipe not found' })
     }
+    // console.log(recipeDetails.image)
     res.json(recipeDetails)
   } catch (error) {
     console.log(error)

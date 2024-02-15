@@ -3,6 +3,7 @@ const cors = require('cors')
 const bodyParser = require('body-parser') // mainly used for form post
 const router = require('./routes/router')
 const mongoose = require('mongoose')
+
 require('dotenv/config')
 
 const app = express()
@@ -17,6 +18,7 @@ app.use(cors(corsOptions))
 // app.use(express.json())
 app.use(bodyParser.json())
 app.use('/', router)
+
 
 
 const dbOptions = {useNewUrlParser:true, useUnifiedTopology:true}
