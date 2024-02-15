@@ -96,6 +96,7 @@ const Account = () => {
                         <PopupDefault 
                             info={'Czy na pewno usunąć konto?'}
                             onClose={()=>deleteUser()}
+                            preventClose={true}
                         />
                     )
                 }

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import styles from '../styles/PopupDefaultStyles.module.css'
 
-const PopupDefault = ( {info, onClose} ) => {
+const PopupDefault = ( {info, onClose, preventClose} ) => {
     useEffect(() => {
         document.body.style.overflow = 'hidden';
         return () => {
@@ -11,7 +11,7 @@ const PopupDefault = ( {info, onClose} ) => {
 
     const handleBackdropClick = (event) => {
         console.log('Backdrop')
-        if (event.target.classList.contains(styles['popup-container'])) {
+        if (!preventClose && event.target.classList.contains(styles['popup-container'])) {
             onClose();
         }
     };
