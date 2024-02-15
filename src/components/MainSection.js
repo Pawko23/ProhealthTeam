@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -27,6 +27,18 @@ const MainSection = () => {
       },
     ],
   };
+
+  const [isSelected, setIsSelected] = useState(false)
+  const [name, setName] = useState('')
+  const [phoneNumber, setPhoneNumber] = useState('')
+  const [email, setEmail] = useState('')
+
+  const displayContact = (name, phoneNumber, email) => {
+    setName(name)
+    setPhoneNumber(phoneNumber)
+    setEmail(email)
+    setIsSelected(!isSelected)
+  }
 
   return (
     <>
@@ -84,7 +96,7 @@ const MainSection = () => {
         <div className={MainStyles.wrapper}>
           <h1>Wsparcie profesjonalistów</h1>
           <Slider {...settings} className={MainStyles['professionals-container']}>
-            <div className={MainStyles['professional-box']}>
+            <div className={MainStyles['professional-box']} onClick={() => displayContact('Maciej', '123456789', 'maciej@gmail.com')}>
               <div className={MainStyles['professional-img']}>
                 <img src={dietProf} alt=''></img>
               </div>
@@ -145,6 +157,15 @@ const MainSection = () => {
               </div>
             </div>
           </Slider>
+          <div className={MainStyles['contact-info-container']}>
+          {isSelected &&
+              <div className={MainStyles['contact-info-box']}>
+                  <p>{name}</p>
+                  <p>{phoneNumber}</p>
+                  <p>{email}</p>
+              </div>
+          }
+          </div>
         </div>
       </section>
     </>

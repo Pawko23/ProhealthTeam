@@ -170,6 +170,16 @@ section {
      object-fit: cover;
   border-radius: 50%;
 }
+.professionals .wrapper .contact-info-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  overflow: hidden;
+  height: 200px;
+  transition: height 0.3s ease;
+}
 
 @media (min-width: 576px) {
   .options-boxes {
