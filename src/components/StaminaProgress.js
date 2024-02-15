@@ -94,6 +94,7 @@ const StaminaProgress = () => {
                         dates={graphDates}
                         goal={graphGoal}
                         deleteEndpoint={'/stamina-progress'}
+                        pointName={'Wytrzymałość'}
                     />
                 </div>
             </div>

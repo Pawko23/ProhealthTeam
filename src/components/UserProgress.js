@@ -10,7 +10,7 @@ import { jwtDecode } from 'jwt-decode'
 import { Chart } from 'chart.js/auto'
 
 
-export const Graph = ({ userId, weights, dates, goal, deleteEndpoint }) => {
+export const Graph = ({ userId, weights, dates, goal, deleteEndpoint, pointName }) => {
     
     const [selectedPoints, setSelectedPoints] = useState([])
 
@@ -22,7 +22,7 @@ export const Graph = ({ userId, weights, dates, goal, deleteEndpoint }) => {
                 labels: dates,
                 datasets: [
                     {
-                        label: 'Weight',
+                        label: pointName,
                         borderColor: 'blue',
                         backgroundColor: 'blue',
                         data: weights,
@@ -71,7 +71,7 @@ export const Graph = ({ userId, weights, dates, goal, deleteEndpoint }) => {
             chart.destroy()
         }
 
-    }, [weights, dates, goal, selectedPoints])
+    }, [weights, dates, goal, selectedPoints, pointName])
 
 
     const handleDelete = async () => {
@@ -194,6 +194,7 @@ const Weight = () => {
                         dates={graphDates}
                         goal={graphGoal}
                         deleteEndpoint={'/userprogress/weight'}
+                        pointName={'Waga'}
                         // weights={graphWeights}
                         // dates={graphDates}
                         // goal={goal}

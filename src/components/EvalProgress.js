@@ -94,6 +94,7 @@ const EvalProgress = () => {
                         dates={graphDates}
                         goal={graphGoal}
                         deleteEndpoint={'/eval-progress'}
+                        pointName={'Eval'}
                     />
                 </div>
             </div>

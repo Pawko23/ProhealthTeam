@@ -94,6 +94,7 @@ const JumpProgress = () => {
                         dates={graphDates}
                         goal={graphGoal}
                         deleteEndpoint={'/jump-progress'}
+                        pointName={'Wyskok'}
                     />
                 </div>
             </div>
