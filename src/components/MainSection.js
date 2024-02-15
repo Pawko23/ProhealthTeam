@@ -28,16 +28,23 @@ const MainSection = () => {
     ],
   };
 
-  const [isSelected, setIsSelected] = useState(false)
+  const [isSelected, setIsSelected] = useState(null)
   const [name, setName] = useState('')
   const [phoneNumber, setPhoneNumber] = useState('')
   const [email, setEmail] = useState('')
 
   const displayContact = (name, phoneNumber, email) => {
-    setName(name)
-    setPhoneNumber(phoneNumber)
-    setEmail(email)
-    setIsSelected(!isSelected)
+    if(isSelected === name) {
+      setName(name)
+      setPhoneNumber(phoneNumber)
+      setEmail(email)
+      setIsSelected(null)
+    } else {
+      setName(name)
+      setPhoneNumber(phoneNumber)
+      setEmail(email)
+      setIsSelected(name)
+    }
   }
 
   return (
@@ -96,7 +103,7 @@ const MainSection = () => {
         <div className={MainStyles.wrapper}>
           <h1>Wsparcie profesjonalistów</h1>
           <Slider {...settings} className={MainStyles['professionals-container']}>
-            <div className={MainStyles['professional-box']} onClick={() => displayContact('Maciej', '123456789', 'maciej@gmail.com')}>
+            <div className={MainStyles['professional-box']} onClick={() => displayContact('Aleksander', '123456789', 'aleksander@gmail.com')}>
               <div className={MainStyles['professional-img']}>
                 <img src={dietProf} alt=''></img>
               </div>
@@ -106,7 +113,7 @@ const MainSection = () => {
                 </div>
               </div>
             </div>
-            <div className={MainStyles['professional-box']}>
+            <div className={MainStyles['professional-box']} onClick={() => displayContact('Konrad', '123456789', 'konrad@gmail.com')}>
               <div className={MainStyles['professional-img']}>
                 <img src={trainerProf} alt=''></img>
               </div>
@@ -116,7 +123,7 @@ const MainSection = () => {
                 </div>
               </div>
             </div>
-            <div className={MainStyles['professional-box']}>
+            <div className={MainStyles['professional-box']} onClick={() => displayContact('Paweł', '123456789', 'paweł@gmail.com')}>
               <div className={MainStyles['professional-img']}>
                 <img src={rehabProf} alt=''></img>
               </div>
@@ -126,7 +133,7 @@ const MainSection = () => {
                 </div>
               </div>
             </div>
-            <div className={MainStyles['professional-box']}>
+            <div className={MainStyles['professional-box']} onClick={() => displayContact('Emil', '123456789', 'emil@gmail.com')}>
               <div className={MainStyles['professional-img']}>
                 <img src={rehabProf} alt=''></img>
               </div>
@@ -136,7 +143,7 @@ const MainSection = () => {
                 </div>
               </div>
             </div>
-            <div className={MainStyles['professional-box']}>
+            <div className={MainStyles['professional-box']} onClick={() => displayContact('Kasia', '123456789', 'kasia@gmail.com')}>
               <div className={MainStyles['professional-img']}>
                 <img src={rehabProf} alt=''></img>
               </div>
@@ -146,7 +153,7 @@ const MainSection = () => {
                 </div>
               </div>
             </div>
-            <div className={MainStyles['professional-box']}>
+            <div className={MainStyles['professional-box']} onClick={() => displayContact('Maciej', '123456789', 'maciej@gmail.com')}>
               <div className={MainStyles['professional-img']}>
                 <img src={rehabProf} alt=''></img>
               </div>
