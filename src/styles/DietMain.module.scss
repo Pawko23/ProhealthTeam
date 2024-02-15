@@ -194,8 +194,8 @@ nav {
       border-radius: 10px;
 
       .recipe-img {
-        position: absolute;
-        top: 0;
+        width: 100%;
+        height: 100%;
         // background-image: url('../img/pasta.jpg');
         img {
           border-top-left-radius: 10px;
