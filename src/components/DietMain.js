@@ -20,6 +20,10 @@ const DietMain = () => {
   }
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     axios
       .get('/recipes')
       .then((response) => {

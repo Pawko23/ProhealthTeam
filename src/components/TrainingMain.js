@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ExercisePopup from './ExercisePopup';
 import TrainingMainStyles from '../styles/TrainingMain.module.css';
@@ -61,6 +61,10 @@ const ExerciseType = ({ typeName, specific, exercises, isSelected, onTypeClick }
 const TrainingMain = () => {  
   const [selectedType, setSelectedType] = useState(null);
 
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   //Sample data
   const exerciseTypes = [

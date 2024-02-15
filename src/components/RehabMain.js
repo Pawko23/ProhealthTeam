@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from '../styles/RehabMain.module.css'
 import RehabHero from '../img/rehab-hero-big.jpg'
 import HumanModel from '../img/bones-muscles.png'
@@ -9,6 +9,10 @@ import PopupDefault from "./PopupDefault";
 
 
 const RehabMain = () => {
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
 
     const [lineCoordinatesMuscles, setLineCoordinatesMuscles] = useState([])
     const [lineCoordinatesBones, setLineCoordinatesBones] = useState([])
