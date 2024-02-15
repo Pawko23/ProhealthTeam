@@ -13,6 +13,7 @@ const RegisterPage = () => {
     const [date, setDate] = useState([])
     const [passwordPatternDisplay, setPasswordPatternDisplay] = useState( { display: 'none' } )
     const [emailPatternDisplay, setEmailPatternDisplay] = useState( { display: 'none' } )
+    const [userExists, setUserExists] = useState(false)
     const navigate = useNavigate()
 
 
@@ -63,6 +64,7 @@ const RegisterPage = () => {
                 navigate('/')
             })
             .catch((error) => {
+                setUserExists(true)
                 console.log('Unable to register user')
             })
         }
@@ -73,6 +75,9 @@ const RegisterPage = () => {
             <div className={RegisterStyles.container}>
                 <div className={RegisterStyles['login-box']}>
                     <form onSubmit={handleSubmit}>
+                        {userExists && 
+                            <p>Taki użytkownik już istnieje!</p>
+                        }
                         <label>Adres email:</label>
                         <input
                             type="text" 

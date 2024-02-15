@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from '../styles/RehabMain.module.css'
-import TrainingChosenHero from '../img/training-hero.jpg'
+import RehabHero from '../img/rehab-hero-big.jpg'
 import HumanModel from '../img/bones-muscles.png'
 import Navbar from "./Navbar";
 import Header from "./Header";
@@ -107,8 +107,9 @@ const RehabMain = () => {
         <>
             <Navbar />
             <Header 
-                heroImage={TrainingChosenHero}
+                heroImage={RehabHero}
                 title={'Rehabilitacja'}
+                gradient={'linear-gradient(45deg, rgba(8, 206, 255, 0.75), rgba(8, 24, 255, 0.75))'}
             />
             <section className={styles['model-container']}>
                 <div className={styles['muscles-button-box']}>
