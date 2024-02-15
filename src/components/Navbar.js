@@ -28,6 +28,7 @@ const Navbar = () => {
             })}>
                 <div className={NavbarStyles['menu-container']}>
                     <ul>
+                        <li><Link to="/">Strona główna</Link></li>
                         <li><Link to='/recipes'>Dieta</Link></li>
                         <li><Link to='/training'>Trening</Link></li>
                         <li><Link to='/rehabilitation'>Rehabilitacja</Link></li>

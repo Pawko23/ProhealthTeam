@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Navbar from './Navbar'
 import Header from './Header';
 import MainSection from './MainSection';
@@ -6,6 +6,9 @@ import Footer from './Footer';
 import HomePageHero from '../img/hero-main-big.jpg'
 
 const HomePage = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     return (
         <>
             <Navbar />
