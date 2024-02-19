@@ -178,14 +178,27 @@ section {
   border-radius: 50%;
 }
 .professionals .wrapper .contact-info-container {
-  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  overflow: hidden;
   height: 200px;
-  transition: height 0.3s ease;
+}
+.professionals .wrapper .contact-info-container .contact-info-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  box-shadow: 0 0 5px black;
+  padding: 10px;
+  height: 200px;
+}
+.professionals .wrapper .contact-info-container .contact-info-box .info {
+  text-align: center;
+  padding: 5px;
+}
+.professionals .wrapper .contact-info-container .contact-info-box .info p {
+  padding: 5px;
 }
 
 @media (min-width: 576px) {

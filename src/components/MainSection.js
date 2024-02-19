@@ -167,9 +167,11 @@ const MainSection = () => {
           <div className={MainStyles['contact-info-container']}>
           {isSelected &&
               <div className={MainStyles['contact-info-box']}>
+                <div className={MainStyles['info']}>
                   <p>{name}</p>
                   <p>{phoneNumber}</p>
                   <p>{email}</p>
+                </div>
               </div>
           }
           </div>
