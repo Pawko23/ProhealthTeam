@@ -19,48 +19,55 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
     width: 100%;
 
-    .recipe-info {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin: 50px auto;
-        padding: 10px;
-
-        .recipe-name {
-            padding: 10px;
-        }
-
-        .recipe-level {
-            padding: 10px;
-        }
-    }
-
     .recipe-image {
+        margin-top: 50px;
         img {
             width: 400px;
             height: 350px;
             background-size: cover;
             background-position: center;
+            border-radius: 8px;
+        }
+    }
+    
+    .recipe-info {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .recipe-name, .recipe-level {
+            padding: 10px;
+            font-size: 1.7rem;
+            span {
+                font-weight: 700;
+            }
         }
     }
 
+    .portion-info {
+        margin-top: 20px;
+        font-size: 1.7rem;
+        font-weight: 500; 
+    }
     .macros-box {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(2, 1fr);
         width: 400px;
         height: 350px;
-        border: 2px solid black;
-        margin: 50px auto;
+        margin: 20px auto;
 
         .box {
             display: flex;
             justify-content: center;
             align-items: center;
-            border: 2px solid black;
+            border-radius: 8px;
+            margin: 5px;
+            border: 1px solid black;
+            font-size: 1.7rem;
         }
     }
 
@@ -68,13 +75,139 @@ body {
         display: flex;
         flex-direction: column;
         width: 400px;
+
+        h3 {
+            font-size: 2rem;
+        }
     }
 
     .prepare-box {
+        h3 {
+            font-size: 2rem;
+        }
         width: 400px;
         text-align: justify;
         margin: 50px auto;
     }
 
+}
+
+@media (min-width: 768px) {
+    .container {
+        .recipe-image {
+            margin-top: 50px;
+            img {
+                width: 430px;
+                height: 380px;
+            }
+        }
+        
+        .recipe-info {    
+            .recipe-name, .recipe-level {
+                padding: 10px;
+            }
+        }
+    
+        .portion-info {
+            margin-top: 20px;
+            font-weight: 500; 
+        }
+        .macros-box {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            width: 400px;
+            height: 350px;
+            margin: 20px auto;
+    
+            .box {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 8px;
+                margin: 5px;
+                border: 1px solid black;
+            }
+        }
+    
+        .ingredients-box {
+            display: flex;
+            flex-direction: column;
+            width: 400px;
+        }
+    
+        .prepare-box {
+            width: 400px;
+            text-align: justify;
+            margin: 50px auto;
+        }
+    
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        justify-items: center;
+        gap: 0;
+        .grid-box1 {
+            .recipe-image {
+                margin-top: 50px;
+                img {
+                    width: 430px;
+                    height: 380px;
+                }
+            }
+            
+            .recipe-info {    
+                .recipe-name, .recipe-level {
+                    padding: 10px;
+                }
+            }
+        }
+     
+        .grid-box2 {
+            .portion-info {
+                margin-top: 20px;
+                font-weight: 500; 
+            }
+            .macros-box {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(2, 1fr);
+                width: 400px;
+                height: 350px;
+                margin: 20px auto;
+        
+                .box {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 8px;
+                    margin: 5px;
+                    border: 1px solid black;
+                }
+            }
+        }
+    
+        .grid-box3 {
+            .ingredients-box {
+                display: flex;
+                flex-direction: column;
+                width: 400px;
+            }
+        }
+    
+        .grid-box4 {
+            .prepare-box {
+                width: 400px;
+                text-align: justify;
+                // margin: 50px auto;
+            }
+        }
+
+    }
 }
 
