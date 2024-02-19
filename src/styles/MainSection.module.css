@@ -143,6 +143,7 @@ section {
 }
 
 .professionals {
+  margin-top: 50px;
   position: relative;
   display: flex;
   justify-content: center;
@@ -158,6 +159,16 @@ section {
   text-transform: uppercase;
   letter-spacing: 2px;
   padding: 10px;
+}
+.professionals h6 {
+  text-align: center;
+  color: #000;
+  font-size: 1.5rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding: 10px;
+  margin-top: 100px;
 }
 .professionals .professionals-container {
   margin-top: 50px;
@@ -278,6 +289,9 @@ section {
   .professionals h1 {
     font-size: 3.3rem;
   }
+  .professionals h6 {
+    font-size: 1.8rem;
+  }
   .professionals .professionals-container {
     margin-top: 50px;
   }
@@ -330,6 +344,9 @@ section {
   }
   .professionals h1 {
     font-size: 3.8rem;
+  }
+  .professionals h6 {
+    font-size: 2.1rem;
   }
   .professionals .professionals-container {
     margin-top: 50px;

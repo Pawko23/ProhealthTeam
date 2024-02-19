@@ -116,6 +116,7 @@ const MainSection = () => {
       <section className={MainStyles.professionals}>
         <div className={MainStyles.wrapper}>
           <h1>Wsparcie profesjonalistów</h1>
+          <h6>Kliknij aby wyświetlić kontakt</h6>
           <Slider {...settings} className={MainStyles['professionals-container']}>
             <div className={MainStyles['professional-box']} onClick={() => displayContact('Aleksander', '123456789', 'aleksander@gmail.com')}>
               <div className={MainStyles['professional-img']}>
