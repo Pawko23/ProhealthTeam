@@ -61,7 +61,7 @@ const MainSection = () => {
                 zwizualizowany progres wagi
               </p>
             </div>
-            <Link to="/recipes" className={MainStyles['check-btn']}>Sprawdź</Link>
+            <Link to="/recipes" className={MainStyles['check-btn']}><p>Sprawdź</p></Link>
           </div>
           <div className={MainStyles['options-box']}>
             <h3>Trening</h3>

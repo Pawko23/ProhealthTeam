@@ -48,7 +48,7 @@ const Navbar = () => {
             </div>
             <nav>
                 <ul>
-                    <li><Link to="/" className={NavbarStyles.logo}>ProhealthTeam</Link></li>
+                    <li><Link to="/" className={`${NavbarStyles.logo} ${NavbarStyles['no-transition']}`}>ProhealthTeam</Link></li>
                     <li><Link to='/recipes'>Dieta</Link></li>
                     <li><Link to='/training'>Trening</Link></li>
                     <li><Link to='/rehabilitation'>Rehabilitacja</Link></li>
