@@ -33,66 +33,74 @@ section {
 .options-boxes h1 {
   text-align: center;
   color: #000;
-  font-size: 4rem;
+  font-size: 2.8rem;
   font-weight: 300;
   text-transform: uppercase;
   letter-spacing: 2px;
   padding: 10px;
   margin-top: 100px;
 }
-.options-boxes .options-box {
+.options-boxes .options-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.options-boxes .options-container .options-box {
   margin-top: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.options-boxes .options-box h3 {
+.options-boxes .options-container .options-box h3 {
   font-size: 2rem;
   letter-spacing: 2px;
   font-weight: 300;
   padding: 20px;
 }
-.options-boxes .options-box .options-box-img {
+.options-boxes .options-container .options-box .options-box-img {
   border-radius: 15px;
-  height: 500px;
-  width: 500px;
+  height: 400px;
+  width: 400px;
   background-size: cover;
 }
-.options-boxes .options-box .options-box-info {
+.options-boxes .options-container .options-box .options-box-info {
   font-size: 1.5rem;
   width: 500px;
 }
-.options-boxes .options-box .options-box-info .options-box-text {
+.options-boxes .options-container .options-box .options-box-info .options-box-text {
   padding: 20px;
   text-align: center;
 }
-.options-boxes .options-box .diet {
+.options-boxes .options-container .options-box .diet {
   background-image: url("../img/diet.jpg");
 }
-.options-boxes .options-box .gym {
+.options-boxes .options-container .options-box .gym {
   background-image: url("../img/gym.jpg");
 }
-.options-boxes .options-box .rehab {
+.options-boxes .options-container .options-box .rehab {
   background-image: url("../img/rehab.jpg");
 }
-.options-boxes .options-box .check-btn {
+.options-boxes .options-container .options-box .check-btn {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 10px;
-  height: 45px;
-  width: 150px;
+  height: 40px;
+  width: 130px;
   text-transform: uppercase;
   text-decoration: none;
   text-align: center;
+  font-size: 1.5rem;
   letter-spacing: 1px;
   color: #000;
   border: 1px solid black;
   border-radius: 20px;
   transition: all 0.3s;
 }
-.options-boxes .options-box .check-btn:hover {
+.options-boxes .options-container .options-box .check-btn:hover {
   transform: scale(1.1);
 }
 
@@ -144,7 +152,7 @@ section {
 .professionals h1 {
   text-align: center;
   color: #000;
-  font-size: 4rem;
+  font-size: 2.8rem;
   font-weight: 300;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -152,6 +160,8 @@ section {
 }
 .professionals .professionals-container {
   margin-top: 50px;
+  margin: 0 auto;
+  width: 100%;
 }
 .professionals .professionals-container .professional-box {
   position: relative;
@@ -167,7 +177,7 @@ section {
 .professionals .professionals-container .professional-box .professional-img {
   position: absolute;
   top: 50%;
-  left: 90%;
+  left: 70%;
   transform: translate(-50%, -50%);
 }
 .professionals .professionals-container .professional-box .professional-img img {
@@ -202,8 +212,20 @@ section {
 }
 
 @media (min-width: 576px) {
-  .options-boxes {
-    flex-direction: column;
+  .options-boxes h1 {
+    font-size: 3rem;
+  }
+  .options-boxes .options-container .options-box h3 {
+    font-size: 2.4rem;
+  }
+  .options-boxes .options-container .options-box .options-box-text {
+    font-size: 1.5rem;
+  }
+  .about h1 {
+    font-size: 3rem;
+  }
+  .about .about-box h3 {
+    font-size: 2.4rem;
   }
   .professionals .professionals-container {
     margin-top: 50px;
@@ -238,81 +260,154 @@ section {
 }
 @media (min-width: 768px) {
   .options-boxes h1 {
-    font-size: 4.5rem;
+    font-size: 3.3rem;
   }
-  .options-boxes .options-box h3 {
-    font-size: 2.5rem;
+  .options-boxes .options-container .options-box h3 {
+    font-size: 2.7rem;
   }
-  .options-boxes .options-box .options-box-img {
-    height: 550px;
-    width: 550px;
-  }
-  .options-boxes .options-box .options-box-info {
-    font-size: 1.7rem;
-    width: 550px;
+  .options-boxes .options-container .options-box .options-box-text {
+    font-size: 1.8rem;
   }
   .about h1 {
-    font-size: 4.5rem;
+    font-size: 3.3rem;
   }
-  .about .about-container {
-    flex-direction: row;
+  .about .about-box h3 {
+    font-size: 2.7rem;
   }
-  .about .about-container .about-box {
-    padding: 20px;
+  .professionals h1 {
+    font-size: 3.3rem;
   }
-  .about .about-container .about-box h3 {
-    font-size: 2.5rem;
+  .professionals .professionals-container {
+    margin-top: 50px;
+  }
+  .professionals .professionals-container .professional-box {
+    margin: 3em;
+    padding: 3em;
+    border-radius: 8px;
+    box-shadow: 3px 3px 10px rgba(46, 46, 46, 0.1803921569);
+    transition: transform 0.3s;
+    cursor: grab;
+  }
+  .professionals .professionals-container .professional-box:hover {
+    transform: scale(0.95);
+  }
+  .professionals .professionals-container .professional-box .professional-img {
+    position: absolute;
+    top: 50%;
+    left: 85%;
+    transform: translate(-50%, -50%);
+  }
+  .professionals .professionals-container .professional-box .professional-img img {
+    width: 80px;
+    height: 80px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    border-radius: 50%;
+  }
+  .professionals .professionals-container .professional-box .professional-info .professional-text p {
+    font-size: 1.5rem;
   }
 }
 @media (min-width: 992px) {
   .options-boxes h1 {
-    font-size: 5rem;
+    font-size: 3.8rem;
   }
-  .options-boxes .options-box h3 {
-    font-size: 3rem;
+  .options-boxes .options-container .options-box h3 {
+    font-size: 3.2rem;
   }
-  .options-boxes .options-box .options-box-img {
-    height: 600px;
-    width: 600px;
-  }
-  .options-boxes .options-box .options-box-info {
-    font-size: 1.9rem;
-    width: 600px;
+  .options-boxes .options-container .options-box .options-box-text {
+    font-size: 2.3rem;
   }
   .about h1 {
-    font-size: 5rem;
+    font-size: 3.8rem;
+  }
+  .about .about-container {
+    flex-direction: row;
   }
   .about .about-container .about-box h3 {
     font-size: 3rem;
   }
+  .professionals h1 {
+    font-size: 3.8rem;
+  }
+  .professionals .professionals-container {
+    margin-top: 50px;
+  }
+  .professionals .professionals-container .professional-box {
+    margin: 3em;
+    padding: 3em;
+    border-radius: 8px;
+    box-shadow: 3px 3px 10px rgba(46, 46, 46, 0.1803921569);
+    transition: transform 0.3s;
+    cursor: grab;
+  }
+  .professionals .professionals-container .professional-box:hover {
+    transform: scale(0.95);
+  }
+  .professionals .professionals-container .professional-box .professional-img {
+    position: absolute;
+    top: 50%;
+    left: 85%;
+    transform: translate(-50%, -50%);
+  }
+  .professionals .professionals-container .professional-box .professional-img img {
+    width: 80px;
+    height: 80px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    border-radius: 50%;
+  }
+  .professionals .professionals-container .professional-box .professional-info .professional-text p {
+    font-size: 2.1rem;
+  }
 }
 @media (min-width: 1100px) {
-  .options-boxes {
-    margin-top: 150px;
-  }
-  .options-boxes h1 {
-    font-size: 5rem;
-  }
   .options-boxes .options-container {
-    position: relative;
-    display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-  .options-boxes .options-container .options-box {
-    padding: 50px;
   }
   .options-boxes .options-container .options-box h3 {
-    font-size: 3rem;
+    font-size: 3.4rem;
   }
-  .options-boxes .options-container .options-box .options-box-img {
-    height: 400px;
-    width: 400px;
+  .options-boxes .options-container .options-box .options-box-text {
+    font-size: 2.5rem;
   }
-  .options-boxes .options-container .options-box .options-box-info {
-    font-size: 1.9rem;
-    width: 400px;
+  .about h1 {
+    font-size: 4rem;
+  }
+  .about .about-box h3 {
+    font-size: 3.4rem;
+  }
+  .professionals h1 {
+    font-size: 4rem;
+  }
+  .professionals .professionals-container {
+    margin-top: 50px;
+  }
+  .professionals .professionals-container .professional-box {
+    margin: 3em;
+    padding: 3em;
+    border-radius: 8px;
+    box-shadow: 3px 3px 10px rgba(46, 46, 46, 0.1803921569);
+    transition: transform 0.3s;
+    cursor: grab;
+  }
+  .professionals .professionals-container .professional-box:hover {
+    transform: scale(0.95);
+  }
+  .professionals .professionals-container .professional-box .professional-img {
+    position: absolute;
+    top: 50%;
+    left: 85%;
+    transform: translate(-50%, -50%);
+  }
+  .professionals .professionals-container .professional-box .professional-img img {
+    width: 80px;
+    height: 80px;
+    -o-object-fit: cover;
+       object-fit: cover;
+    border-radius: 50%;
+  }
+  .professionals .professionals-container .professional-box .professional-info .professional-text p {
+    font-size: 2.3rem;
   }
 }/*# sourceMappingURL=MainSection.module.css.map */
