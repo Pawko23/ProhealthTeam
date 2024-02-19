@@ -65,9 +65,7 @@ const RecipeDetails = () => {
         </div>
 
         <div className={RecipeStyles['prepare-box']}>
-          <p className={RecipeStyles.description}>Płatki zagotuj i gotuje przez około 2 min ciągle mieszając, aby się nie przypaliły.
-          Płatki zagotuj i gotuje przez około 2 min ciągle mieszając, aby się nie przypaliły.
-          Płatki zagotuj i gotuje przez około 2 min ciągle mieszając, aby się nie przypaliły.
+          <p className={RecipeStyles.description}>{recipe.description}
           </p>
         </div>
       </div>

@@ -84,6 +84,7 @@ section {
   background-image: url("../img/rehab.jpg");
 }
 .options-boxes .options-container .options-box .check-btn {
+  margin: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
