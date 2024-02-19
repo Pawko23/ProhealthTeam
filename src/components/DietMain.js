@@ -37,13 +37,17 @@ const DietMain = () => {
   return (
     <>
       <Navbar />
-      <Header heroImage={DietPageHero} />
+      <Header 
+        heroImage={DietPageHero} 
+        gradient={'linear-gradient(45deg, rgba(8, 206, 255, 0.75), rgba(8, 24, 255, 0.75))'}
+        title={'Dieta'}
+      />
       <div className={DietMainStyles.container}>
         <div className={DietMainStyles['diet-buttons']}>
-          <button className={DietMainStyles['diet-btn']} id='progress-btn'><Link to='/bmicalculator'>Kalkulator BMI</Link></button>
+          <button className={DietMainStyles['diet-btn']} id='progress-btn'><Link to='/bmicalculator' className={DietMainStyles['link-to']}>Kalkulator BMI</Link></button>
           <button className={DietMainStyles['diet-btn']} id='progress-btn'>
-            {isLoggedIn && <Link to='/userprogress'>Mój Progres</Link>}
-            {!isLoggedIn && <Link to='/login'>Mój Progres</Link>}
+            {isLoggedIn && <Link to='/userprogress' className={DietMainStyles['link-to']}>Mój Progres</Link>}
+            {!isLoggedIn && <Link to='/login' className={DietMainStyles['link-to']}>Mój Progres</Link>}
           </button>
         </div>
 
@@ -51,7 +55,7 @@ const DietMain = () => {
           <input
             type='text'
             className={DietMainStyles['search-bar-input']}
-            placeholder='Szukaj...'
+            placeholder='Wyszukaj po nazwie lub ulubionym produkcie...'
             value={searchQuery}
             onChange={searchInput}
           ></input>

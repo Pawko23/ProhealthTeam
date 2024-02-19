@@ -26,8 +26,10 @@ body {
   justify-content: center;
   align-items: center;
   margin: 10px;
+  position: relative;
 }
 .container .diet-buttons .diet-btn {
+  position: relative;
   bottom: 5px;
   text-align: center;
   color: #000;
@@ -41,8 +43,37 @@ body {
   background-color: transparent;
   cursor: pointer;
 }
-.container .diet-buttons .diet-btn:hover {
-  border: 1px solid green;
+.container .diet-buttons .diet-btn .link-to {
+  font-size: 1.5rem;
+  color: #000;
+  text-decoration: none;
+}
+.container .diet-buttons .diet-btn .link-to::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: royalblue;
+  transition: width 0.3s;
+}
+.container .diet-buttons .diet-btn .link-to:hover::after {
+  width: 50%;
+}
+.container .diet-buttons .diet-btn .link-to::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 2px;
+  background-color: royalblue;
+  transition: width 0.3s, right 0.3s;
+}
+.container .diet-buttons .diet-btn .link-to:hover::before {
+  width: 50%;
+  right: 0;
 }
 .container .search-bar-box {
   margin-top: 20px;
@@ -52,8 +83,8 @@ body {
   align-items: center;
 }
 .container .search-bar-box .search-bar-input {
-  width: 250px;
-  height: 30px;
+  width: 350px;
+  height: 50px;
   padding: 10px;
   outline: none;
   border: none;
@@ -89,6 +120,7 @@ body {
   height: 250px;
   box-shadow: 0px 0px 5px grey;
   border-radius: 10px;
+  transition: transform 0.3s;
 }
 .container .recipe-box .recipe-img {
   width: 100%;
@@ -109,22 +141,11 @@ body {
   font-size: 1.5rem;
   color: #000;
 }
-
-@media (max-width: 576px) {
-  nav ul {
-    visibility: hidden;
-  }
+.container .recipe-box:hover {
+  transform: scale(1.1);
 }
+
 @media (min-width: 576px) {
-  .burger-btn {
-    font-size: 3.5rem;
-  }
-  .burger-menu .menu-container ul li a {
-    font-size: 3rem;
-  }
-  nav ul {
-    visibility: hidden;
-  }
   .container {
     display: flex;
     flex-direction: row;
@@ -136,25 +157,6 @@ body {
 }
 @media (min-width: 768px) {
   .burger-btn {
-    font-size: 4rem;
-  }
-}
-@media (min-width: 992px) {
-  .burger-btn {
-    visibility: hidden;
-  }
-  .burger-menu .menu-container ul li a {
-    font-size: 3.5rem;
-  }
-  nav {
-    display: flex;
-  }
-  nav ul {
-    visibility: visible;
-  }
-}
-@media (min-width: 1100px) {
-  .burger-menu .menu-container ul li a {
     font-size: 4rem;
   }
 }/*# sourceMappingURL=DietMain.module.css.map */
