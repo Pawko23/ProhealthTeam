@@ -27,14 +27,30 @@ footer {
     left: 50%;
     transform: translate(-50%, -50%);
     color: #fff;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
   }
 }
 
 @media (min-width: 576px) {
   footer {
     .footer-text {
+      font-size: 2.1rem;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  footer {
+    .footer-text {
       font-size: 2.3rem;
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  footer {
+    .footer-text {
+      font-size: 2.5rem;
     }
   }
 }

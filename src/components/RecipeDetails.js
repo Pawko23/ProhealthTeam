@@ -41,7 +41,7 @@ const RecipeDetails = () => {
     <>
       <Navbar />
       <div className={RecipeStyles.container}>
-        <div className={RecipeDetails['grid-box1']}>
+        <div className={RecipeDetails['flex-box1']}>
           <div className={RecipeStyles['recipe-image']}>
             <img src={`/${recipe.image}`} alt={recipe.name}/>
           </div>
