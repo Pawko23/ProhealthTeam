@@ -74,24 +74,19 @@ const Account = () => {
                 title={'ProhealthTeam'}    
             />
             <div className={styles['account-container']}>
-                <div className={styles['user-box']}>
-                    <div>
+                <div className={styles['user-container']}>
+                    <div className={styles['user-box']}>
                         <p>Login: {userLogin}</p>
                         <p>email: {userEmail}</p>
                     </div>
                 </div>
-                <div className={styles['fav-recipes']}>
-                    <div>
-                        <ul></ul>
-                    </div>
-                </div>
-                <div className={styles['calcs-info']}>
-                    <div>
+                <div className={styles['calcs-container']}>
+                    <div className={styles['calcs-box']}>
                         <p>BMI: {userBmi}</p>
                         <p>Kcal intake: {userIntake}</p>
                     </div>
                 </div>
-                <button className={styles['delete-button']} onClick={togglePopup}>Usuń konto</button>
+                <button className={styles['delete-btn']} onClick={togglePopup}>Usuń konto</button>
                 {showPopup && (
                         <PopupDefault 
                             info={'Czy na pewno usunąć konto?'}
@@ -103,6 +98,7 @@ const Account = () => {
                     )
                 }
             </div>
+            <Footer />
         </>
     )
 }
