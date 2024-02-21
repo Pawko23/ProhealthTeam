@@ -333,7 +333,7 @@ const Kcal = () => {
                     </div>
                     <button type='submit' onClick={calculate} disabled={isButtonDisabled()} className={`${ProgressStyles['calc-btn']} ${!isButtonDisabled() ? ProgressStyles['enabled'] : ''}`}>Oblicz</button>
                     {tmr !== 0 && bmr !== 0 && (
-                        <button onClick={saveIntake}>Zapisz</button>
+                        <button onClick={saveIntake} className={ProgressStyles['save-btn']}>Zapisz</button>
                     )}
                 </div>
                 <div className={ProgressStyles['intake-results']}>
