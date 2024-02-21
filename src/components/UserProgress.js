@@ -216,7 +216,7 @@ const Kcal = () => {
         { name: "Umiarkowana", description: "Osoba wykonująca pracę na stojąco", checked: false, pointer: 1.6 },
         { name: "Duża", description: "Osoba prowadząca aktywny tryb życia, regularnie ćwicząca", checked: false, pointer: 1.75 },
         { name: "Bardzo duża", description: "Osoba prowadząca bardzo aktywny tryb życia, codziennie ćwicząca", checked: false, pointer: 2.0 },
-        { name: "Prof", description: "Osoba zawodowo uprawiająca sport", checked: false, pointer: 2.4 }
+        { name: "Profesjonalista", description: "Osoba zawodowo uprawiająca sport", checked: false, pointer: 2.4 }
     ]);
 
     const handleActivity = (index) => {
@@ -308,18 +308,20 @@ const Kcal = () => {
                         onChange={(e) => setHeight(e.target.value)}
                         value={height}
                     />
-                    <label>Kobieta</label>
-                    <input type='radio'
-                        value='female'
-                        checked={gender==='female'}
-                        onChange={() => setGender('female')}
-                    />
-                    <label>Mężczyzna</label>
-                    <input type='radio'
-                        value='male'
-                        checked={gender==='male'}
-                        onChange={() => setGender('male')}
-                    />
+                    <div className={ProgressStyles['gender-box']}>
+                        <input type='radio'
+                            value='female'
+                            checked={gender==='female'}
+                            onChange={() => setGender('female')}
+                        />
+                        <label>Kobieta</label>
+                        <input type='radio'
+                            value='male'
+                            checked={gender==='male'}
+                            onChange={() => setGender('male')}
+                        />
+                        <label>Mężczyzna</label>
+                    </div>
                     <p>Aktywność</p>
                     <div className={ProgressStyles['activity-box']}>
                     {activity.map((item, index) => (
@@ -329,7 +331,7 @@ const Kcal = () => {
                             </div>
                     ))}
                     </div>
-                    <button type='submit' onClick={calculate} disabled={isButtonDisabled()}>Oblicz</button>
+                    <button type='submit' onClick={calculate} disabled={isButtonDisabled()} className={`${ProgressStyles['calc-btn']} ${!isButtonDisabled() ? ProgressStyles['enabled'] : ''}`}>Oblicz</button>
                     {tmr !== 0 && bmr !== 0 && (
                         <button onClick={saveIntake}>Zapisz</button>
                     )}

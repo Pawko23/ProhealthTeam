@@ -83,19 +83,71 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  height: 700px;
 }
 .kcal-container .intake-box {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 100%;
+}
+.kcal-container .intake-box input[type=number] {
+  padding: 10px;
+  margin: 5px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+.kcal-container .intake-box .gender-box {
+  margin: 15px;
+}
+.kcal-container .intake-box .gender-box input {
+  margin: 5px;
+  padding: 5px;
+}
+.kcal-container .intake-box .gender-box label {
+  margin: 5px;
+  padding: 5px;
+}
+.kcal-container .intake-box p {
+  margin: 10px;
+  padding: 10px;
 }
 .kcal-container .intake-box .activity-box {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  padding: 10px;
 }
 .kcal-container .intake-box .activity-box .checkbox-inputs {
   display: inline;
+}
+.kcal-container .intake-box .activity-box .checkbox-inputs input {
+  padding: 10px;
+  margin: 10px;
+}
+.kcal-container .intake-box .calc-btn {
+  height: 35px;
+  width: 80px;
+  margin: 5px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+.kcal-container .intake-box .calc-btn.enabled {
+  height: 35px;
+  width: 80px;
+  margin: 5px;
+  border: 1px solid #2BFF00;
+  border-radius: 8px;
+  background-color: transparent;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+.kcal-container .intake-box .calc-btn.enabled:hover {
+  color: #fff;
+  background-color: #2BFF00;
 }
 
 .container {

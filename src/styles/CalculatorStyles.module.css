@@ -53,7 +53,7 @@ body {
   border: 1px solid #ccc;
 }
 .container .calculator-container .calculator-box form input[type=number]:focus {
-  border-color: green;
+  border-color: #2BFF00;
   outline: none;
 }
 .container .calculator-container .calculator-box form .calc-btn, .container .calculator-container .calculator-box form .save-btn {
