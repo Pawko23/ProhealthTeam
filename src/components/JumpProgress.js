@@ -4,7 +4,7 @@ import { jwtDecode } from 'jwt-decode'
 import Header from "./Header";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import Styles from '../styles/JumpProgressStyles.module.css'
+import Styles from '../styles/UserProgress.module.css'
 import TrainingChosenHero from '../img/training-hero.jpg'
 import { Graph } from "./UserProgress";
 
@@ -17,6 +17,19 @@ const JumpProgress = () => {
     const [graphDates, setGraphDates] = useState([])
     const [graphGoal, setGraphGoal] = useState('')
 
+    const handleGoal = (event) => {
+        const value = event.target.value
+        if(value >= 0) {
+            setJumpGoal(value)
+        }
+    }
+
+    const handleJumpHeight = (event) => {
+        const value = event.target.value
+        if(value >= 0) {
+            setJumpHeight(value)
+        }
+    }
 
     useEffect(() => {
         const token = localStorage.getItem('token')
@@ -75,19 +88,19 @@ const JumpProgress = () => {
                 heroImage={TrainingChosenHero}
             />
                     <>
-            <div className={Styles['']}>
+            <div className={Styles['weight-container']}>
                 <form onSubmit={handleSubmit}>
-                    <label>Ustaw swój cel</label>
+                    <label>Ustaw swój cel wysokości wyskoku [cm]:</label>
                     <input 
                         type='number'
-                        onChange={ (e) => setJumpGoal(e.target.value)}
+                        onChange={handleGoal}
                         value={jumpGoal}
                     />
-                    <label>Jak wysoko skaczesz?: </label>
-                    <input type='number' onChange={ (e) => setJumpHeight(e.target.value)} value={jumpHeight}></input>
+                    <label>Jak wysoko skaczesz? [cm]: </label>
+                    <input type='number' onChange={handleJumpHeight} value={jumpHeight}></input>
                     <button type='submit'>Dodaj</button>
                 </form>
-                <div className={Styles['']}>
+                <div className={Styles['graph-box']}>
                     <Graph 
                         userId = {userId}
                         weights={graphJumps}

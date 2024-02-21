@@ -54,10 +54,20 @@ const ExerciseType = ({
                 ))}
                 <div className={TrainingMainStyles['button-box']}>
                   {isLoggedIn ? (
-                    <Link to={`/training/${specific}`} className={TrainingMainStyles['progress-btn']} id='progress-btn'><p>Progres</p>
-                  </Link>
+                    <Link
+                      to={`/training/${specific}`}
+                      className={TrainingMainStyles['progress-btn']}
+                      id='progress-btn'
+                    >
+                      <p>Progres</p>
+                    </Link>
                   ) : (
-                    <Link to='/login' className={TrainingMainStyles['progress-btn']} id='progress-btn'>Progres
+                    <Link
+                      to='/login'
+                      className={TrainingMainStyles['progress-btn']}
+                      id='progress-btn'
+                    >
+                      Progres
                     </Link>
                   )}
                 </div>
@@ -351,52 +361,54 @@ const TrainingMain = () => {
           ))}
         </Slider>
       </div>
-      {selectedPlan === 'FBW' && (
-        <div className={TrainingMainStyles['plan-selected']}>
-          {fbwPlan.map((item, index) => (
-            <div key={index}>
-              <ul>
-                <h4>Plan A:</h4>
-                {item.excA.map((excercise, idx) => (
-                  <li key={idx}>{excercise}</li>
-                ))}
-                <h4>Plan B:</h4>
-                {item.excB.map((excercise, idx) => (
-                  <li key={idx}>{excercise}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      )}{' '}
-      {selectedPlan === 'SPLIT' && (
-        <div className={TrainingMainStyles['plan-selected']}>
-          {splitPlan.map((item, index) => (
-            <div className={TrainingMain['plan-box']} key={index}>
-              <h4>{item.day}</h4>
-              <ul>
-                {item.exc.map((exercise, idx) => (
-                  <li key={idx}>{exercise}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      )}
-      {selectedPlan === 'PUSH & PULL & LEGS' && (
-        <div className={TrainingMainStyles['plan-selected']}>
-          {pplPlan.map((item, index) => (
-            <div key={index} className={TrainingMain['plan-box']}>
-              <h4>{item.day}</h4>
-              <ul>
-                {item.exc.map((exercise, idx) => (
-                  <li key={idx}>{exercise}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      )}
+      <div className={TrainingMainStyles['picked-plans-container']}>
+        {selectedPlan === 'FBW' && (
+          <div className={TrainingMainStyles['plan-selected']}>
+            {fbwPlan.map((item, index) => (
+              <div key={index}>
+                <ul>
+                  <h4>Plan A:</h4>
+                  {item.excA.map((excercise, idx) => (
+                    <li key={idx}>{excercise}</li>
+                  ))}
+                  <h4>Plan B:</h4>
+                  {item.excB.map((excercise, idx) => (
+                    <li key={idx}>{excercise}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        )}{' '}
+        {selectedPlan === 'SPLIT' && (
+          <div className={TrainingMainStyles['plan-selected']}>
+            {splitPlan.map((item, index) => (
+              <div className={TrainingMain['plan-box']} key={index}>
+                <h4>{item.day}</h4>
+                <ul>
+                  {item.exc.map((exercise, idx) => (
+                    <li key={idx}>{exercise}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        )}
+        {selectedPlan === 'PUSH & PULL & LEGS' && (
+          <div className={TrainingMainStyles['plan-selected']}>
+            {pplPlan.map((item, index) => (
+              <div key={index} className={TrainingMain['plan-box']}>
+                <h4>{item.day}</h4>
+                <ul>
+                  {item.exc.map((exercise, idx) => (
+                    <li key={idx}>{exercise}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
       <div className={TrainingMainStyles['personal-trainers-container']}>
         <div className={TrainingMainStyles['personal-trainer-box']}>
           <div className={TrainingMainStyles['trainer-box-up']}>

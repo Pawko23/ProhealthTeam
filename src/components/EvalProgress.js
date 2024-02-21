@@ -4,7 +4,7 @@ import { jwtDecode } from 'jwt-decode'
 import Header from "./Header";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import Styles from '../styles/JumpProgressStyles.module.css'
+import Styles from '../styles/UserProgress.module.css'
 import TrainingChosenHero from '../img/training-hero.jpg'
 import { Graph } from "./UserProgress";
 
@@ -16,7 +16,6 @@ const EvalProgress = () => {
     const [graphEval, setGraphEval] = useState([])
     const [graphDates, setGraphDates] = useState([])
     const [graphGoal, setGraphGoal] = useState('')
-
 
     useEffect(() => {
         const token = localStorage.getItem('token')
@@ -75,19 +74,19 @@ const EvalProgress = () => {
                 heroImage={TrainingChosenHero}
             />
                     <>
-            <div className={Styles['']}>
+            <div className={Styles['weight-container']}>
                 <form onSubmit={handleSubmit}>
-                    <label>Ustaw swój cel</label>
+                    <label>Ile punktów eval chcesz zdobywać? [ilość pkt]</label>
                     <input 
                         type='number'
                         onChange={ (e) => setEvalGoal(e.target.value)}
                         value={evalGoal}
                     />
-                    <label>Jaki jest Twój eval?: </label>
+                    <label>Wprowadź swój eval [ilość pkt]: </label>
                     <input type='number' onChange={ (e) => setEval(e.target.value)} value={evalScore}></input>
                     <button type='submit'>Dodaj</button>
                 </form>
-                <div className={Styles['']}>
+                <div className={Styles['graph-box']}>
                     <Graph 
                         userId = {userId}
                         weights={graphEval}

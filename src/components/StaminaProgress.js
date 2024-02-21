@@ -4,7 +4,7 @@ import { jwtDecode } from 'jwt-decode'
 import Header from "./Header";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import Styles from '../styles/JumpProgressStyles.module.css'
+import Styles from '../styles/UserProgress.module.css'
 import TrainingChosenHero from '../img/training-hero.jpg'
 import { Graph } from "./UserProgress";
 
@@ -16,6 +16,21 @@ const StaminaProgress = () => {
     const [graphStamina, setGraphStamina] = useState([])
     const [graphDates, setGraphDates] = useState([])
     const [graphGoal, setGraphGoal] = useState('')
+
+
+    const handleGoal = (event) => {
+        const value = event.target.value
+        if(value >= 0) {
+            setStaminaGoal(value)
+        }
+    }
+
+    const handleStaminaTime = (event) => {
+        const value = event.target.value
+        if(value >= 0) {
+            setStaminaTime(value)
+        }
+    }
 
 
     useEffect(() => {
@@ -75,19 +90,19 @@ const StaminaProgress = () => {
                 heroImage={TrainingChosenHero}
             />
                     <>
-            <div className={Styles['']}>
+            <div className={Styles['weight-container']}>
                 <form onSubmit={handleSubmit}>
-                    <label>Ustaw swój cel</label>
+                    <label>Ustaw swój cel [minuty]:</label>
                     <input 
                         type='number'
-                        onChange={ (e) => setStaminaGoal(e.target.value)}
+                        onChange={handleGoal}
                         value={staminaGoal}
                     />
-                    <label>Jak długo biegniesz bez przerwy?: </label>
-                    <input type='number' onChange={ (e) => setStaminaTime(e.target.value)} value={staminaTime}></input>
+                    <label>Jak długo biegniesz bez przerwy? [minuty]: </label>
+                    <input type='number' onChange={handleStaminaTime} value={staminaTime}></input>
                     <button type='submit'>Dodaj</button>
                 </form>
-                <div className={Styles['']}>
+                <div className={Styles['graph-box']}>
                     <Graph 
                         userId = {userId}
                         weights={graphStamina}

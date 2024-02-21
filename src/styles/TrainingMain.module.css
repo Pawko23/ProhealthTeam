@@ -139,25 +139,31 @@ body {
   cursor: pointer;
 }
 
-.plan-selected {
+.picked-plans-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+.picked-plans-container .plan-selected {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  width: 100%;
 }
-.plan-selected h4 {
+.picked-plans-container .plan-selected h4 {
   text-align: center;
   padding: 5px;
 }
-.plan-selected ul {
+.picked-plans-container .plan-selected ul {
   list-style: none;
   text-align: center;
   margin: 10px;
   padding: 5px;
 }
-.plan-selected ul li {
+.picked-plans-container .plan-selected ul li {
   padding: 5px;
+  cursor: pointer;
 }
 
 .personal-trainers-container {

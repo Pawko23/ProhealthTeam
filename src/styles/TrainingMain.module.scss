@@ -148,29 +148,35 @@ body {
   }
 }
 
-.plan-selected {
+.picked-plans-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
-  width: 100%;
-
-  h4 {
-    text-align: center;
-    padding: 5px;
-  }
-
-  ul {
-    list-style: none;
-    text-align: center;
-    margin: 10px;
-    padding: 5px;
-    li {
+  margin-top: 50px;
+  .plan-selected {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  
+    h4 {
+      text-align: center;
       padding: 5px;
     }
+  
+    ul {
+      list-style: none;
+      text-align: center;
+      margin: 10px;
+      padding: 5px;
+      li {
+        padding: 5px;
+        cursor: pointer;
+      }
+    }
+  
+  
   }
-
-
 }
 
 .personal-trainers-container {
