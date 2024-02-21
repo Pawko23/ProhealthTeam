@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import styles from '../styles/PopupDefaultStyles.module.css'
 
-const PopupDefault = ( {info, onClose, preventClose} ) => {
+const PopupDefault = ( {info, onClose, preventClose, accountDelete, deleteFlag} ) => {
     useEffect(() => {
         document.body.style.overflow = 'hidden';
         return () => {
@@ -25,7 +25,12 @@ const PopupDefault = ( {info, onClose, preventClose} ) => {
             <div className={styles['popup-container']} onClick={handleBackdropClick}>
                 <div className={styles['popup-content']}>
                     <p> {info} </p>
-                    <button onClick={handleConfirm}>Ok</button>
+                    <div className={'popup-buttons'}>
+                        <button onClick={accountDelete} className={styles['confirm-btn']}>Ok</button>
+                        {deleteFlag && 
+                            <button onClick={handleConfirm} className={styles['close-btn']}>Zamknij</button>
+                        }
+                    </div>
                 </div>
             </div>
         </>
