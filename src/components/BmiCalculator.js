@@ -4,12 +4,10 @@ import { jwtDecode } from 'jwt-decode'
 import Navbar from './Navbar';
 import Header from './Header';
 import Footer from './Footer';
-import { Link } from 'react-router-dom';
-import DietPageHero from '../img/diet.jpg';
+import HeroImage from '../img/calc-big.jpg';
 import CalcStyles from '../styles/CalculatorStyles.module.css';
 
 const BmiCalculator = () => {
-    const [age, setAge] = useState('');
     const [height, setHeight] = useState('');
     const [weight, setWeight] = useState('');
     const [bmi, setBmi] = useState('');
@@ -17,16 +15,19 @@ const BmiCalculator = () => {
     const [resultColor, setResultColor] = useState('')
     const [bmiMessage, setBmiMessage] = useState('')
     const isLoggedIn = !!localStorage.getItem('token')
-    const handleAge = (event) => {
-        setAge(event.target.value);
-    }
 
     const handleHeight = (event) => {
-        setHeight(event.target.value);
+        const value = event.target.value
+        if(value >=0) {
+          setHeight(value)
+        }
     }
 
     const handleWeight = (event) => {
-        setWeight(event.target.value);
+        const value = event.target.value
+        if(value >=0) {
+          setWeight(value);
+        }
     }
 
     useEffect(() => {
@@ -109,19 +110,19 @@ const BmiCalculator = () => {
     <>
       <Navbar />
       <Header 
-        heroImage={DietPageHero}
+        heroImage={HeroImage}
+        gradient={'linear-gradient(45deg, rgba(1, 255, 1, 0.75), rgba(0.1686, 1, 0, 0.75))'}
         title={'Kalkulator BMI'} />
-      <div className={CalcStyles['calculator-container']}>
+        <div className={CalcStyles['container']}>
+        <div className={CalcStyles['calculator-container']}>
         <div className={CalcStyles['calculator-box']} style={{ height: calculatorHeight}}>
           <h3>Kalkulator BMI</h3>
           <form onSubmit={handleSubmit}>
-            {/* <label>Wiek: </label>
-            <input type='number' value={age} onChange={handleAge}></input> */}
-            <label>Wzrost: </label>
+            <label>Wzrost [cm]: </label>
             <input type='number' value={height} onChange={handleHeight}></input>
-            <label>Waga: </label>
+            <label>Waga [kg]: </label>
             <input type='number' value={weight} onChange={handleWeight}></input>
-            <button type='submit' disabled={isButtonDisabled}>Oblicz</button>
+            <button type='submit' disabled={isButtonDisabled} className={CalcStyles['calc-btn']}>Oblicz</button>
             {bmi && (
               <>
                 <div className={CalcStyles['result-box']} style={{backgroundColor: resultColor}}>
@@ -129,7 +130,7 @@ const BmiCalculator = () => {
                   <p>{bmiMessage}</p>
                 </div>
                 {isLoggedIn && 
-                <button onClick={saveBmi}>Zapisz</button>
+                <button onClick={saveBmi} className={CalcStyles['save-btn']}>Zapisz</button>
                 }
               </>
             )}
@@ -148,7 +149,10 @@ const BmiCalculator = () => {
             <p>Powyżej 40: Otyłość skrajna</p>
         </div>
       </div>
-      <Footer />
+        </div>
+      <Footer 
+        gradient={'linear-gradient(45deg, rgba(1, 255, 1, 0.75), rgba(0.1686, 1, 0, 0.75))'}
+      />
     </>
   );
 };

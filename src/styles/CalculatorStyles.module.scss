@@ -14,75 +14,115 @@ body {
     font-size: 1.6rem;
 }
 
-.calculator-container {
+.container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 500px;
-
-    .calculator-box {
-        text-align: center;
-        box-shadow: 0px 0px 5px #000;
-        height: 75%;
-        width: 75%;
-        border-radius: 8%;
-        
-        h3 {
-            padding: 10px;
-            margin: 5px;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-
-            input {
-                padding: 10px;
-                margin: 5px;
-            }
-
-            .result-box {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                margin: 20px auto;
-                width: 80%;
-                height: 70px;
-                border-radius: 10px;
-                color: #fff;
-            }
-
-
-        }
-    }
-}
-
-.bmi-info-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 800px;
-
-    .bmi-info {
+    .calculator-container {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        box-shadow: 0px 0px 5px #000;
-        border-radius: 8%;
-        height: 75%;
-        width: 75%;
-        
-        p {
-            padding: 15px;
-            margin: 5px;
+        height: 500px;
+        width: 500px;
+    
+        .calculator-box {
+            text-align: center;
+            box-shadow: 0px 0px 5px #000;
+            height: 75%;
+            width: 75%;
+            border-radius: 8%;
+            
+            h3 {
+                padding: 10px;
+                margin: 5px;
+            }
+    
+            form {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+    
+                input[type="number"] {
+                    padding: 10px;
+                    margin: 5px;
+                    border-radius: 8px;
+                    border: 1px solid #ccc;
+                }
+    
+                input[type="number"]:focus {
+                    border-color: green;
+                    outline: none;
+                }
+    
+                .calc-btn, .save-btn {
+                    height: 35px;
+                    width: 80px;
+                    margin: 5px;
+                    border: 1px solid #2BFF00;
+                    border-radius: 8px;
+                    background-color: transparent;
+                    transition: background-color 0.3s;
+                    cursor: pointer;
+                }
+    
+                .calc-btn:hover, .save-btn:hover{
+                    color: #fff;
+                    background-color: #2BFF00;
+                }
+    
+                .result-box {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    margin: 20px auto;
+                    width: 300px;
+                    height: 70px;
+                    border-radius: 10px;
+                    color: #fff;
+                }
+    
+    
+            }
         }
+    }
+    
+    .bmi-info-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 500px;
+        width: 500px;
+    
+        .bmi-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0px 0px 5px #000;
+            border-radius: 8%;
+            height: 75%;
+            width: 75%;
+            
+            p {
+                padding: 5px;
+                margin: 5px;
+            }
+        }
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
     }
 }

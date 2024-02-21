@@ -14,56 +14,82 @@ body {
   font-size: 1.6rem;
 }
 
-.calculator-container {
+.container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 500px;
 }
-.calculator-container .calculator-box {
+.container .calculator-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  width: 500px;
+}
+.container .calculator-container .calculator-box {
   text-align: center;
   box-shadow: 0px 0px 5px #000;
   height: 75%;
   width: 75%;
   border-radius: 8%;
 }
-.calculator-container .calculator-box h3 {
+.container .calculator-container .calculator-box h3 {
   padding: 10px;
   margin: 5px;
 }
-.calculator-container .calculator-box form {
+.container .calculator-container .calculator-box form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.calculator-container .calculator-box form input {
+.container .calculator-container .calculator-box form input[type=number] {
   padding: 10px;
   margin: 5px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
 }
-.calculator-container .calculator-box form .result-box {
+.container .calculator-container .calculator-box form input[type=number]:focus {
+  border-color: green;
+  outline: none;
+}
+.container .calculator-container .calculator-box form .calc-btn, .container .calculator-container .calculator-box form .save-btn {
+  height: 35px;
+  width: 80px;
+  margin: 5px;
+  border: 1px solid #2BFF00;
+  border-radius: 8px;
+  background-color: transparent;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+.container .calculator-container .calculator-box form .calc-btn:hover, .container .calculator-container .calculator-box form .save-btn:hover {
+  color: #fff;
+  background-color: #2BFF00;
+}
+.container .calculator-container .calculator-box form .result-box {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 20px auto;
-  width: 80%;
+  width: 300px;
   height: 70px;
   border-radius: 10px;
   color: #fff;
 }
-
-.bmi-info-container {
+.container .bmi-info-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 800px;
+  height: 500px;
+  width: 500px;
 }
-.bmi-info-container .bmi-info {
+.container .bmi-info-container .bmi-info {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -73,7 +99,17 @@ body {
   height: 75%;
   width: 75%;
 }
-.bmi-info-container .bmi-info p {
-  padding: 15px;
+.container .bmi-info-container .bmi-info p {
+  padding: 5px;
   margin: 5px;
+}
+
+@media (min-width: 992px) {
+  .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
 }/*# sourceMappingURL=CalculatorStyles.module.css.map */
