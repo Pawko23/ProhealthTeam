@@ -15,16 +15,67 @@ body {
 }
 
 .weight-container {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  margin: 20px auto;
+  border-radius: 8px;
 }
 .weight-container form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 10px;
+}
+.weight-container form label {
+  padding: 5px;
+}
+.weight-container form input[type=number] {
+  padding: 10px;
+  margin: 5px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+.weight-container form button {
+  height: 35px;
+  width: 80px;
+  margin: 10px;
+  border: 1px solid #2BFF00;
+  border-radius: 8px;
+  background-color: transparent;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+.weight-container form button:hover {
+  color: #fff;
+  background-color: #2BFF00;
+}
+.weight-container canvas {
+  width: 100%;
+  height: 450px;
+  border: none;
+}
+.weight-container .delete-btn {
+  position: absolute;
+  bottom: -10%;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 35px;
+  width: 80px;
+  margin: 5px;
+  border: 1px solid #e42c0c;
+  border-radius: 8px;
+  background-color: transparent;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+.weight-container .delete-btn:hover {
+  color: #fff;
+  background-color: #e42c0c;
 }
 
 .kcal-container {
@@ -45,4 +96,54 @@ body {
 }
 .kcal-container .intake-box .activity-box .checkbox-inputs {
   display: inline;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.container .option-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 10px;
+  padding: 10px;
+}
+.container .option-box button {
+  height: 50px;
+  width: 120px;
+  margin: 10px;
+  border: 1px solid #46c5ff;
+  border-radius: 8px;
+  background-color: transparent;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+.container .option-box button:hover {
+  color: #fff;
+  background-color: #46c5ff;
+}
+
+@media (min-width: 768px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  .container .option-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 25px;
+    padding: 10px;
+  }
 }/*# sourceMappingURL=UserProgress.module.css.map */

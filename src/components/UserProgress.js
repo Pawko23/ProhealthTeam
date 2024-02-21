@@ -5,7 +5,7 @@ import ProgressStyles from '../styles/UserProgress.module.css'
 import Navbar from './Navbar'
 import Header from './Header'
 import Footer from './Footer'
-import DietPageHero from '../img/diet.jpg';
+import HeroImage from '../img/proggress.jpg';
 import { jwtDecode } from 'jwt-decode'
 import { Chart } from 'chart.js/auto'
 
@@ -33,7 +33,7 @@ export const Graph = ({ userId, weights, dates, goal, deleteEndpoint, pointName 
                         }
                     },
                     {
-                        label: 'Gol',
+                        label: 'Cel',
                         borderColor: 'red',
                         borderDash: [5, 5],
                         data: Array(dates.length).fill(goal),
@@ -95,7 +95,7 @@ export const Graph = ({ userId, weights, dates, goal, deleteEndpoint, pointName 
         <div>
             <canvas id='weightProgress'></canvas>
             {selectedPoints.length > 0 && (
-                    <button onClick={handleDelete}>Usuń</button>
+                    <button onClick={handleDelete} className={ProgressStyles['delete-btn']}>Usuń</button>
                 )
             }
         </div>
@@ -167,7 +167,6 @@ const Weight = () => {
         }
         try {
             await axios.post('/userprogress', { userId, weight, goal, currentDate })
-            // navigate('/userprogress?rendered=true')
         } catch (error) {
             console.log(error);
         }
@@ -177,17 +176,18 @@ const Weight = () => {
         <>
             <div className={ProgressStyles['weight-container']}>
                 <form onSubmit={handleSubmit}>
-                    <label>Ustaw swój cel</label>
+                    <label>Ustaw swój cel [kg]:</label>
                     <input 
                         type='number'
                         onChange={ (e) => setGoal(e.target.value)}
                         value={goal}
                     />
-                    <label>Wprowadź obecną wagę:</label>
+                    <label>Wprowadź obecną wagę [kg]:</label>
                     <input type='number' onChange={ (e) => setWeight(e.target.value)} value={weight}></input>
                     <button type='submit'>Dodaj</button>
                 </form>
                 <div className={ProgressStyles['graph-box']}>
+                    <p>Kliknij w punkt aby móc usunąć</p>
                     <Graph 
                         userId = {userId}
                         weights={graphWeights}
@@ -195,9 +195,6 @@ const Weight = () => {
                         goal={graphGoal}
                         deleteEndpoint={'/userprogress/weight'}
                         pointName={'Waga'}
-                        // weights={graphWeights}
-                        // dates={graphDates}
-                        // goal={goal}
                     />
                 </div>
             </div>
@@ -359,12 +356,10 @@ const UserProgress = () => {
         <>
             <Navbar />
             <Header 
-                heroImage={DietPageHero}
+                heroImage={HeroImage}
+                gradient={'linear-gradient(45deg, rgba(8, 206, 255, 0.75), rgba(8, 24, 255, 0.5))'}
             />
             <div className={ProgressStyles.container}>
-                <div className={ProgressStyles['info-box']}>
-                    <p>Wprowadzaj informacje aby śledzić swój progres</p>
-                </div>
                 <div className={ProgressStyles['option-box']}>
                     <button onClick={() => selectOption('weight')}>Waga</button>
                     <button onClick={() => selectOption('kcal')}>Kalorie</button>
