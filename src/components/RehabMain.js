@@ -160,6 +160,9 @@ const RehabMain = () => {
           'linear-gradient(45deg, rgba(8, 206, 255, 0.75), rgba(8, 24, 255, 0.75))'
         }
       />
+      <div className={styles['model-info']}>
+        <p>Zapraszamy do skorzystania z większego ekranu w celu wyświetlenia modelu!</p>
+      </div>
       <section className={styles['model-container']}>
         <div className={styles['muscles-button-box']}>
           <button onClick={showAllMuscles} disabled={showAll}>
@@ -179,13 +182,6 @@ const RehabMain = () => {
         </div>
         <p>Kliknij na nazwę mięśnia aby poznać instrukcję masażu</p>
         <svg viewBox='0 0 400 600' className={styles.svg}>
-          <style>
-            {`
-                                .circle {
-                                    animation: toggleEffect 2s infinite ease-in-out;
-                                }
-                            `}
-          </style>
           <image
             href={HumanModel}
             x='0'

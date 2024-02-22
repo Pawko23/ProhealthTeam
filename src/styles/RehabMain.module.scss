@@ -26,12 +26,25 @@ body {
     }
 }
 
+.model-info {
+  width: 100%;
+  margin-top: 50px;
+  padding: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  p {
+    text-align: center;
+    font-size: 3rem;
+  }
+}
+
 .model-container {
     overflow: hidden;
     width: 100%;
     padding: 20px;
     margin: 15px auto;
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -119,6 +132,16 @@ body {
   }
   
   @media (min-width: 992px) {
+
+    .model-info {
+      display: none;
+    }
+
+    .model-container {
+      display: flex;
+    }
+
+
     .therap-container {
       background: transparent;
       .therap-box {
