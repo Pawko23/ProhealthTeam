@@ -77,13 +77,13 @@ const Account = () => {
                 <div className={styles['user-container']}>
                     <div className={styles['user-box']}>
                         <p>Login: {userLogin}</p>
-                        <p>email: {userEmail}</p>
+                        <p>Email: {userEmail}</p>
                     </div>
                 </div>
                 <div className={styles['calcs-container']}>
                     <div className={styles['calcs-box']}>
                         <p>BMI: {userBmi}</p>
-                        <p>Kcal intake: {userIntake}</p>
+                        <p>Kcal: {userIntake}</p>
                     </div>
                 </div>
                 <button className={styles['delete-btn']} onClick={togglePopup}>Usuń konto</button>

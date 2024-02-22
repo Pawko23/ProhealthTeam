@@ -86,6 +86,38 @@ const DietMain = () => {
         ) : null;
       })}
       </div>
+      <div className={DietMainStyles['specialist-container']}>
+        <div className={DietMainStyles['specialist-box']}>
+          <div className={DietMainStyles['specialist-box-up']}>
+            <div className={DietMainStyles['specialist-img']}></div>
+          </div>
+          <div className={DietMainStyles['specialist-box-down']}>
+            <p className={DietMainStyles.name}>Trener 1</p>
+            <p className={DietMainStyles.email}>trener1@gmail.com</p>
+            <p className={DietMainStyles.tel}>123 456 789</p>
+          </div>
+        </div>
+        <div className={DietMainStyles['specialist-box']}>
+          <div className={DietMainStyles['specialist-box-up']}>
+            <div className={DietMainStyles['specialist-img']}></div>
+          </div>
+          <div className={DietMainStyles['specialist-box-down']}>
+            <p className={DietMainStyles.name}>Trener 2</p>
+            <p className={DietMainStyles.email}>trener1@gmail.com</p>
+            <p className={DietMainStyles.tel}>123 456 789</p>
+          </div>
+        </div>
+        <div className={DietMainStyles['specialist-box']}>
+          <div className={DietMainStyles['specialist-box-up']}>
+            <div className={DietMainStyles['specialist-img']}></div>
+          </div>
+          <div className={DietMainStyles['specialist-box-down']}>
+            <p className={DietMainStyles.name}>Trener 3</p>
+            <p className={DietMainStyles.email}>trener1@gmail.com</p>
+            <p className={DietMainStyles.tel}>123 456 789</p>
+          </div>
+        </div>
+      </div>
       <Footer />
     </>
   );
