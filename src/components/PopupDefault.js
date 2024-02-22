@@ -26,9 +26,14 @@ const PopupDefault = ( {info, onClose, preventClose, accountDelete, deleteFlag} 
                 <div className={styles['popup-content']}>
                     <p> {info} </p>
                     <div className={'popup-buttons'}>
-                        <button onClick={accountDelete} className={styles['confirm-btn']}>Ok</button>
-                        {deleteFlag && 
-                            <button onClick={handleConfirm} className={styles['close-btn']}>Zamknij</button>
+                        {deleteFlag &&
+                            <>
+                                <button onClick={accountDelete} className={styles['confirm-btn']}>Ok</button>
+                                <button onClick={handleConfirm} className={styles['close-btn']}>Zamknij</button>
+                            </>
+                        }
+                        {!deleteFlag &&  
+                            <button onClick={onClose} className={styles['close-btn']}>Zamknij</button>
                         }
                     </div>
                 </div>

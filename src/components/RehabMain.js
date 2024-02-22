@@ -427,7 +427,7 @@ const RehabMain = () => {
             </React.Fragment>
           ))}
         </svg>
-        {showPopup && <PopupDefault info={muscleGuide} onClose={togglePopup} />}
+        {showPopup && <PopupDefault info={muscleGuide} onClose={togglePopup} deleteFlag={false} />}
       </section>
       <div className={styles['therap-container']}>
         <div className={styles['therap-box']}>
