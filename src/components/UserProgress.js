@@ -128,7 +128,6 @@ const Weight = () => {
         if(!isRendered) {
             localStorage.setItem('rendered', 'true')
             localStorage.setItem('selectedOption', 'weight')
-            // navigate('/userprogress?rendered=true')
         }
 
     }, [navigate])
@@ -151,11 +150,6 @@ const Weight = () => {
         console.log(graphDates)
         console.log(graphGoal)
     }, [graphWeights])
-
-
-    const mockedWeights = [61, 68, 70, 74, 78, 80, 85]
-    const mockedDates = ['2024-01-05', '2024-01-25', '2024-02-10', '2024-03-05', '2024-04-05', '2024-05-05', '2024-05-05']
-    const mockedGoal = 80
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -292,18 +286,18 @@ const Kcal = () => {
         <>
             <div className={ProgressStyles['kcal-container']}>
                 <div className={ProgressStyles['intake-box']}>
-                    <p>Oblicz swoje zapotrzebowanie</p>
+                    <p>Oblicz swoje zapotrzebowanie kaloryczne</p>
                     <label>Wiek</label>
                     <input type='number' 
                         onChange={(e) => setAge(e.target.value)}
                         value={age}
                     />
-                    <label>Waga</label>
+                    <label>Waga [kg]: </label>
                     <input type='number' 
                         onChange={(e) => setWeight(e.target.value)}
                         value={weight}
                     />
-                    <label>Wzrost</label>
+                    <label>Wzrost [cm]: </label>
                     <input type='number' 
                         onChange={(e) => setHeight(e.target.value)}
                         value={height}
@@ -337,7 +331,7 @@ const Kcal = () => {
                     )}
                 </div>
                 <div className={ProgressStyles['intake-results']}>
-                    <p>{tmr}</p>
+                    <p>{tmr}kcal</p>
                 </div>
             </div>
         </>
