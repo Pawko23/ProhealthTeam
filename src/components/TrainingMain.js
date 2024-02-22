@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ExercisePopup from './ExercisePopup';
+import PopupDefault from './PopupDefault';
 import TrainingMainStyles from '../styles/TrainingMain.module.css';
 import Header from './Header';
 import Navbar from './Navbar';
@@ -19,9 +20,11 @@ const ExerciseType = ({
 }) => {
   const isLoggedIn = !!localStorage.getItem('token');
   const [selectedExercise, setSelectedExercise] = useState(null);
-
+  const [exerciseDescription, setSelectedExerciseDescription] = useState('')
   const handleInformation = (exercise) => {
+    console.log(exercise.name)
     setSelectedExercise(exercise);
+    console.log(selectedExercise)
   };
 
   return (
@@ -104,32 +107,37 @@ const TrainingMain = () => {
           name: 'Przysiad ze sztangą na karku',
           sets: '3 serie',
           reps: '8 powtórzeń',
+          description: 'opis wykonania przysiadu ze sztangą na karku'
         },
         {
           id: 2,
           name: 'Wskoki na skrzynię',
           sets: '3 serie',
-          reps: '12 powtórzeń',
+          reps: '8 powtórzeń',
+          description: 'opis wykonania wskoków na skrzynię'
         },
         {
           id: 3,
           name: 'Wyciskanie sztangi na ławce poziomej',
           sets: '3 serie',
           reps: '8 powtórzeń',
+          description: 'opis wyciskania sztangi na ławce poziomej'
         },
         {
           id: 4,
-          name: 'Podciąganie na drążku',
+          name: 'Podciąganie na drążku nachwytem',
           sets: '3 serie',
-          reps: '10 powtórzeń',
+          reps: '8 powtórzeń',
+          description: 'opis wykonania podciągania na drążku nachwytem'
         },
         {
           id: 5,
           name: 'Wyciskanie żołnierskie',
           sets: '3 serie',
           reps: '8 powtórzeń',
+          description: 'opis wykonania wyciskania żołnierskiego'
         },
-        { id: 6, name: 'Plank przodem', sets: '3 serie', reps: '1 minuta' },
+        { id: 6, name: 'Plank przodem', sets: '3 serie', reps: '1 minuta', description: 'opis wykonania planku przodem' },
       ],
     },
     {
@@ -137,21 +145,23 @@ const TrainingMain = () => {
       typeName: 'Siatkówka',
       specific: 'jump-progress',
       exercises: [
-        { id: 7, name: 'Box Squat', sets: '4 serie', reps: '5 powtórzeń' },
-        { id: 8, name: 'Hip Thrust', sets: '4 serie', reps: '5 powtórzeń' },
+        { id: 7, name: 'Box Squat', sets: '4 serie', reps: '8 powtórzeń', description: 'opis wykonania box squatu' },
+        { id: 8, name: 'Hip Thrust', sets: '4 serie', reps: '8 powtórzeń', description: 'opis wykonania hip thrustów' },
         {
           id: 9,
-          name: 'Podciąganie na drążku',
+          name: 'Podciąganie na drążku nachwytem',
           sets: '4 serie',
           reps: 'Max powtórzeń',
+          description: 'opis wykonania podciągania na drążku nachwytem'
         },
         {
           id: 10,
           name: 'Wyciskanie sztangi na ławce poziomej',
           sets: '4 serie',
           reps: '4 powtórzeń',
+          description: 'opis wykonania wyciskania sztangi na ławce poziomej'
         },
-        { id: 11, name: 'Slam Ball', sets: '4 serie', reps: '6 powtórzeń' },
+        { id: 11, name: 'Slam Ball', sets: '4 serie', reps: '6 powtórzeń', description: 'opis wykonania slam ballu' },
       ],
     },
     {
@@ -164,37 +174,43 @@ const TrainingMain = () => {
           name: 'Przysiad ze sztangą',
           sets: '4 serie',
           reps: '8 powtórzeń',
+          description: 'opis wykonania przysiadu ze sztangą'
         },
         {
           id: 13,
-          name: 'Wykroki / Zakroki',
+          name: 'Wykroki',
           sets: '4 serie',
           reps: '8 powtórzeń',
+          description: 'opis wykonania wykroków'
         },
         {
           id: 14,
           name: 'Wyciskanie sztangi na ławce poziomej',
           sets: '4 serie',
-          reps: '5 powtórzeń',
+          reps: '8 powtórzeń',
+          description: 'opis wykonania wyciskania sztangi na ławce poziomej'
         },
         {
           id: 15,
           name: 'Zarzuty ze sztangą',
           sets: '4 serie',
-          reps: '5 powtórzeń',
+          reps: '8 powtórzeń',
+          description: 'opis wykonania zarzutów ze sztangą'
         },
-        { id: 16, name: 'Martwy ciąg', sets: '4 serie', reps: '5 powtórzeń' },
+        { id: 16, name: 'Martwy ciąg', sets: '4 serie', reps: '8 powtórzeń', description: 'opis wykonania martwego ciągu' },
         {
           id: 17,
           name: 'Wejścia na skrzynie',
           sets: '3 serie',
-          reps: '12 powtórzeń',
+          reps: '8 powtórzeń',
+          description: 'opis wykonania wejść na skrzynie'
         },
         {
           id: 18,
-          name: 'Podciąganie na drążku',
+          name: 'Podciąganie na drążku nachwytem',
           sets: '3 serie',
           reps: '10 powtórzeń',
+          description: 'opis wykonania podciągania na drążku nachwytem'
         },
       ],
     },
@@ -225,22 +241,22 @@ const TrainingMain = () => {
   const fbwPlan = [
     {
       excA: [
-        'Przysiady 5x5',
-        'Wyciskanie leżąc 5x5',
-        'Wiosłowanie 5x5',
-        'Wznosy bokiem 3x8',
-        'Hip Thrust 3x8',
-        'Allahy 3x8',
-        'Łydki 3x8',
+        { name: 'Przysiady 5x5', description: 'opis wykonania przysiadów'},
+        { name: 'Wyciskanie leżąc 5x5', description: 'opis wykonania wyciskania'},
+        { name: 'Wiosłowanie 5x5', description: 'opis wykonania wiosłowania'},
+        { name: 'Wznosy bokiem 3x8', description: 'opis wykonania wznosów'},
+        { name: 'Hip Thrust 3x8', description: 'opis wykonania hip thrustów'},
+        { name: 'Allahy 3x8', description: 'opis wykonania allahów'},
+        { name: 'Łydki 3x8', description: 'opis wykonania łydek'}
       ],
       excB: [
-        'Martwy ciąg klasyczny 5x5',
-        'Wyciskanie żołnierskie 5x5',
-        'Podciąganie wąsko 5x5',
-        'Zakroki 3x8',
-        'Odwodziciele 3x8',
-        'Deska x3',
-        'Łydki 3x8',
+        { name: 'Martwy ciąg klasyczny 5x5', description: 'opis wykonania martwego ciągu' }, 
+        { name: 'Wyciskanie żołnierskie 5x5', description: 'opis wykonania wyciskania żołnierskiego'},
+        { name: 'Podciąganie wąsko 5x5', description: 'opis wykonania podciągania wąsko'},
+        { name: 'Zakroki 3x8', description: 'opis wykonania zakroków'},
+        { name: 'Odwodziciele 3x8', description: 'opis wykonania odwodzicieli' },
+        { name: 'Deska x3', description: 'opis wykonania deski'},
+        { name: 'Łydki 3x8', description: 'opis wykonania łydek'}
       ],
     },
   ];
@@ -250,33 +266,33 @@ const TrainingMain = () => {
       id: 1,
       day: 'Poniedziałek',
       exc: [
-        'Wyciskanie leżac 4x 8-12',
-        'Wyciskanie hantli na ławce skośnej 4x 8-12',
-        'Rozpiętki 4x 8-12',
-        'Francuzy 3x 10-12',
-        'Linka na triceps 3x 8-12',
+        { name: 'Wyciskanie leżac 4x 8-12', description: 'opis wykonania wyciskania leżąc'},
+        { name: 'Wyciskanie hantli na ławce skośnej 4x 8-12', description: 'opis wykonania wyciskania hantli na ławce skośnej' },
+        { name: 'Rozpiętki 4x 8-12', description: 'opis wykonania rozpiętek'},
+        { name: 'Francuzy 3x 10-12', description: 'opis wykonania francuzów'},
+        { name: 'Linka na triceps 3x 8-12', description: 'opis wykonania linek na triceps'}
       ],
     },
     {
       id: 2,
       day: 'Środa',
       exc: [
-        'Podciąganie neutralne 4xMR',
-        'Lat pulldowns 4x 10-12',
-        'Wiosłowanie sztangą 4x 10-12',
-        'Facepull 4x 10-12',
-        'Bicep curls 3x10',
-        'Hammer curls 3x10',
+        { name: 'Podciąganie neutralne 4xMR', description: 'opis wykonania podciągania neutralnego'},
+        { name: 'Lat pulldowns 4x 10-12', description: 'opis wykonania lat pulldownów'},
+        { name: 'Wiosłowanie sztangą 4x 10-12', description: 'opis wykonania wiosłowania sztangą'},
+        { name: 'Facepull 4x 10-12', description: 'opis wykonania facepulli'},
+        { name: 'Bicep curls 3x10', description: 'opis wykonania bicep curli'}, 
+        { name: 'Hammer curls 3x10', description: 'opis wykonania hammer curli'}
       ],
     },
     {
       id: 3,
       day: 'Piątek',
       exc: [
-        'Przysiad ze sztangą 4x 10-12',
-        'Martwy ciąg klasyczny 4x 10-12',
-        'Hack squat 4x 10-12',
-        'Lying leg curls 4x 10-12',
+        { name: 'Przysiad ze sztangą 4x 10-12', description: 'opis wykonania przysiadów ze sztangą'}, 
+        { name: 'Martwy ciąg klasyczny 4x 10-12', description: 'opis wykonania martwego ciągu klasycznego'},
+        { name: 'Hack squat 4x 10-12', description: 'opis wykonania hack squatu'},
+        { name: 'Lying leg curls 4x 10-12', description: 'opis wykonania lying leg curli'}
       ],
     },
   ];
@@ -286,35 +302,35 @@ const TrainingMain = () => {
       id: 1,
       day: 'Poniedziałek (PUSH)',
       exc: [
-        'Wyciskanie hantli na ławce poziomej 4x 5-8',
-        'Wyciskanie hantli na ławce skośnej 4x 8-10',
-        'Rozpiętki 4x 10-12',
-        'Wyciskanie żołnierskie 4x 5-8',
-        'Wznosy bokiem 4x 10-20',
-        'Wyciskanie sztangi wąskim chwytem na ławce poziomej 3x 6-8',
-        'Pompki na poręczach 4x 8-10',
+        { name: 'Wyciskanie hantli na ławce poziomej 4x 5-8', description: 'opis wykonania wyciskani hantli na ławce poziomej'},
+        { name: 'Wyciskanie hantli na ławce skośnej 4x 8-10', description: 'opis wykonania wysikania hantli na ławce skośnej'},
+        { name: 'Rozpiętki 4x 10-12', description: 'opis wykonania rozpiętek'},
+        { name: 'Wyciskanie żołnierskie 4x 5-8', description: 'opis wykonania wyciskania żołnierskiego'},
+        { name: 'Wznosy bokiem 4x 10-20', description: 'opis wykonania wznosów bokiemm'},
+        { name: 'Wyciskanie sztangi wąskim chwytem na ławce poziomej 3x 6-8', description: 'opis wykonania wyciskania sztangi wąskim chwytem na ławce poziomej'},
+        { name: 'Pompki na poręczach 4x 8-10', description: 'opis wykonania pompek na poręczach'}
       ],
     },
     {
       id: 2,
       day: 'Wtorek (PULL)',
       exc: [
-        'Martwy ciąg klasyczny 4x 5-8',
-        'Wiosłowanie sztangą nachwytem 4x 8-12',
-        'Lat pulldowns 4x 8-12',
-        'Wiosłowanie hantlem jednorącz 4x 10-12',
-        'Bicep curls 3x 8-10',
-        'Hammer curls 3x 8-12',
+        { name: 'Martwy ciąg klasyczny 4x 5-8', description: 'opis wykonania martwego ciągu klasycznego'},
+        { name: 'Wiosłowanie sztangą nachwytem 4x 8-12', description: 'opis wykonania wiosłowania sztangą nachwytem'},
+        { name: 'Lat pulldowns 4x 8-12', description: 'opis wykonania lat pulldownów'},
+        { name: 'Wiosłowanie hantlem jednorącz 4x 10-12', description: 'opis wykonania wiosłowania hantlem jednorącz'},
+        { name: 'Bicep curls 3x 8-10', description: 'opis wykonania bicep curli'},
+        { name: 'Hammer curls 3x 8-12', description: 'opis wykonania hammer curli'}
       ],
     },
     {
       id: 3,
       day: 'Piątek (LEGS)',
       exc: [
-        'Przysiad ze sztangą 4x 10-12',
-        'Martwy ciąg klasyczny 4x 10-12',
-        'Hack squat 4x 10-12',
-        'Lying leg curls 4x 10-12',
+        { name: 'Przysiad ze sztangą 4x 10-12', description: 'opis wykonania przysiadu ze sztangą'},
+        { name: 'Martwy ciąg klasyczny 4x 10-12', description: 'opis wykonania martwego ciągu klasycznego'},
+        { name: 'Hack squat 4x 10-12', description: 'opis wykonania hack squatu'},
+        { name: 'Lying leg curls 4x 10-12', description: 'opis wykonania lying leg curli'}
       ],
     },
   ];
@@ -324,6 +340,13 @@ const TrainingMain = () => {
   const planPicked = (name) => {
     console.log(name);
     setSelectedPlan(name);
+  };
+
+  const [selectedGymExercise, setSelectedGymExercise] = useState(null);
+  const [description, setDescription] = useState('')
+  const handleGymExerciseClick = (name, description) => {
+    setSelectedGymExercise(name);
+    setDescription(description)
   };
 
   return (
@@ -362,24 +385,24 @@ const TrainingMain = () => {
         </Slider>
       </div>
       <div className={TrainingMainStyles['picked-plans-container']}>
-        {selectedPlan === 'FBW' && (
-          <div className={TrainingMainStyles['plan-selected']}>
-            {fbwPlan.map((item, index) => (
-              <div key={index}>
-                <ul>
-                  <h4>Plan A:</h4>
-                  {item.excA.map((excercise, idx) => (
-                    <li key={idx}>{excercise}</li>
-                  ))}
-                  <h4>Plan B:</h4>
-                  {item.excB.map((excercise, idx) => (
-                    <li key={idx}>{excercise}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        )}{' '}
+      {selectedPlan === 'FBW' && (
+        <div className={TrainingMainStyles['plan-selected']}>
+          {fbwPlan.map((item, index) => (
+            <div key={index}>
+              <ul>
+                <h4>Plan A:</h4>
+                {item.excA.map((exercise, idx) => (
+                  <li key={idx} onClick={() => handleGymExerciseClick(exercise.name, exercise.description)}>{exercise.name}</li>
+                ))}
+                <h4>Plan B:</h4>
+                {item.excB.map((exercise, idx) => (
+                  <li key={idx} onClick={() => handleGymExerciseClick(exercise.name, exercise.description)}>{exercise.name}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+       </div>
+        )} 
         {selectedPlan === 'SPLIT' && (
           <div className={TrainingMainStyles['plan-selected']}>
             {splitPlan.map((item, index) => (
@@ -387,7 +410,7 @@ const TrainingMain = () => {
                 <h4>{item.day}</h4>
                 <ul>
                   {item.exc.map((exercise, idx) => (
-                    <li key={idx}>{exercise}</li>
+                    <li key={idx} onClick={() => handleGymExerciseClick(exercise.name, exercise.description)}>{exercise.name}</li>
                   ))}
                 </ul>
               </div>
@@ -401,13 +424,20 @@ const TrainingMain = () => {
                 <h4>{item.day}</h4>
                 <ul>
                   {item.exc.map((exercise, idx) => (
-                    <li key={idx}>{exercise}</li>
+                    <li key={idx} onClick={() => handleGymExerciseClick(exercise.name, exercise.description)}>{exercise.name}</li>
                   ))}
                 </ul>
               </div>
             ))}
           </div>
         )}
+        {selectedGymExercise && (
+          <PopupDefault
+            name={selectedGymExercise}
+            description={description}
+            onClose={() => setSelectedGymExercise(null)}
+          />
+)}
       </div>
       <div className={TrainingMainStyles['personal-trainers-container']}>
         <div className={TrainingMainStyles['personal-trainer-box']}>
