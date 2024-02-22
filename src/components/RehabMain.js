@@ -199,8 +199,8 @@ const RehabMain = () => {
             id='naramienny'
             cx='210'
             cy='85'
-            r='6'
-            fill='transparent'
+            r='3'
+            fill='green'
             onClick={(event) =>
               handleMuscle(event, 'Mostkowo-obojczykowo-sutkowy')
             }
@@ -210,8 +210,8 @@ const RehabMain = () => {
             data-muscle-name='Czworoboczny'
             cx='230'
             cy='97'
-            r='6'
-            fill='transparent'
+            r='3'
+            fill='green'
             onClick={(event) => handleMuscle(event, 'Czworoboczny')}
             className={styles['circle']}
           />
@@ -220,8 +220,8 @@ const RehabMain = () => {
             data-muscle-name='Naramienny'
             cx='255'
             cy='115'
-            r='7'
-            fill='transparent'
+            r='3'
+            fill='green'
             onClick={(event) => handleMuscle(event, 'Naramienny')}
           />
           <circle
@@ -229,8 +229,8 @@ const RehabMain = () => {
             data-muscle-name='Piersiowy większy'
             cx='225'
             cy='135'
-            r='7'
-            fill='transparent'
+            r='3'
+            fill='green'
             onClick={(event) => handleMuscle(event, 'Piersiowy większy')}
           />
           <circle
@@ -238,8 +238,8 @@ const RehabMain = () => {
             data-muscle-name='Biceps'
             cx='258'
             cy='165'
-            r='7'
-            fill='transparent'
+            r='3'
+            fill='green'
             onClick={(event) => handleMuscle(event, 'Biceps')}
           />
           <circle
@@ -247,8 +247,8 @@ const RehabMain = () => {
             data-muscle-name='Prosty brzucha'
             cx='215'
             cy='180'
-            r='6'
-            fill='transparent'
+            r='3'
+            fill='green'
             onClick={(event) => handleMuscle(event, 'Prosty brzucha')}
           />
           <circle
@@ -256,8 +256,8 @@ const RehabMain = () => {
             data-muscle-name='Ramienno-promieniowy'
             cx='279'
             cy='205'
-            r='6'
-            fill='transparent'
+            r='3'
+            fill='green'
             onClick={(event) => handleMuscle(event, 'Ramienno-promieniowy')}
           />
           <circle
@@ -265,8 +265,8 @@ const RehabMain = () => {
             data-muscle-name='Skośny zewnętrzny brzucha'
             cx='240'
             cy='245'
-            r='6'
-            fill='transparent'
+            r='3'
+            fill='green'
             onClick={(event) =>
               handleMuscle(event, 'Skośny zewnętrzny brzucha')
             }
@@ -276,8 +276,8 @@ const RehabMain = () => {
             data-muscle-name='Glistowate ręki'
             cx='302'
             cy='290'
-            r='6'
-            fill='transparent'
+            r='3'
+            fill='green'
             onClick={(event) => handleMuscle(event, 'Glistowate ręki')}
           />
           <circle
@@ -285,8 +285,8 @@ const RehabMain = () => {
             data-muscle-name='Prosty uda'
             cx='235'
             cy='330'
-            r='10'
-            fill='transparent'
+            r='3'
+            fill='green'
             onClick={(event) => handleMuscle(event, 'Prosty uda')}
           />
           <circle
@@ -294,8 +294,8 @@ const RehabMain = () => {
             data-muscle-name='Obszerny przyśrodkowy'
             cx='220'
             cy='375'
-            r='6'
-            fill='transparent'
+            r='3'
+            fill='green'
             onClick={(event) => handleMuscle(event, 'Obszerny przyśrodkowy')}
           />
           <circle
@@ -303,8 +303,8 @@ const RehabMain = () => {
             data-muscle-name='Piszczelowy przedni'
             cx='232'
             cy='460'
-            r='6'
-            fill='transparent'
+            r='3'
+            fill='green'
             onClick={(event) => handleMuscle(event, 'Piszczelowy przedni')}
           />
           <circle
@@ -312,8 +312,8 @@ const RehabMain = () => {
             data-bone-name='Żuchwa'
             cx='199'
             cy='72'
-            r='5'
-            fill='transparent'
+            r='3'
+            fill='red'
             onClick={(event) => handleBone(event, 'Żuchwa')}
           />
           <circle
@@ -321,8 +321,8 @@ const RehabMain = () => {
             data-bone-name='Obojczyk'
             cx='180'
             cy='104'
-            r='5'
-            fill='transparent'
+            r='3'
+            fill='red'
             onClick={(event) => handleBone(event, 'Obojczyk')}
           />
           <circle
@@ -330,8 +330,8 @@ const RehabMain = () => {
             data-bone-name='Mostek'
             cx='199'
             cy='135'
-            r='5'
-            fill='transparent'
+            r='3'
+            fill='red'
             onClick={(event) => handleBone(event, 'Mostek')}
           />
           <circle
@@ -339,8 +339,8 @@ const RehabMain = () => {
             data-bone-name='Kość ramienna'
             cx='132'
             cy='195'
-            r='5'
-            fill='transparent'
+            r='3'
+            fill='red'
             onClick={(event) => handleBone(event, 'Kość ramienna')}
           />
           <circle
@@ -348,8 +348,8 @@ const RehabMain = () => {
             data-bone-name='Kość promieniowa'
             cx='115'
             cy='232'
-            r='5'
-            fill='transparent'
+            r='3'
+            fill='red'
             onClick={(event) => handleBone(event, 'Kość promieniowa')}
           />
           <circle
@@ -357,8 +357,8 @@ const RehabMain = () => {
             data-bone-name='Kość łokciowa'
             cx='117'
             cy='250'
-            r='5'
-            fill='transparent'
+            r='3'
+            fill='red'
             onClick={(event) => handleBone(event, 'Kość łokciowa')}
           />
           <circle
@@ -366,8 +366,8 @@ const RehabMain = () => {
             data-bone-name='Kość udowa'
             cx='165'
             cy='340'
-            r='5'
-            fill='transparent'
+            r='3'
+            fill='red'
             onClick={(event) => handleBone(event, 'Kość udowa')}
           />
           <circle
@@ -375,8 +375,8 @@ const RehabMain = () => {
             data-bone-name='Rzepka'
             cx='173'
             cy='406'
-            r='5'
-            fill='transparent'
+            r='3'
+            fill='red'
             onClick={(event) => handleBone(event, 'Rzepka')}
           />
           <circle
@@ -384,8 +384,8 @@ const RehabMain = () => {
             data-bone-name='Kość piszczelowa'
             cx='170'
             cy='455'
-            r='5'
-            fill='transparent'
+            r='3'
+            fill='red'
             onClick={(event) => handleBone(event, 'Kość piszczelowa')}
           />
           <circle
@@ -393,8 +393,8 @@ const RehabMain = () => {
             data-bone-name='Kość strzałkowa'
             cx='163'
             cy='475'
-            r='5'
-            fill='transparent'
+            r='3'
+            fill='red'
             onClick={(event) => handleBone(event, 'Kość strzałkowa')}
           />
           {lineCoordinatesMuscles.map((coords, index) => (

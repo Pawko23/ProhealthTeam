@@ -35,9 +35,14 @@ body {
   justify-content: center;
   align-items: center;
 }
-.model-container .muscles-button-box button {
+.model-container .muscles-button-box button, .model-container .bones-button-box button {
   padding: 5px;
   margin: 5px;
+  border: none;
+  border-radius: 8px;
+  height: 35px;
+  width: 80px;
+  cursor: pointer;
 }
 .model-container svg {
   height: 600px;

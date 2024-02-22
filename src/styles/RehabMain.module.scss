@@ -36,10 +36,15 @@ body {
     justify-content: center;
     align-items: center;
 
-    .muscles-button-box {
+    .muscles-button-box, .bones-button-box {
         button {
             padding: 5px;
             margin: 5px;
+            border: none;
+            border-radius: 8px;
+            height: 35px;
+            width: 80px;
+            cursor: pointer;
         }
     }
 
