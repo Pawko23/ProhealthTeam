@@ -12,7 +12,7 @@ const RegisterPage = () => {
     const [goal, setGoal] = useState('')
     const [date, setDate] = useState([])
     const [passwordPatternDisplay, setPasswordPatternDisplay] = useState( { display: 'none' } )
-    const [emailPatternDisplay, setEmailPatternDisplay] = useState( { display: 'none' } )
+    const [emailPatternDisplay, setEmailPatternDisplay] = useState( { display: 'none'} )
     const [userExists, setUserExists] = useState(false)
     const navigate = useNavigate()
 
@@ -76,7 +76,7 @@ const RegisterPage = () => {
                 <div className={RegisterStyles['login-box']}>
                     <form onSubmit={handleSubmit}>
                         {userExists && 
-                            <p>Taki użytkownik już istnieje!</p>
+                            <p className={RegisterStyles['user-exists-info']}>Taki użytkownik już istnieje!</p>
                         }
                         <label>Adres email:</label>
                         <input

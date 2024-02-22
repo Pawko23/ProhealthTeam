@@ -35,6 +35,9 @@ body {
   justify-content: center;
   align-items: center;
 }
+.container .login-box form .user-exists-info {
+  color: red;
+}
 .container .login-box form label {
   padding: 10px;
 }
