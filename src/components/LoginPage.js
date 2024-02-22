@@ -61,7 +61,7 @@ const LoginPage = () => {
                         />
                         <p style={invalidCredentials}>Nieprawidłowy login lub hasło</p>
                         <button type='submit' className={LoginStyles.logIn}>Zaloguj się</button>
-                        <button className={LoginStyles.register}><Link to="/register">Zarejestruj się</Link></button>
+                       <Link to="/register" className={LoginStyles.register}>Zarejestruj się</Link>
                     </form>
                 </div>
             </div>

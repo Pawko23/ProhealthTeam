@@ -20,8 +20,8 @@ body {
   align-items: center;
 }
 .container .login-box {
-  width: 250px;
-  height: 250px;
+  width: 300px;
+  height: 450px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -40,23 +40,40 @@ body {
 }
 .container .login-box form input {
   padding: 10px;
-  border: 1px dotted grey;
-  border-radius: 10px;
+  margin: 5px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+.container .login-box form p {
+  color: red;
 }
 .container .login-box form .logIn {
-  height: 25px;
-  width: 100px;
+  height: 35px;
+  width: 125px;
   border-radius: 15px;
-  margin-top: 15px;
   border: none;
-  color: #fff;
-  background-color: royalblue;
+  margin: 15px auto;
+  font-size: 1.8rem;
+  color: #000;
+  background-color: transparent;
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+.container .login-box form .logIn:hover {
+  transform: scale(1.1);
 }
 .container .login-box form .register {
+  text-align: center;
+  text-decoration: none;
   padding: 15px;
-  height: 25px;
-  width: 150px;
+  height: 35px;
+  width: 140px;
   border: none;
+  border-radius: 15px;
   background-color: transparent;
-  color: royalblue;
+  color: #000;
+  transition: transform 0.3s;
+}
+.container .login-box form .register:hover {
+  transform: scale(1.1);
 }/*# sourceMappingURL=LoginPage.module.css.map */

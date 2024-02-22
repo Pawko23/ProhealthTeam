@@ -28,8 +28,8 @@ body {
     // }
 
     .login-box {
-        width: 250px;
-        height: 450px;
+        width: 300px;
+        height: 550px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -49,8 +49,9 @@ body {
 
             input {
                 padding: 10px;
-                border: 1px dotted grey;
-                border-radius: 10px;
+                margin: 5px;
+                border-radius: 8px;
+                border: 1px solid #ccc;
             }
 
             .password-pattern {
@@ -70,22 +71,35 @@ body {
             }
 
             .register {
-                height: 25px;
-                width: 100px;
+                height: 35px;
+                width: 105px;
                 border-radius: 15px;
-                margin-top: 15px;
                 border: none;
-                color: #fff;
-                background-color: royalblue;
+                margin: 5px auto;
+                font-size: 1.8rem;
+                color: #000;
+                background-color: transparent;
+                transition: transform 0.3s;
+            }
+
+            .register:hover {
+                transform: scale(1.1);
             }
 
             .logIn {
+                text-align: center;
+                text-decoration: none;
                 padding: 15px;
-                height: 25px;
-                width: 150px;
+                height: 35px;
+                width: 115px;
                 border: none;
+                border-radius: 15px;
                 background-color: transparent;
-                color: royalblue;
+                color: #000;
+                transition: transform 0.3s;
+            }
+            .logIn:hover {
+                transform: scale(1.1);
             }
         }
     }

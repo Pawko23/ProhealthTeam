@@ -102,15 +102,14 @@ const RegisterPage = () => {
                         />
                         <div className={RegisterStyles['password-pattern']} style={passwordPatternDisplay}>
                             <ul>
-                                <li>Password needs to be:</li>
-                                <li>At least 1 uppercase letter</li>
-                                <li>At least 1 digit</li>
-                                <li>At least 1 special character</li>
-                                <li>At least 8 characters long</li>
+                                <li>Przynajmniej 1 wielka litera</li>
+                                <li>Przynajmniej 1 cyfra</li>
+                                <li>Przynajmniej 1 znak specjalny</li>
+                                <li>Przynajmniej 8 znaków długości</li>
                             </ul>
                         </div>
                         <button type="submit" className={RegisterStyles.register}>Zarejestruj</button>
-                        <Link to='/login'>Zaloguj się</Link>
+                        <Link to='/login' className={RegisterStyles.logIn}>Zaloguj się</Link>
                     </form>
                 </div>
             </div>
