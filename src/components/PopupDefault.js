@@ -10,7 +10,6 @@ const PopupDefault = ( {info, name, description, onClose, preventClose, accountD
     }, []);
 
     const handleBackdropClick = (event) => {
-        console.log('Backdrop')
         if (!preventClose && event.target.classList.contains(styles['popup-container'])) {
             onClose();
         }

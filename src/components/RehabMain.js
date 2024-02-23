@@ -37,7 +37,6 @@ const RehabMain = () => {
   const togglePopup = (muscleInfo) => {
     setMuscleGuide(muscleInfo);
     setShowPopup(!showPopup);
-    console.log(showPopup);
   };
 
   const handleMuscle = (event, muscle) => {

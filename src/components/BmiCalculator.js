@@ -76,7 +76,6 @@ const BmiCalculator = () => {
         setBmi(Number(bmiResult.toFixed(2)));
 
         setCalculatorHeight('80%');
-        console.log("Twoje BMI wynosi: ", bmiResult);
     }
 
     const isButtonDisabled = isNaN(parseFloat(height)) || isNaN(parseFloat(weight))
@@ -89,7 +88,6 @@ const BmiCalculator = () => {
           const decodedToken = jwtDecode(token)
           const userId = decodedToken.userId
           setUserId(userId)
-          console.log(userId)
         }
     }, [])
     

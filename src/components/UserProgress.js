@@ -82,7 +82,6 @@ export const Graph = ({ userId, weights, dates, goal, deleteEndpoint, pointName 
                 })
                 window.location.reload()
                 setSelectedPoints([])
-                
             } catch (error) {
                 console.log('Error deleting data point: ', error)
             }
@@ -146,9 +145,6 @@ const Weight = () => {
     }
 
     useEffect(() => {
-        console.log(graphWeights)
-        console.log(graphDates)
-        console.log(graphGoal)
     }, [graphWeights])
 
     const handleSubmit = async (e) => {
@@ -161,6 +157,7 @@ const Weight = () => {
         }
         try {
             await axios.post('/userprogress', { userId, weight, goal, currentDate })
+            window.location.reload()
         } catch (error) {
             console.log(error);
         }
@@ -230,16 +227,8 @@ const Kcal = () => {
     };
 
     const calculate = () => {
-        console.log(age)
-        console.log(weight)
-        console.log(height)
-        console.log(gender)
-        console.log(activity)
-
         const selectedActivity = activity.find(item => item.checked === true);
         const selectedValue = selectedActivity ? selectedActivity.pointer : 0;
-        console.log("Selected Value:", selectedValue);
-
 
         let BMR = 0
         let TMR = 0
@@ -254,9 +243,6 @@ const Kcal = () => {
             setBMR(Number(BMR.toFixed(2)))
             setTMR(Number(TMR.toFixed(2)))
         }
-
-        console.log("BMR: ", BMR)
-        console.log("TMR: ", TMR)
     }
 
     const [userId, setUserId] = useState('')
@@ -266,7 +252,6 @@ const Kcal = () => {
         const decodedToken = jwtDecode(token)
         const userId = decodedToken.userId
         setUserId(userId)
-        console.log(userId)
     }, [])
 
     const saveIntake = async (e) => {

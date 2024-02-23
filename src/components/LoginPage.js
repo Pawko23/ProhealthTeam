@@ -24,9 +24,7 @@ const LoginPage = () => {
         event.preventDefault()
         try {
             const response = await axios.post('/login', { username, password })
-            console.log(response.data)
             const token = response.data.token
-            console.log(token)
             console.log('Login successfull');
             setUsername('')
             setPassword('')

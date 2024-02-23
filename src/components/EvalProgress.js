@@ -31,7 +31,6 @@ const EvalProgress = () => {
         axios.get('/eval-progress', {
             headers: { Authorization: `Bearer ${token}`}
         }).then((res) => {
-            console.log(res.data)
             setGraphEval(res.data.eval)
             setGraphDates(res.data.dates)
             setGraphGoal(res.data.goal)
@@ -41,9 +40,6 @@ const EvalProgress = () => {
     }
 
     useEffect(() => {
-        console.log(graphEval)
-        console.log(graphDates)
-        console.log(graphGoal)
     }, [graphEval])
 
 
@@ -58,7 +54,6 @@ const EvalProgress = () => {
             return
         }
         try {
-            console.log(userId, evalGoal, evalScore, currentDate)
             await axios.post('/eval-progress', { userId, evalGoal, evalScore, currentDate })
             window.location.reload()
         } catch (error) {

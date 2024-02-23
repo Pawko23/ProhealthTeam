@@ -45,7 +45,6 @@ const JumpProgress = () => {
         axios.get('/jump-progress', {
             headers: { Authorization: `Bearer ${token}`}
         }).then((res) => {
-            console.log(res.data)
             setGraphJumps(res.data.jumps)
             setGraphDates(res.data.dates)
             setGraphGoal(res.data.goal)
@@ -55,9 +54,6 @@ const JumpProgress = () => {
     }
 
     useEffect(() => {
-        console.log(graphJumps)
-        console.log(graphDates)
-        console.log(graphGoal)
     }, [graphJumps])
 
 
@@ -72,7 +68,6 @@ const JumpProgress = () => {
             return
         }
         try {
-            console.log(userId, jumpGoal, jumpHeight, currentDate)
             await axios.post('/jump-progress', { userId, jumpGoal, jumpHeight, currentDate })
             window.location.reload()
         } catch (error) {

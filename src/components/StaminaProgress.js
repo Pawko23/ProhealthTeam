@@ -47,7 +47,6 @@ const StaminaProgress = () => {
         axios.get('/stamina-progress', {
             headers: { Authorization: `Bearer ${token}`}
         }).then((res) => {
-            console.log(res.data)
             setGraphStamina(res.data.stamina)
             setGraphDates(res.data.dates)
             setGraphGoal(res.data.goal)
@@ -57,9 +56,6 @@ const StaminaProgress = () => {
     }
 
     useEffect(() => {
-        console.log(graphStamina)
-        console.log(graphDates)
-        console.log(graphGoal)
     }, [graphStamina])
 
 
@@ -74,7 +70,6 @@ const StaminaProgress = () => {
             return
         }
         try {
-            console.log(userId, staminaGoal, staminaTime, currentDate)
             await axios.post('/stamina-progress', { userId, staminaGoal, staminaTime, currentDate })
             window.location.reload()
         } catch (error) {

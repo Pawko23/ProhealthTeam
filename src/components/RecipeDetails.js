@@ -16,12 +16,9 @@ const RecipeDetails = () => {
   useEffect(() => {
     const fetchRecipe = async () => {
       try {
-        console.log(id)
         const response = await fetch(`/recipes/${id}`);
         const data = await response.json();
-        console.log()
         setRecipe(data);
-        console.log(data)
       } catch (error) {
         console.error('Error fetching recipe:', error);
       }

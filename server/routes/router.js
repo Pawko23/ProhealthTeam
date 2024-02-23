@@ -8,7 +8,6 @@ require('dotenv/config')
 
 router.get('/recipes/:id', async (req, res) => {
   try {
-    console.log(req.params)
     if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
       return res.status(404).json({ message: 'Invalid recipe ID' });
     }
@@ -16,7 +15,6 @@ router.get('/recipes/:id', async (req, res) => {
     if(!recipeDetails) {
       return res.status(404).json({ message: 'Recipe not found' })
     }
-    // console.log(recipeDetails.image)
     res.json(recipeDetails)
   } catch (error) {
     console.log(error)
@@ -33,10 +31,6 @@ router.get('/recipes', async (req, res) => {
     res.status(500).send('Sth went wrong')
   }
 })
-
-
-// CREATE USER -- POST
-// REGISTER
 
 router.post('/register', async (req, res) => {
   try {
@@ -79,7 +73,6 @@ router.post('/login', async (req, res) => {
       return res.status(401).json({ error: 'Ivalid credentials' })
     }
     const token = jwt.sign({ userId: user._id }, process.env.ACCESS_SECRET_KEY, { expiresIn: '1h' })
-    console.log("Token: ", token)
     res.json({ message: 'Login successful', token: token})
   } catch(error) {
     res.status(500).json({ error: 'Error logging in' })
@@ -151,13 +144,8 @@ router.get('/userprogress', async (req, res) => {
   }
 })
 
-
-
-//  WEIGHT AND DATE DELETE
-
 router.delete('/userprogress/weight/:userId/:index', async (req, res) => {
   try {
-    console.log(req.params)
     const userId = req.params.userId
     const index = parseInt(req.params.index)
 
@@ -180,13 +168,7 @@ router.delete('/userprogress/weight/:userId/:index', async (req, res) => {
   }
 })
 
-
-
-
-// JUMP PROGRESS
-
 router.post('/jump-progress', async(req, res) => {
-  console.log(req.body)
 
   const userId = req.body.userId
 
@@ -237,7 +219,6 @@ router.get('/jump-progress', async (req, res) => {
 
 router.delete('/jump-progress/:userId/:index', async (req, res) => {
   try {
-    console.log(req.params)
     const userId = req.params.userId
     const index = parseInt(req.params.index)
     const { indices } = req.body 
@@ -259,11 +240,7 @@ router.delete('/jump-progress/:userId/:index', async (req, res) => {
   }
 })
 
-//  STAMINA
-
 router.post('/stamina-progress', async(req, res) => {
-  console.log(req.body)
-
   const userId = req.body.userId
 
   try {
@@ -310,7 +287,6 @@ router.get('/stamina-progress', async (req, res) => {
 
 router.delete('/stamina-progress/:userId/:index', async (req, res) => {
   try {
-    console.log(req.params)
     const userId = req.params.userId
     const index = parseInt(req.params.index)
     const { indices } = req.body 
@@ -332,10 +308,7 @@ router.delete('/stamina-progress/:userId/:index', async (req, res) => {
   }
 })
 
-// EVAL
-
 router.post('/eval-progress', async(req, res) => {
-  console.log(req.body)
 
   const userId = req.body.userId
 
@@ -383,7 +356,6 @@ router.get('/eval-progress', async (req, res) => {
 
 router.delete('/eval-progress/:userId/:index', async (req, res) => {
   try {
-    console.log(req.params)
     const userId = req.params.userId
     const index = parseInt(req.params.index)
     const { indices } = req.body 
@@ -405,10 +377,6 @@ router.delete('/eval-progress/:userId/:index', async (req, res) => {
   }
 })
 
-
-
-//  ACCOUNT ROUTES
-
 router.get('/account', async (req, res) => {
   const token = req.header('Authorization')?.replace('Bearer ', '')
 
@@ -425,7 +393,6 @@ router.get('/account', async (req, res) => {
     }
     let tmr = 0
     let bmiTemp = 0
-    console.log(userIntake);
     if(userIntake && userIntake.kcalIntake != null) {
       tmr = userIntake.kcalIntake
     }
@@ -439,7 +406,6 @@ router.get('/account', async (req, res) => {
 })
 
 router.post('/bmicalculator', async (req,res) => {
-  console.log(req.body)
   const { userId, bmi } = req.body
   try {
     let userCalcs = await UserCalcs.findOne({ userId: userId })

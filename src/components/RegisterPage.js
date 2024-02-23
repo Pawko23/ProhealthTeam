@@ -36,12 +36,10 @@ const RegisterPage = () => {
         e.preventDefault()
 
         if(!emailPattern.test(email)) {
-            console.log('Email pattern does not match');
             setEmailPatternDisplay( { display: 'flex' })
             setPasswordPatternDisplay( { display: 'none' })
         } 
         if (!passwordPattern.test(password)) {
-            console.log('Password pattern does not match');
             setPasswordPatternDisplay( { display: 'flex' })
             setEmailPatternDisplay( { display: 'none' } )
         } 

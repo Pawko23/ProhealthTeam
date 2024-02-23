@@ -5,7 +5,6 @@ import Header from "./Header";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { useNavigate } from 'react-router-dom'
-import { Link } from 'react-router-dom'
 import { jwtDecode } from 'jwt-decode'
 import HomePageHero from '../img/hero-main-big.jpg'
 import PopupDefault from "./PopupDefault";
@@ -35,10 +34,6 @@ const Account = () => {
             setUserEmail(res.data.email)
             setUserBmi(res.data.bmi)
             setUserIntake(res.data.kcalIntake)
-            console.log(userLogin)
-            console.log(userEmail)
-            console.log(userBmi)
-            console.log(userIntake);
         }).catch((error) => {
             console.log(error)
         })
@@ -51,7 +46,6 @@ const Account = () => {
             await axios.delete(`/account/${userId}`, {
                 headers: { Authorization: `Bearer ${token}`}
             })
-            console.log('User deleted succ')
             localStorage.removeItem('token')
             navigate('/')
         } catch (error) {
